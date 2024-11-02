@@ -1,0 +1,51 @@
+@font-face {
+  font-family: 'space';
+  src: url("./SPACEArmor.otf");
+}
+
+.leaderboardHeader {
+  font-family: "space", cursive;
+  text-align: center;
+  letter-spacing: 5px;
+  color: hsl(9, 86%, 38%);
+  font-size: 3.0rem;
+  margin-top: 50px;
+  text-transform: uppercase;
+  position: relative;
+  animation: flicker 1.5s infinite alternate;
+  text-shadow: 0 0 5px #00fff5, 0 0 10px #00fff5, 0 0 15px #00b3ff;
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 0.5; text-shadow: 0 0 5px #00fff5, 0 0 10px #00fff5, 0 0 15px #00b3ff; }
+  50% { opacity: 1; text-shadow: 0 0 20px #00fff5, 0 0 30px #00b3ff, 0 0 40px #0ff; }
+}
+
+.leaderboardItems {
+  min-height: calc(100vh - 144px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+}
+
+body {
+  background-image: url("./assets/2.jpg");
+  background-size: cover;
+  color: #fff;
+  background-attachment: fixed;
+  font-family: "space", cursive;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+
+
+@media (max-width: 800px) {
+  .leaderboardHeader{
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+  }
+
+
+}

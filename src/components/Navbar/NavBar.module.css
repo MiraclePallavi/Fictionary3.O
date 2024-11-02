@@ -1,0 +1,58 @@
+/* src/components/NavBar.module.css */
+
+@keyframes flicker {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+      opacity: 1;
+    }
+    20%, 24%, 55% {
+      opacity: 0;
+    }
+  }
+  
+  @keyframes popIn {
+    0% {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  .flicker {
+    animation: flicker 1.5s infinite;
+  }
+  
+  .popIn {
+    animation: popIn 0.4s ease forwards;
+  }
+  
+  /* NavBar.module.css */
+.glowBorder {
+  position: relative;
+  padding: 0.25rem; /* Adjust to control spacing */
+}
+
+.glowBorder::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: 4px; /* Adjust for a rounded or square look */
+  border: 2px solid #00bfff; /* Light blue glow color */
+  box-shadow: 0 0 15px #00bfff, 0 0 30px #00bfff, 0 0 45px #00bfff;
+  animation: glow 1.5s infinite alternate;
+  pointer-events: none; /* Avoid interfering with hover events */
+}
+
+@keyframes glow {
+  0% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,16 @@
+/* src/components/Footer/Footer.module.css */
+.footer {
+    background-color: rgba(55, 65, 81, 0.75); /* Equivalent to bg-gray-900 with opacity */
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    color: white;
+  }
+  
+  .footer a:hover {
+    color: red;
+    transition: color 0.2s ease;
+  }
+  

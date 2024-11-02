@@ -1,0 +1,122 @@
+/* Colors */
+:root {
+    --dark-blue: #0b0d2a;
+    --neon-pink: #ff006e;
+    --neon-blue: #00f5d4;
+    --neon-yellow: #ffdd00;
+  }
+  
+  /* Main Background */
+  .bg-dark-blue {
+    background-color: var(--dark-blue);
+    overflow: hidden;
+  }
+  
+  /* Pixelated Background Cityscape */
+  .pixel-cityscape {
+    /* Path to your pixel cityscape or desired background */
+    background-size: cover; /* Adjust this as needed (cover, contain) */
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.8; /* Adjust opacity for visibility of foreground elements */
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 0;
+  }
+  
+  /* Fictionary Title */
+  .font-pixel {
+    font-family: "Press Start 2P", monospace;
+  }
+  
+  .flicker {
+    animation: flicker 1.5s infinite alternate;
+  }
+  
+  @keyframes flicker {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.8;
+    }
+  }
+  
+  /* Home.css */
+
+.text-neon-pink {
+    color: #ff00ff; /* Adjust to your desired neon pink color */
+  }
+  
+  .font-pixel {
+    font-family: 'Press Start 2P', monospace; /* Example font-family */
+  }
+  
+  .flicker {
+    animation: flicker 1.5s infinite alternate;
+  }
+  
+  @keyframes flicker {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+  }
+  
+  /* Stars Animation */
+  .pixel-stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: 4px 4px, 6px 6px;
+    animation: starTwinkle 2s infinite alternate;
+  }
+  
+  @keyframes starTwinkle {
+    0% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  /* Sign Up Button */
+  .sign-up-button {
+    background-color: transparent;
+    padding: 0.75rem 2rem;
+    border: 3px solid var(--neon-yellow);
+    position: relative;
+    overflow: hidden;
+    animation: buttonGlow 2s infinite alternate;
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+  }
+  
+  .sign-up-button:hover {
+    transform: scale(1.1);
+  }
+  
+  .sign-up-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--neon-yellow);
+    opacity: 0.2;
+    z-index: -1;
+  }
+  
+  @keyframes buttonGlow {
+    0% {
+      box-shadow: 0 0 10px var(--neon-yellow), 0 0 20px var(--neon-yellow);
+    }
+    100% {
+      box-shadow: 0 0 20px var(--neon-yellow), 0 0 40px var(--neon-yellow);
+    }
+  }
+  

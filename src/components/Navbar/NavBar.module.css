@@ -56,3 +56,82 @@
     opacity: 1;
   }
 }
+/* NavBar.module.css */
+
+.popIn {
+  animation: popIn 0.5s ease forwards;
+}
+
+.glowBorder {
+  border: 2px solid #ff0099;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .text-3xl {
+    font-size: 2rem;
+  }
+
+  .text-2xl {
+    font-size: 1.5rem;
+  }
+
+  /* Adjust spacing for smaller screens */
+  .space-x-8 {
+    gap: 1.5rem;
+  }
+
+  /* Show the navigation links in a column when open */
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+nav {
+  position: relative;
+}
+
+/* Animation for menu items */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.text-pink-500 {
+  font-family: "Press Start 2P", monospace; /* For pixelated text style */
+}
+
+.fixed div a {
+  animation: fadeIn 0.4s ease-in-out forwards;
+}
+.fixed.inset-0 a {
+  color: #ff0099; /* Adjust to your preferred color */
+  font-size: 2rem;
+  font-family: "Press Start 2P", monospace;
+  margin: 1rem 0;
+  animation: fadeIn 0.4s ease-in-out forwards; /* Apply animation */
+}
+/* Ensure that the overlay is semi-transparent and doesn’t cover the items */
+.fixed.inset-0 {
+  background: rgba(0, 0, 0, 0.9); /* Dark overlay with transparency */
+  z-index: 50; /* Ensure it stays above the main nav */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

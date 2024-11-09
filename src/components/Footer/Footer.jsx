@@ -5,23 +5,62 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
-const Footer = () => {
+import "./Footer.module.css"; // Assuming your CSS for ripple effect is here
+import { Link } from "react-router-dom";
+
+const SocialLinks = () => {
+  const handleClick = (e) => {
+    const ripple = document.createElement("span");
+    ripple.className = "ripple";
+    ripple.style.left = `${e.clientX - e.target.offsetLeft}px`;
+    ripple.style.top = `${e.clientY - e.target.offsetTop}px`;
+    e.currentTarget.appendChild(ripple);
+
+    setTimeout(() => ripple.remove(), 600); // Removes ripple after animation
+  };
+
   return (
-    <footer className="bg-gray-900 bg-opacity-75 py-4 flex justify-center items-center space-x-6 text-white">
-      <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="hover:text-red-500 transition duration-200">
-        <YouTubeIcon fontSize="large" />
+    <div className="social-links">
+      <a
+        href="https://www.youtube.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={handleClick}
+        className="social-icon youtube"
+      >
+       <FacebookIcon />
       </a>
-      <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-pink-500 transition duration-200">
-        <InstagramIcon fontSize="large" />
+      <a
+        href="https://www.instagram.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={handleClick}
+        className="social-icon instagram"
+      >
+       <YouTubeIcon />
       </a>
-      <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-blue-500 transition duration-200">
-        <FacebookIcon fontSize="large" />
+      <a
+        href="https://www.instagram.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={handleClick}
+        className="social-icon instagram"
+      >
+       <LinkedInIcon />
       </a>
-      <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-blue-700 transition duration-200">
-        <LinkedInIcon fontSize="large" />
+      <a
+        href="https://www.instagram.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={handleClick}
+        className="social-icon instagram"
+      >
+       <InstagramIcon />
       </a>
-    </footer>
+      {/* Add more social links as needed */}
+    </div>
   );
 };
 
-export default Footer;
+export default SocialLinks;
+

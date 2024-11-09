@@ -8,6 +8,8 @@ import Leaderboard from "./pages/Leaderboard";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Footer from "./components/Footer/Footer";
+
+
 const App = () => {
   return (
     <Router>
@@ -18,6 +20,7 @@ const App = () => {
         <Route path="/leaderboard" element={<Leaderboard />} />
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Home />} />
+        
   
       </Routes>
     </Router>

@@ -1,7 +1,7 @@
 import React from "react";
 import "./Leaderboard.css";
 import Score from "./Score";
-
+import cityscape from "/assets/cityscape.png"; 
 const dummyLeaderboard = [
   { rank: 1, name: "Pallavi", points: 350, avatar: "https://via.placeholder.com/50" },
   { rank: 2, name: "Ankita", points: 340, avatar: "https://via.placeholder.com/50" },
@@ -13,7 +13,14 @@ const dummyLeaderboard = [
 const Leaderboard = () => {
   return (
     <>
-    <div className="particle-container"></div>
+     <div className="bg-dark-blue min-h-screen flex flex-col relative"
+      style={{
+        backgroundImage: `url(${cityscape})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        
+      }} >
     <div className="leaderboardItems">
       <h1 className="leaderboardHeader" data-text="Leaderboard">
         Leaderboard
@@ -28,6 +35,7 @@ const Leaderboard = () => {
           className={`score ${index === 0 ? "first-place" : index === 1 ? "second-place" : index === 2 ? "third-place" : ""}`}
         />
       ))}
+    </div>
     </div>
     </>
   );

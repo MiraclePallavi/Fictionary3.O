@@ -3,6 +3,7 @@ import React from "react";
 import "./Home.css"; // for custom pixel and animation styles
 import cityscape from "/assets/cityscape.png"; // Import the image
 import Footer from "../components/Footer/Footer";
+import { GoogleLogin } from '@react-oauth/google';
 
 const Home = () => {
   return (
@@ -13,7 +14,7 @@ const Home = () => {
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
-        opacity: 0.8,
+      
       }}
     >
       {/* Main Content */}
@@ -23,15 +24,21 @@ const Home = () => {
 
         {/* Sign Up Button */}
         <button className="sign-up-button font-pixel text-2xl text-amber-300 mt-8">
-          Sign Up
+        <GoogleLogin
+  onSuccess={credentialResponse => {
+    console.log(credentialResponse);
+  }}
+  onError={() => {
+    console.log('Login Failed');
+  }}
+/>;
         </button>
 
         {/* Additional Effects */}
         <div className="pixel-stars"></div>
       </div>
 
-      {/* Footer Component */}
-      <Footer />
+     
     </div>
   );
 };

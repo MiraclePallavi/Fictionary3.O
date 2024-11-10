@@ -1,15 +1,24 @@
-import React from "react";
-import "./Home.css"; // for custom pixel and animation styles
+import React, { useState } from "react";
+import "./Home.css";
 import cityscape from "/assets/cityscape.png";
 import { GoogleLogin } from "@react-oauth/google";
-import { jwtDecode } from "jwt-decode";
+import {jwtDecode} from "jwt-decode";
+import { useNavigate } from "react-router-dom";
+
 const Home = () => {
+  //saving user data here from g-auth
+  //and navigating to logged-in page
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+
   const handleLoginSuccess = (credentialResponse) => {
-   
-    console.log("Login Success:", credentialResponse);
     const decoded = jwtDecode(credentialResponse?.credential);
-    console.log(decoded)
-    // Handle successful login here (e.g., send credentialResponse to backend)
+    console.log("Login Success:", decoded);
+
+    // Save user data
+    setUser(decoded);
+    // Redirect to logged-in page
+    navigate("/loggedin-page", { state: { user: decoded } });
   };
 
   const handleLoginFailure = () => {
@@ -33,7 +42,6 @@ const Home = () => {
         <div className="mt-8">
           <GoogleLogin
             onSuccess={handleLoginSuccess}
-            
             onError={handleLoginFailure}
           />
         </div>

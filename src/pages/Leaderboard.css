@@ -3,13 +3,10 @@
   src: url("./SPACEArmor.otf");
 }
 
-/* Leaderboard.css */
-/* Leaderboard.css */
 
-/* Leaderboard Header */
 .leaderboardHeader {
   position: relative;
-  color: #599ae9; /* Neon blue color */
+  color: #599ae9; 
   font-family: 'Press Start 2P', monospace;
   font-size: 5rem;
   text-align: center;
@@ -32,7 +29,7 @@
 
 .leaderboardHeader::before {
   left: 2px;
-  color: #ff2e63; /* Red layer */
+  color: #ff2e63; 
   text-shadow: -3px 0 #ff2e63;
   clip: rect(2px, 900px, 40px, 0);
   animation: glitch-animation 2.5s infinite linear alternate-reverse;
@@ -40,7 +37,7 @@
 
 .leaderboardHeader::after {
   left: -2px;
-  color: #2defff; /* Cyan layer */
+  color: #2defff; 
   text-shadow: -3px 0 #2defff;
   clip: rect(10px, 900px, 30px, 0);
   animation: glitch-animation 2s infinite linear alternate-reverse;

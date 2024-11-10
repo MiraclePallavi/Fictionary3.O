@@ -1,14 +1,36 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { Menu, Close } from "@mui/icons-material";
+import { GoogleLogin } from "@react-oauth/google"; // Only import GoogleLogin
+import {jwtDecode} from "jwt-decode"; // Import for decoding token if needed
 import styles from "./NavBar.module.css";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Track login status
+  const [user, setUser] = useState(null); // Optional: store user data
   const menuRef = useRef(null);
   const toggleButtonRef = useRef(null);
 
   const toggleMenu = () => setIsOpen(!isOpen);
+
+  const handleLoginSuccess = (response) => {
+    const token = response.credential;
+    const decoded = jwtDecode(token); // Decode token to get user info if needed
+    setUser(decoded);
+    setIsLoggedIn(true); // Set logged-in state to true
+    console.log("Login Success:", decoded);
+  };
+
+  const handleLoginFailure = () => {
+    console.log("Login Failed");
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false); // Set logged-in state to false
+    setUser(null); // Clear user data
+    console.log("Logged out successfully");
+  };
 
   // Handle clicks outside the menu to close it
   useEffect(() => {
@@ -56,6 +78,20 @@ const NavBar = () => {
             <Link to={`/${item.toLowerCase()}`}>{item}</Link>
           </li>
         ))}
+        {/* Add Sign In/Sign Out Button */}
+        <li className="text-blue-300 font-pixel text-2xl cursor-pointer">
+          {isLoggedIn ? (
+            <button onClick={handleLogout} className="text-2xl text-pink-500">
+              Sign Out
+            </button>
+          ) : (
+            <GoogleLogin
+              onSuccess={handleLoginSuccess}
+              onError={handleLoginFailure}
+              theme="outline"
+            />
+          )}
+        </li>
       </ul>
 
       {/* Mobile overlay menu */}
@@ -75,6 +111,20 @@ const NavBar = () => {
                 </Link>
               </li>
             ))}
+            {/* Add Sign In/Sign Out Button for mobile */}
+            <li className="text-4xl text-pink-500 font-pixel py-2">
+              {isLoggedIn ? (
+                <button onClick={handleLogout} className="text-2xl">
+                  Sign Out
+                </button>
+              ) : (
+                <GoogleLogin
+                  onSuccess={handleLoginSuccess}
+                  onError={handleLoginFailure}
+                  theme="outline"
+                />
+              )}
+            </li>
           </ul>
         </div>
       )}

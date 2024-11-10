@@ -31,7 +31,7 @@
   /* NavBar.module.css */
 .glowBorder {
   position: relative;
-  padding: 0.25rem; /* Adjust to control spacing */
+  padding: 0.2rem; /* Adjust to control spacing */
 }
 
 .glowBorder::before {

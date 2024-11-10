@@ -1,4 +1,4 @@
-/* Colors */
+
 :root {
     --dark-blue: #0b0d2a;
     --neon-pink: #ff006e;
@@ -14,54 +14,65 @@
   
   /* Pixelated Background Cityscape */
   .pixel-cityscape {
-    /* Path to your pixel cityscape or desired background */
-    background-size: cover; /* Adjust this as needed (cover, contain) */
+    background-size: cover; 
     background-position: center;
     background-repeat: no-repeat;
-    opacity: 0.8; /* Adjust opacity for visibility of foreground elements */
+    opacity: 0.8; 
     width: 100%;
     height: 100%;
     position: absolute;
     z-index: 0;
   }
   
-  /* Fictionary Title */
-  .font-pixel {
-    font-family: "Press Start 2P", monospace;
+  .title {
+    /* Neon color */
+   
+    color: #ff00ff;
+    position: relative;
+    animation: flicker 3s infinite alternate ease-in-out, slowPulse 5s infinite ease-in-out;
+    text-shadow: 
+      0 0 5px #f8ff9c, 
+      0 0 10px #e7eda2, 
+      0 0 15px #ecf3c7, 
+      0 0 20px rgba(252, 222, 33, 0.5); /* Reduced glow intensity */
   }
   
-  .flicker {
-    animation: flicker 1.5s infinite alternate;
-  }
-  
+  /* Flickering effect */
   @keyframes flicker {
-    0%, 100% {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
       opacity: 1;
     }
-    50% {
-      opacity: 0.8;
+    20%, 24%, 55% {
+      opacity: 0.8; /* Subtle dimming for clarity */
     }
   }
   
-  /* Home.css */
-
-.text-neon-pink {
-    color: #ff00ff; /* Adjust to your desired neon pink color */
+  /* Slower pulsing effect */
+  @keyframes slowPulse {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05); /* Slight scale effect */
+    }
   }
   
-  .font-pixel {
-    font-family: 'Press Start 2P', monospace; /* Example font-family */
+  /* Optional subtle border */
+  .title::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border: 1px solid rgba(255, 0, 255, 0.7); /* Subtle neon border */
+    border-radius: 3px;
+    box-shadow: 
+      0 0 5px rgba(228, 130, 225, 0.7), 
+      0 0 10px rgba(245, 84, 245, 0.5); /* Reduced border glow */
+    z-index: -1;
   }
   
-  .flicker {
-    animation: flicker 1.5s infinite alternate;
-  }
-  
-  @keyframes flicker {
-    0% { opacity: 1; }
-    50% { opacity: 0.5; }
-    100% { opacity: 1; }
-  }
   
   /* Stars Animation */
   .pixel-stars {
@@ -83,40 +94,55 @@
     }
   }
   
-  /* Sign Up Button */
-  .sign-up-button {
-    background-color: transparent;
-    padding: 0.75rem 2rem;
-    border: 3px solid var(--neon-yellow);
-    position: relative;
-    overflow: hidden;
-    animation: buttonGlow 2s infinite alternate;
-    transition: transform 0.2s ease-in-out;
+  .custom-google-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1a1a2e; /* Dark background */
+    color: #e0e0e0; /* Light gray text */
+    border: 2px solid #e0e0e0; /* Light border */
+    padding: 15px 30px;
+    border-radius: 8px;
     cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+    width: fit-content;
+    position: relative;
+    /* Neon Effect with Multiple Shadows */
+    box-shadow: 0 0 8px #00e5ff,   
+                0 0 16px #00e5ff,  
+                0 0 24px #00e5ff,  
+                0 0 32px #00b3cc,  
+                0 0 40px #008fb3;  
   }
   
-  .sign-up-button:hover {
-    transform: scale(1.1);
+
+  .custom-google-button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 12px #00e5ff, 
+                0 0 24px #00e5ff, 
+                0 0 36px #00b3cc, 
+                0 0 48px #008fb3,
+                0 0 60px #006b99; 
   }
   
-  .sign-up-button::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: var(--neon-yellow);
-    opacity: 0.2;
-    z-index: -1;
+  .custom-google-button:active {
+    transform: translateY(2px);
+    box-shadow: 0 0 6px #00e5ff, 
+                0 0 12px #00b3cc, 
+                0 0 18px #008fb3; 
   }
   
-  @keyframes buttonGlow {
-    0% {
-      box-shadow: 0 0 10px var(--neon-yellow), 0 0 20px var(--neon-yellow);
-    }
-    100% {
-      box-shadow: 0 0 20px var(--neon-yellow), 0 0 40px var(--neon-yellow);
-    }
+ 
+  .google-icon {
+    font-weight: bold;
+    margin-right: 8px;
+    color: #00e5ff; 
+    font-size: 1.3rem;
   }
   
+  .google-text {
+    color: #e0e0e0; 
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.2); 
+  }

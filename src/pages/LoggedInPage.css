@@ -1,0 +1,39 @@
+
+  
+  .bg-dark-blue {
+    background-color: #1a1a3d;
+  }
+  
+  .navbar {
+    padding: 1rem;
+    background-color: #333;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .welcome-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  
+  .profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+  }
+  
+  .user-name {
+    font-size: 2rem;
+    color: #ff66b2;
+    margin-top: 1rem;
+  }
+  
+  .user-email {
+    font-size: 1rem;
+    color: #e0e0e0;
+  }
+  

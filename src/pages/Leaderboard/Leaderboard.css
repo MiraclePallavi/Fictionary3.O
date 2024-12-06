@@ -1,13 +1,18 @@
 @font-face {
-  font-family: 'space';
+  font-family: myFont;
+  src: url(Pic.ttf);
+  /* font-family: 'space';
   src: url("./SPACEArmor.otf");
+} */
 }
 
 
 .leaderboardHeader {
+
   position: relative;
-  color: #599ae9; 
-  font-family: 'Press Start 2P', monospace;
+  color:#4BC8ED; 
+  /* font-family: 'Press Start 2P', monospace; */
+  font-family: myFont;
   font-size: 5rem;
   text-align: center;
   margin-bottom: 1.5rem;
@@ -37,8 +42,10 @@
 
 .leaderboardHeader::after {
   left: -2px;
-  color: #2defff; 
-  text-shadow: -3px 0 #2defff;
+  /* color: #2defff;  */
+  color: #4BC8ED;
+  text-shadow: -3px 0 #4BC8ED;
+
   clip: rect(10px, 900px, 30px, 0);
   animation: glitch-animation 2s infinite linear alternate-reverse;
 }
@@ -111,7 +118,7 @@
 
 
 .leaderboardItems {
-  min-height: calc(80vh - 144px);
+  min-height: calc(60vh - 120px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -135,7 +142,7 @@ body {
 
 @media (max-width: 800px) {
   .leaderboardHeader{
-    font-size: 1.2rem;
+    font-size: 1.2 rem;
     margin-bottom: 40px;
   }
 

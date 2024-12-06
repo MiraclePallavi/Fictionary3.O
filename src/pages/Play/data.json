@@ -1,0 +1,19 @@
+[
+    {
+      "id": 1,
+      "round": 1,
+      "text": "What is the capital of France?",
+      "answer": "Paris",
+      "hint": "It's known as the city of light.",
+      "media": ""
+    },
+    {
+      "id": 2,
+      "round": 2,
+      "text": "What is 2 + 2?",
+      "answer": "4",
+      "hint": "It's an even number.",
+      "media": ""
+    }
+  ]
+  

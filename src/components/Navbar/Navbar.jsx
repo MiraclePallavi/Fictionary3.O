@@ -1,24 +1,29 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
 import { Menu, Close } from "@mui/icons-material";
-import { GoogleLogin } from "@react-oauth/google"; // Only import GoogleLogin
-import {jwtDecode} from "jwt-decode"; // Import for decoding token if needed
+import { GoogleLogin } from "@react-oauth/google"; 
+import { jwtDecode } from "jwt-decode";
 import styles from "./NavBar.module.css";
+import RulesModal from "../../pages/Rules/RulesModal";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Track login status
-  const [user, setUser] = useState(null); // Optional: store user data
+  const [isLoggedIn, setIsLoggedIn] = useState(false); 
+  const [user, setUser] = useState(null); 
   const menuRef = useRef(null);
   const toggleButtonRef = useRef(null);
+  const [isModalOpen, setIsModalOpen] = useState(false); 
+
+  const openModal = () => setIsModalOpen(true);    
+  const closeModal = () => setIsModalOpen(false);  
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
   const handleLoginSuccess = (response) => {
     const token = response.credential;
-    const decoded = jwtDecode(token); // Decode token to get user info if needed
+    const decoded = jwtDecode(token); 
     setUser(decoded);
-    setIsLoggedIn(true); // Set logged-in state to true
+    setIsLoggedIn(true); 
     console.log("Login Success:", decoded);
   };
 
@@ -27,12 +32,12 @@ const NavBar = () => {
   };
 
   const handleLogout = () => {
-    setIsLoggedIn(false); // Set logged-in state to false
-    setUser(null); // Clear user data
+    setIsLoggedIn(false); 
+    setUser(null);
     console.log("Logged out successfully");
   };
 
-  // Handle clicks outside the menu to close it
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
@@ -43,14 +48,13 @@ const NavBar = () => {
       }
     };
 
-    // Add the event listener when the menu is open
+
     if (isOpen) {
       document.addEventListener("mousedown", handleClickOutside);
     } else {
       document.removeEventListener("mousedown", handleClickOutside);
     }
 
-    // Clean up the event listener on unmount or when isOpen changes
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
@@ -60,14 +64,14 @@ const NavBar = () => {
     <nav className="bg-gray-900 py-4 px-8 flex justify-between items-center border-b-4 border-pink-500">
       <div className={`${styles.flicker} text-pink-500 font-pixel text-3xl`}>FICTIONARY</div>
 
-      {/* Hamburger icon for mobile menu */}
+   
       <div ref={toggleButtonRef} className="sm:hidden" onClick={toggleMenu}>
         {isOpen ? <Close className="text-pink-500" /> : <Menu className="text-pink-500" />}
       </div>
 
       {/* Desktop menu */}
       <ul className="hidden sm:flex space-x-8">
-        {["Play", "Rules", "Leaderboard"].map((item, index) => (
+        {["Play", "Leaderboard"].map((item, index) => (
           <li
             key={index}
             className={`text-blue-300 font-pixel text-2xl cursor-pointer ${styles.popIn} ${
@@ -78,6 +82,13 @@ const NavBar = () => {
             <Link to={`/${item.toLowerCase()}`}>{item}</Link>
           </li>
         ))}
+        <li
+          className="text-blue-300 font-pixel text-2xl cursor-pointer"
+          onClick={openModal}  
+        >
+          Rules
+        </li>
+        
         {/* Add Sign In/Sign Out Button */}
         <li className="text-blue-300 font-pixel text-2xl cursor-pointer">
           {isLoggedIn ? (
@@ -101,7 +112,7 @@ const NavBar = () => {
           className="fixed inset-0 bg-gray-900 bg-opacity-90 flex flex-col items-center justify-center sm:hidden z-50"
         >
           <ul className="flex flex-col space-y-4">
-            {["Play", "Rules", "Leaderboard"].map((item, index) => (
+            {["Play", "Leaderboard"].map((item, index) => (
               <li key={index} className={`text-4xl text-pink-500 font-pixel py-2 ${styles.popIn}`}>
                 <Link
                   to={`/${item.toLowerCase()}`}
@@ -128,6 +139,9 @@ const NavBar = () => {
           </ul>
         </div>
       )}
+
+      {/* Rules Modal */}
+      <RulesModal isOpen={isModalOpen} onClose={closeModal} />
     </nav>
   );
 };

@@ -146,3 +146,102 @@
     color: #e0e0e0; 
     text-shadow: 0 0 5px rgba(255, 255, 255, 0.2); 
   }
+
+  .stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  .stars span {
+    position: absolute;
+    display: block;
+    width: 4px;
+    height: 4px;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 2s infinite ease-in-out;
+    opacity: 0.6;
+  }
+  
+  /* Random positioning for stars */
+  .stars span:nth-child(1) { top: 10%; left: 20%; animation-delay: 0s; }
+  .stars span:nth-child(2) { top: 50%; left: 40%; animation-delay: 0.2s; }
+  .stars span:nth-child(3) { top: 30%; left: 80%; animation-delay: 0.4s; }
+  .stars span:nth-child(4) { top: 70%; left: 10%; animation-delay: 0.6s; }
+  .stars span:nth-child(5) { top: 20%; left: 60%; animation-delay: 0.8s; }
+  
+  /* Twinkling animation */
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.2; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.2); }
+  }
+  
+/* Shooting stars container */
+.shooting-stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 2; /* Layer above the stars but below the text */
+  pointer-events: none; /* Prevent interaction */
+}
+
+/* Shooting star */
+.shooting-stars span {
+  position: absolute;
+  display: block;
+  width: 2px;
+  height: 60px;
+  background: linear-gradient(180deg, white, transparent);
+  opacity: 0.8;
+  animation: shooting 2s ease-in-out infinite;
+}
+
+/* Randomize shooting star positions and animation delays */
+.shooting-stars span:nth-child(1) {
+  top: 10%;
+  left: 80%;
+  animation-delay: 0s;
+  animation-duration: 3s;
+}
+.shooting-stars span:nth-child(2) {
+  top: 40%;
+  left: 20%;
+  animation-delay: 2s;
+  animation-duration: 4s;
+}
+.shooting-stars span:nth-child(3) {
+  top: 60%;
+  left: 70%;
+  animation-delay: 4s;
+  animation-duration: 5s;
+}
+.shooting-stars span:nth-child(4) {
+  top: 20%;
+  left: 30%;
+  animation-delay: 6s;
+  animation-duration: 4s;
+}
+
+/* Shooting animation */
+@keyframes shooting {
+  0% {
+    transform: translate(0, 0) rotate(45deg);
+    opacity: 1;
+  }
+  70% {
+    transform: translate(-200px, 200px) rotate(45deg);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(-400px, 400px) rotate(45deg);
+    opacity: 0;
+  }
+}

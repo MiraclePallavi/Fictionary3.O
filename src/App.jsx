@@ -1,21 +1,22 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import NavBar from "./components/Navbar/Navbar";
-import Play from "./pages/Play";
-import Rules from "./pages/Rules";
-import Leaderboard from "./pages/Leaderboard";
-import Login from "./pages/Login";
-import Home from "./pages/Home";
-import LoggedInPage from "./pages/LoggedInPage";
 
+import PlayQuiz from "./pages/Play/PlayQuiz";
+
+import Leaderboard from "./pages/Leaderboard/Leaderboard";
+import Login from "./pages/Login";
+import Home from "./pages/Home/Home";
+
+import LoggedInPage from "./pages/LoggedInPage";
 
 const App = () => {
   return (
     <Router>
       <NavBar />
       <Routes>
-        <Route path="/play" element={<Home />} />
-        <Route path="/rules" element={<Rules />} />
+        <Route path="/play" element={<PlayQuiz />} />
+        
         <Route path="/leaderboard" element={<Leaderboard />} />
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Home />} />

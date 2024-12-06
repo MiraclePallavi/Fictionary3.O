@@ -116,7 +116,10 @@
   flex-direction: column;
   align-items: center;
   padding-top: 20px;
+
+ 
 }
+
 
 body {
   background-image: url("./assets/2.jpg");
@@ -140,32 +143,3 @@ body {
 }
 
 
-
-.leaderboardItems {
-  min-height: calc(100vh - 144px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 20px;
-}
-
-body {
-  background-image: url("./assets/2.jpg");
-  background-size: cover;
-  color: #fff;
-  background-attachment: fixed;
-  font-family: "space", cursive;
-  font-optical-sizing: auto;
-  font-weight: 200;
-  font-style: normal;
-}
-
-
-@media (max-width: 800px) {
-  .leaderboardHeader{
-    font-size: 1.2rem;
-    margin-bottom: 40px;
-  }
-
-
-}

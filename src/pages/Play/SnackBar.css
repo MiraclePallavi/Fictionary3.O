@@ -1,0 +1,45 @@
+.container {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-family: "Press Start 2P", cursive; /* Retro font */
+    border-radius: 8px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out, visibility 0.5s;
+  }
+  
+  /* Enter animation */
+  .enter {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
+  
+  /* Leave animation */
+  .leave {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-50%) translateY(20px);
+  }
+  
+  /* Add some retro glowing effect */
+  .container:after {
+    content: "";
+    position: absolute;
+    top: -3px;
+    right: -3px;
+    bottom: -3px;
+    left: -3px;
+    border-radius: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    filter: blur(4px);
+    opacity: 0.7;
+    z-index: -1;
+  }
+  

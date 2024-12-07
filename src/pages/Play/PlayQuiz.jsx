@@ -73,7 +73,7 @@ const PlayQuiz = () => {
       backgroundRepeat: "no-repeat",
       
     }} >
-       <Navbar />
+      
     <div className="retro-container">
       <HintModal
         open={hintModalOpen}

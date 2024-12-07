@@ -4,8 +4,8 @@
   /* font-family: 'space';
   src: url("./SPACEArmor.otf");
 } */
-}
 
+}
 
 .leaderboardHeader {
 
@@ -16,7 +16,8 @@
   font-size: 5rem;
   text-align: center;
   margin-bottom: 1.5rem;
-  animation: flicker 3s infinite, forward-glitch 5s linear infinite; /* Forward movement */
+  animation:  3s infinite, forward-glitch 5s linear infinite; /* Forward movement */
+  letter-spacing: 2px;
 }
 
 /* Glitch Effect Layers */

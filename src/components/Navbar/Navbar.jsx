@@ -1,39 +1,60 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import { Menu, Close } from "@mui/icons-material";
+import { useGoogleLogin } from "@react-oauth/google";
 import styles from "./NavBar.module.css";
 import RulesModal from "../../pages/Rules/RulesModal";
-import { Link } from "react-router-dom";
-
-import GoogleAuth from "../../pages/Login/GoogleAuth"; // Adjust path as needed
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);2
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
   const menuRef = useRef(null);
   const toggleButtonRef = useRef(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Initialize user state from localStorage on component mount
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    if (storedUser) {
+      setUser(storedUser);
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  const handleGoogleLogin = useGoogleLogin({
+    onSuccess: (tokenResponse) => {
+      // Fetch user info from Google's API
+      fetch(
+        `https://www.googleapis.com/oauth2/v3/userinfo?access_token=${tokenResponse.access_token}`
+      )
+        .then((res) => res.json())
+        .then((userInfo) => {
+          localStorage.setItem("user", JSON.stringify(userInfo));
+          setUser(userInfo);
+          setIsLoggedIn(true);
+          console.log("Logged in:", userInfo);
+        })
+        .catch((error) => console.error("Google login error:", error));
+    },
+    onError: (error) => {
+      console.error("Login failed:", error);
+    },
+  });
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    setUser(null);
+    setIsLoggedIn(false);
+    console.log("Logged out successfully");
+  };
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
-
-  const toggleMenu = () => setIsOpen(!isOpen);
-
-  const handleLoginSuccess = (decodedUser) => {
-    setUser(decodedUser);
-    setIsLoggedIn(true);
-    console.log("Login Success:", decodedUser);
-  };
-
-  const handleLoginFailure = () => {
-    console.log("Login Failed");
-  };
-
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-    setUser(null);
-    console.log("Logged out successfully");
-  };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -60,7 +81,7 @@ const Navbar = () => {
 
   return (
     <nav className="bg-gray-900 py-4 px-8 flex justify-between items-center border-b-4 border-pink-500">
-      <div className={`${styles.flicker} text-pink-500 font-pixel text-3xl`}>
+      <div className={`${styles.flickering} text-pink-500 font-pixel text-3xl`}>
         FICTIONARY
       </div>
 
@@ -77,28 +98,28 @@ const Navbar = () => {
         {["Play", "Leaderboard"].map((item, index) => (
           <li
             key={index}
-            className={`text-blue-300 font-pixel text-2xl cursor-pointer ${styles.popIn} ${
-              item === "Play" ? styles.glowBorder : ""
-            }`}
+            className={`text-blue-300 font-pixel text-3xl cursor-pointer ${styles.neonEffect}`}
             style={{ animationDelay: `${index * 0.2}s` }}
           >
             <Link to={`/${item.toLowerCase()}`}>{item}</Link>
           </li>
         ))}
         <li
-          className="text-blue-300 font-pixel text-2xl cursor-pointer"
+          className={`text-blue-300 font-pixel text-3xl cursor-pointer ${styles.neonEffect}`}
           onClick={openModal}
         >
           Rules
         </li>
-        {/* Google Auth Component */}
         <li className="text-blue-300 font-pixel text-2xl cursor-pointer">
-          <GoogleAuth
-            onLoginSuccess={handleLoginSuccess}
-            onLoginFailure={handleLoginFailure}
-            onLogout={handleLogout}
-            isLoggedIn={isLoggedIn}
-          />
+          {isLoggedIn ? (
+            <button onClick={handleLogout} className={styles.logoutButton}>
+              Logout
+            </button>
+          ) : (
+            <button onClick={handleGoogleLogin} className={styles.loginButton}>
+              Login
+            </button>
+          )}
         </li>
       </ul>
 
@@ -112,7 +133,7 @@ const Navbar = () => {
             {["Play", "Leaderboard"].map((item, index) => (
               <li
                 key={index}
-                className={`text-4xl text-pink-500 font-pixel py-2 ${styles.popIn}`}
+                className={`text-4xl text-pink-500 font-pixel py-2 ${styles.popIn} neonEffect`}
               >
                 <Link
                   to={`/${item.toLowerCase()}`}
@@ -122,14 +143,19 @@ const Navbar = () => {
                 </Link>
               </li>
             ))}
-            {/* Google Auth Component for Mobile */}
             <li className="text-4xl text-pink-500 font-pixel py-2">
-              <GoogleAuth
-                onLoginSuccess={handleLoginSuccess}
-                onLoginFailure={handleLoginFailure}
-                onLogout={handleLogout}
-                isLoggedIn={isLoggedIn}
-              />
+              {isLoggedIn ? (
+                <button onClick={handleLogout} className={styles.logoutButton}>
+                  Logout
+                </button>
+              ) : (
+                <button
+                  onClick={handleGoogleLogin}
+                  className={styles.loginButton}
+                >
+                  Login 
+                </button>
+              )}
             </li>
           </ul>
         </div>

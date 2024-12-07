@@ -22,7 +22,7 @@ const Leaderboard = () => {
         backgroundRepeat: "no-repeat",
         
       }} >
-        <NavBar />
+     
     <div className="leaderboardItems">
       <h1 className="leaderboardHeader" data-text="Leaderboard">
         Leaderboard

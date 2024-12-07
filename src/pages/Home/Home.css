@@ -258,3 +258,41 @@ button:hover {
   transform: scale(1.1);
   box-shadow: 0 0 20px #ff69b4, 0 0 40px #ff69b4;
 }
+.bg-glass {
+  background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+  backdrop-filter: blur(8px); /* Apply a blur effect to the background */
+  border: 2px solid rgba(255, 255, 255, 0.3); /* Light border with transparency */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional subtle shadow for depth */
+}
+
+.bg-glass:hover {
+  background: rgba(255, 255, 255, 0.2); /* Slightly increase opacity on hover */
+  border-color: rgba(255, 255, 255, 0.5); /* More visible border on hover */
+}
+.neonEffect {
+  position: relative;
+  color: #00ffff; /* Neon blue */
+  text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 20px #00ffff;
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.neonEffect:hover {
+  transform: scale(1.1); /* Slight zoom effect */
+  text-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff, 0 0 45px #00ffff;
+  animation: flicker 1.5s infinite alternate;
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 1;
+    text-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff, 0 0 45px #00ffff;
+  }
+  50% {
+    opacity: 0.8;
+    text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 35px #00ffff;
+  }
+  100% {
+    opacity: 1;
+    text-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff, 0 0 45px #00ffff;
+  }
+}

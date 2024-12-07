@@ -91,17 +91,28 @@ const NavBar = () => {
         
         {/* Add Sign In/Sign Out Button */}
         <li className="text-blue-300 font-pixel text-2xl cursor-pointer">
-          {isLoggedIn ? (
-            <button onClick={handleLogout} className="text-2xl text-pink-500">
-              Sign Out
-            </button>
-          ) : (
-            <GoogleLogin
-              onSuccess={handleLoginSuccess}
-              onError={handleLoginFailure}
-              theme="outline"
-            />
-          )}
+           {/* Show first name if logged in */}
+        {user && (
+          <span className="text-blue-300 text-lg font-semibold">
+            Welcome, {user.given_name}!
+          </span>
+        )}
+
+        {/* Show Sign In / Sign Out Button */}
+        {user ? (
+          <button
+            onClick={handleLogout}
+            className="text-white bg-pink-500 px-1 py-1 rounded"
+          >
+            Sign Out
+          </button>
+        ) : (
+          <GoogleLogin
+            onSuccess={handleLoginSuccess}
+            onError={handleLoginFailure}
+            theme="outline"
+          />
+        )}
         </li>
       </ul>
 

@@ -25,21 +25,21 @@
 .first-place {
   width: 90%;
   font-size: 6rem; /* Increased from 5rem */
-  box-shadow: 0 0 10px 10px #eecb08c8, 0 0 20px #cd7f32;
+   box-shadow: 0 0 3px 3px #c0c0c0, 0 0 20px #cd7f32; 
   margin: 0 0 1rem 0;
 }
 
 .second-place {
   width: 85%;
   font-size: 5.5rem; /* Increased from 5rem */
-  box-shadow: 0 0 10px 10px #c0c0c0, 0 0 20px #cd7f32;
+  box-shadow: 0 0 3px 3px #c0c0c0, 0 0 20px #cd7f32;
   margin: 1rem 0 0 0;
 }
 
 .third-place {
   width: 80%;
   font-size: 5.5rem; /* Increased from 5rem */
-  box-shadow: 0 0 10px 10px #cd7f32, 0 0 20px #cd7f32;
+  box-shadow: 0 0 3px 3px #c0c0c0, 0 0 20px #cd7f32;
   margin: 2rem 0 1rem 0;
 }
 
@@ -50,7 +50,7 @@
 
 .score-rank {
   font-size: 2rem; /* Increased from 1.5rem */
-  color: #ff0;
+  color: rgb(255, 255, 255);
   margin-right: 1rem;
 }
 
@@ -70,8 +70,8 @@
 }
 
 .score-points {
-  font-size: 1.2rem; 
-  color: #ff0;
+  font-size: 1.5rem; 
+  color: rgb(255, 255, 255);
 }
 
 @media (max-width: 800px) {

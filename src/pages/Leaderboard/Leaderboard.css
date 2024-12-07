@@ -1,11 +1,12 @@
 @font-face {
-  font-family: myFont;
-  src: url(Pic.ttf);
-  /* font-family: 'space';
-  src: url("./SPACEArmor.otf");
-} */
+   font-family: 'myFont';
+  src: url(Gameplay.ttf); 
+   /* font-family: 'space';
+  src: url("./SPACEArmor.otf"); */
+} 
 
-}
+
+
 
 .leaderboardHeader {
 

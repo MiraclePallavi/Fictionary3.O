@@ -245,3 +245,16 @@
     opacity: 0;
   }
 }
+.footer{
+  margin-bottom: 30px;
+}
+.glow-border {
+  border: 4px solid #ff69b4;
+  box-shadow: 0 0 15px #ff69b4, 0 0 30px #ff69b4;
+  transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px #ff69b4, 0 0 40px #ff69b4;
+}

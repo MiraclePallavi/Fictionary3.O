@@ -4,7 +4,7 @@ import HintModal from "./HintModal";
 import SnackBar from "./SnackBar";
 import questions from "./data.json"; 
 import cityscape from "/assets/cityscape.png";
-
+import Navbar from "../../components/Navbar/Navbar";
 const QuestionTextRenderer = ({ text }) => {
   const renderText = () => {
     const formattedText = text.replace(/\n/g, "<br />");
@@ -73,6 +73,7 @@ const PlayQuiz = () => {
       backgroundRepeat: "no-repeat",
       
     }} >
+       <Navbar />
     <div className="retro-container">
       <HintModal
         open={hintModalOpen}

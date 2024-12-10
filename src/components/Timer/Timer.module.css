@@ -1,0 +1,28 @@
+.timerBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #222;
+    padding: 10px;
+    border: 4px solid #f6ec5a;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #dff48d;
+    width: fit-content;
+    margin: 0 auto;
+  }
+  
+  .timerText {
+    font-family: "Press Start 2P", sans-serif;
+    color: #f6ffa7;
+    font-size: 18px;
+    text-shadow: 0 0 5px #f6ec5a, 0 0 10px #dff48d;
+  }
+  
+  .timerValue {
+    font-family: "Press Start 2P", sans-serif;
+    color: #ff6e6e;
+    font-size: 20px;
+    margin-left: 10px;
+    text-shadow: 0 0 5px #ff6e6e, 0 0 10px #ff6e6e;
+  }
+  

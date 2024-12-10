@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
 import { Menu, Close } from "@mui/icons-material";
 import { useGoogleLogin } from "@react-oauth/google";
 import styles from "./NavBar.module.css";
@@ -7,11 +7,12 @@ import RulesModal from "../../pages/Rules/RulesModal";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);2
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
   const menuRef = useRef(null);
   const toggleButtonRef = useRef(null);
+  const navigate = useNavigate(); // Initialize useNavigate
 
   // Initialize user state from localStorage on component mount
   useEffect(() => {
@@ -34,6 +35,7 @@ const Navbar = () => {
           setUser(userInfo);
           setIsLoggedIn(true);
           console.log("Logged in:", userInfo);
+          navigate("/play"); // Redirect to Play page after login
         })
         .catch((error) => console.error("Google login error:", error));
     },
@@ -47,6 +49,7 @@ const Navbar = () => {
     setUser(null);
     setIsLoggedIn(false);
     console.log("Logged out successfully");
+    navigate("/"); // Redirect to Home page after logout
   };
 
   const toggleMenu = () => {
@@ -143,6 +146,12 @@ const Navbar = () => {
                 </Link>
               </li>
             ))}
+            <li
+              className={`text-blue-300 font-pixel text-3xl cursor-pointer ${styles.neonEffect}`}
+              onClick={openModal}
+            >
+              Rules
+            </li>
             <li className="text-4xl text-pink-500 font-pixel py-2">
               {isLoggedIn ? (
                 <button onClick={handleLogout} className={styles.logoutButton}>
@@ -153,7 +162,7 @@ const Navbar = () => {
                   onClick={handleGoogleLogin}
                   className={styles.loginButton}
                 >
-                  Login 
+                  Login
                 </button>
               )}
             </li>

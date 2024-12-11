@@ -84,10 +84,11 @@ const Navbar = () => {
 
   return (
     <nav className="bg-gray-900 py-4 px-8 flex justify-between items-center border-b-4 border-pink-500">
-      <div className={`${styles.flickering} text-pink-500 font-pixel text-3xl`}>
+      <Link to="/">
+      <div className={`${styles.flickering} text-pink-500 font-pixel text-3xl cursor-pointer`}>
         FICTIONARY
       </div>
-
+      </Link>
       <div ref={toggleButtonRef} className="sm:hidden" onClick={toggleMenu}>
         {isOpen ? (
           <Close className="text-pink-500" />

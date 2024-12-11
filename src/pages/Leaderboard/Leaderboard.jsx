@@ -16,6 +16,7 @@ const Leaderboard = () => {
     <>
      <div className="bg-dark-blue min-h-screen flex flex-col relative"
       style={{
+        height: "88vh",
         backgroundImage: `url(${cityscape})`,
         backgroundSize: "cover",
         backgroundPosition: "center",

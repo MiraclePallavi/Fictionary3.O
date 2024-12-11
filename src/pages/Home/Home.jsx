@@ -4,7 +4,7 @@ import { useGoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
 import "./Home.css";
 import cityscape from "/assets/cityscape.png";
-import NavBar from "../../components/Navbar/Navbar";
+
 import Footer from "../../components/Footer/Footer";
 
 const Home = () => {
@@ -69,12 +69,14 @@ const Home = () => {
 
   return (
     <div
-      className="bg-dark-blue min-h-screen flex flex-col relative"
+      className="bg-dark-blue h-96 flex flex-col relative"
       style={{
+        height: "88vh",
         backgroundImage: `url(${cityscape})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
+
       }}
     >
      
@@ -106,9 +108,10 @@ const Home = () => {
         >
           {isLoggedIn ? "Play Now" : "Play"}
         </button>
+         <Footer className="footer" />
       </div>
 
-      <Footer className="footer" />
+     
     </div>
   );
 };

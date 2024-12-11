@@ -1,66 +1,61 @@
-// src/components/Footer/Footer.js
 import React from "react";
-import YouTubeIcon from '@mui/icons-material/YouTube';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-
-import "./Footer.module.css"; // Assuming your CSS for ripple effect is here
-import { Link } from "react-router-dom";
+import YouTubeIcon from "@mui/icons-material/YouTube";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import styles from "./Footer.module.css";
 
 const SocialLinks = () => {
   const handleClick = (e) => {
     const ripple = document.createElement("span");
-    ripple.className = "ripple";
+    ripple.className = styles.ripple;
     ripple.style.left = `${e.clientX - e.target.offsetLeft}px`;
     ripple.style.top = `${e.clientY - e.target.offsetTop}px`;
     e.currentTarget.appendChild(ripple);
 
-    setTimeout(() => ripple.remove(), 600); // Removes ripple after animation
+    setTimeout(() => ripple.remove(), 600); 
   };
 
   return (
-    <div className="social-links">
+    <div className={styles["footer"]}>
       <a
-        href="https://www.youtube.com"
+        href="https://www.facebook.com/debatingsociety3103.nitd"
         target="_blank"
         rel="noopener noreferrer"
         onClick={handleClick}
-        className="social-icon youtube"
+        className={styles["social-icon"]}
       >
-       <FacebookIcon />
+        <FacebookIcon style={{ color: "1739f3" }} /> 
       </a>
       <a
-        href="https://www.instagram.com"
+        href="https://www.youtube.com/@thedebatingsocietynitdurga3689"
         target="_blank"
         rel="noopener noreferrer"
         onClick={handleClick}
-        className="social-icon instagram"
+        className={styles["social-icon"]}
       >
-       <YouTubeIcon />
+        <YouTubeIcon style={{ color: "red" }} /> 
       </a>
       <a
-        href="https://www.instagram.com"
+        href="https://www.linkedin.com/company/debating-society-nit-durgapur/people/"
         target="_blank"
         rel="noopener noreferrer"
         onClick={handleClick}
-        className="social-icon instagram"
+        className={styles["social-icon"]}
       >
-       <LinkedInIcon />
+        <LinkedInIcon style={{ color: "#76bdee" }}/>
       </a>
       <a
-        href="https://www.instagram.com"
+        href="https://www.instagram.com/debsocnitd/profilecard/?igsh=MWk2a25panBrNjJlbQ=="
         target="_blank"
         rel="noopener noreferrer"
         onClick={handleClick}
-        className="social-icon instagram"
+        className={styles["social-icon"]}
       >
-       <InstagramIcon />
+        <InstagramIcon style={{ color: "#df1b86" }} /> 
       </a>
-      {/* Add more social links as needed */}
     </div>
   );
 };
 
 export default SocialLinks;
-

@@ -5,7 +5,7 @@ import wrongSound from "../../assets/sounds/wrongSound.mp3";
 import cityscape from "/assets/cityscape.png";
 import powerup from '../../assets/images/powerup.png';
 import Timer from "../../components/Timer/Timer";// Timer component
-
+import Footer from "../../components/Footer/Footer";
 const questions = [
   {
     id: 1,
@@ -76,6 +76,7 @@ const QuizGame = () => {
     <div
     className="bg-dark-blue min-h-screen flex flex-col relative"
     style={{
+      height: "88vh",
       backgroundImage: `url(${cityscape})`,
       backgroundSize: "cover",
       backgroundPosition: "center",
@@ -137,7 +138,9 @@ const QuizGame = () => {
           </div>
         </div>
       )}
+      <Footer className ="footer"/>
     </div>
+    
     </div>
   );
 };

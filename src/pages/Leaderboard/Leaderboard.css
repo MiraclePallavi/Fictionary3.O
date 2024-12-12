@@ -142,35 +142,13 @@ body {
 }
 
 
-/* @media (max-width: 800px) {
+@media (max-width: 800px) {
   .leaderboardHeader{
-    font-size: 0.6 rem;
-    margin-bottom: 40px; 
+    font-size: 1.2 rem;
+    margin-bottom: 40px;
   }
 
 
-} */
-/* General styles for the heading */
-
-/* Default size for larger screens */
-@media (min-width: 1024px) {
-  .leaderboardHeader {
-      font-size: 3rem; /* 48px */
-  }
-}
-
-/* Medium screens (tablets) */
-@media (min-width: 768px) and (max-width: 1023px) {
-  .leaderboardHeader {
-      font-size: 2.5rem; /* 40px */
-  }
-}
-
-/* Small screens (phones) */
-@media (max-width: 767px) {
-  .leaderboardHeader {
-      font-size: 2rem; /* 32px */
-  }
 }
 
 

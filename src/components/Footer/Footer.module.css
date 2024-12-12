@@ -1,42 +1,82 @@
-/* src/components/Footer/Footer.module.css */
+/* Footer.module.css */
+
+/* Retro-inspired footer styles */
 .footer {
-    background-color: rgba(55, 65, 81, 0.75); /* Equivalent to bg-gray-900 with opacity */
-    padding: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1.5rem;
-    color: white;
-  }
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 10vh;
   
-  .footer a:hover {
-    color: red;
-    transition: color 0.2s ease;
-  }
-  .social-icon {
-    position: relative;
-    display: inline-block;
-    margin: 0 10px;
-    font-size: 2rem;
-    color: #fff;
-    text-decoration: none;
-    overflow: hidden;
-  }
+  padding: 20px;
+ 
+}
+
+/* Social icon styles */
+.social-icon {
+  position: relative;
+  width: 3.5vw;
+  height: 3.5vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   
-  .ripple {
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    background: rgba(255, 255, 255, 0.6);
-    border-radius: 50%;
-    transform: scale(0);
-    animation: ripple-animation 0.6s linear;
+  border: 2px solid #555;
+  border-radius: 8px; /* Slightly rounded for a retro-modern feel */
+  box-shadow: 0 4px 0 #000, 0 8px 10px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+  cursor: pointer;
+}
+.social-icon:nth-child(1) {
+  box-shadow: 0 0 15px rgba(0, 0, 255, 0.8); /* Blue glow for Facebook */
+}
+
+.social-icon:nth-child(2) {
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.8); /* Red glow for YouTube */
+}
+
+.social-icon:nth-child(3) {
+  box-shadow: 0 0 15px rgba(0, 119, 181, 0.8); /* Blue glow for LinkedIn */
+}
+
+.social-icon:nth-child(4) {
+  box-shadow: 0 0 15px rgba(225, 48, 108, 0.8); /* Pink glow for Instagram */
+}
+
+.social-icon svg {
+  font-size: 2rem; /* Adjust icon size */
+  color: white; /* Ensure the icon itself remains visible */
+}
+/* Hover effect */
+.social-icon:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 0 #222, 0 12px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* Icon styles */
+.social-icon svg {
+  font-size: 32px;
+  color: #fff; /* White icon for retro look */
+}
+
+/* Ripple effect */
+.ripple {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  animation: ripple-effect 0.6s ease-out;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+@keyframes ripple-effect {
+  from {
+    opacity: 0.8;
+    transform: scale(0.5) translate(-50%, -50%);
   }
-  
-  @keyframes ripple-animation {
-    to {
-      transform: scale(4);
-      opacity: 0;
-    }
+  to {
+    opacity: 0;
+    transform: scale(3) translate(-50%, -50%);
   }
-  
+}

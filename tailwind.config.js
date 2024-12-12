@@ -9,6 +9,6 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: ['tailwindcss-filters'],
 }
 

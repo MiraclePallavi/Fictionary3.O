@@ -1,53 +1,75 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
 import { Menu, Close } from "@mui/icons-material";
-import { GoogleLogin } from "@react-oauth/google"; 
-import { jwtDecode } from "jwt-decode";
+import { useGoogleLogin } from "@react-oauth/google";
 import styles from "./NavBar.module.css";
 import RulesModal from "../../pages/Rules/RulesModal";
-import { Link } from "react-router-dom";
 
-const NavBar = () => {
+const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false); 
-  const [user, setUser] = useState(null); 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState(null);
   const menuRef = useRef(null);
   const toggleButtonRef = useRef(null);
-  const [isModalOpen, setIsModalOpen] = useState(false); 
+  const navigate = useNavigate(); // Initialize useNavigate
 
-  const openModal = () => setIsModalOpen(true);    
-  const closeModal = () => setIsModalOpen(false);  
+  // Initialize user state from localStorage on component mount
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    if (storedUser) {
+      setUser(storedUser);
+      setIsLoggedIn(true);
+    }
+  }, []);
 
-  const toggleMenu = () => setIsOpen(!isOpen);
-
-  const handleLoginSuccess = (response) => {
-    const token = response.credential;
-    const decoded = jwtDecode(token); 
-    setUser(decoded);
-    setIsLoggedIn(true); 
-    console.log("Login Success:", decoded);
-  };
-
-  const handleLoginFailure = () => {
-    console.log("Login Failed");
-  };
+  const handleGoogleLogin = useGoogleLogin({
+    onSuccess: (tokenResponse) => {
+      // Fetch user info from Google's API
+      fetch(
+        `https://www.googleapis.com/oauth2/v3/userinfo?access_token=${tokenResponse.access_token}`
+      )
+        .then((res) => res.json())
+        .then((userInfo) => {
+          localStorage.setItem("user", JSON.stringify(userInfo));
+          setUser(userInfo);
+          setIsLoggedIn(true);
+          console.log("Logged in:", userInfo);
+          navigate("/play"); // Redirect to Play page after login
+        })
+        .catch((error) => console.error("Google login error:", error));
+    },
+    onError: (error) => {
+      console.error("Login failed:", error);
+    },
+  });
 
   const handleLogout = () => {
-    setIsLoggedIn(false); 
+    localStorage.removeItem("user");
     setUser(null);
+    setIsLoggedIn(false);
     console.log("Logged out successfully");
+    navigate("/"); // Redirect to Home page after logout
   };
 
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
-        menuRef.current && !menuRef.current.contains(event.target) && 
-        toggleButtonRef.current && !toggleButtonRef.current.contains(event.target)
+        menuRef.current &&
+        !menuRef.current.contains(event.target) &&
+        toggleButtonRef.current &&
+        !toggleButtonRef.current.contains(event.target)
       ) {
         setIsOpen(false);
       }
     };
-
 
     if (isOpen) {
       document.addEventListener("mousedown", handleClickOutside);
@@ -62,11 +84,17 @@ const NavBar = () => {
 
   return (
     <nav className="bg-gray-900 py-4 px-8 flex justify-between items-center border-b-4 border-pink-500">
-      <div className={`${styles.flicker} text-pink-500 font-pixel text-3xl`}>FICTIONARY</div>
-
-   
+      <Link to="/">
+      <div className={`${styles.flickering} text-pink-500 font-pixel text-3xl cursor-pointer`}>
+        FICTIONARY
+      </div>
+      </Link>
       <div ref={toggleButtonRef} className="sm:hidden" onClick={toggleMenu}>
-        {isOpen ? <Close className="text-pink-500" /> : <Menu className="text-pink-500" />}
+        {isOpen ? (
+          <Close className="text-pink-500" />
+        ) : (
+          <Menu className="text-pink-500" />
+        )}
       </div>
 
       {/* Desktop menu */}
@@ -74,45 +102,28 @@ const NavBar = () => {
         {["Play", "Leaderboard"].map((item, index) => (
           <li
             key={index}
-            className={`text-blue-300 font-pixel text-2xl cursor-pointer ${styles.popIn} ${
-              item === "Play" ? styles.glowBorder : ""
-            }`}
+            className={`text-blue-300 font-pixel text-3xl cursor-pointer ${styles.neonEffect}`}
             style={{ animationDelay: `${index * 0.2}s` }}
           >
             <Link to={`/${item.toLowerCase()}`}>{item}</Link>
           </li>
         ))}
         <li
-          className="text-blue-300 font-pixel text-2xl cursor-pointer"
-          onClick={openModal}  
+          className={`text-blue-300 font-pixel text-3xl cursor-pointer ${styles.neonEffect}`}
+          onClick={openModal}
         >
           Rules
         </li>
-        
-        {/* Add Sign In/Sign Out Button */}
         <li className="text-blue-300 font-pixel text-2xl cursor-pointer">
-           {/* Show first name if logged in */}
-        {user && (
-          <span className="text-blue-300 text-lg font-semibold">
-            Welcome, {user.given_name}!
-          </span>
-        )}
-
-        {/* Show Sign In / Sign Out Button */}
-        {user ? (
-          <button
-            onClick={handleLogout}
-            className="text-white bg-pink-500 px-1 py-1 rounded"
-          >
-            Sign Out
-          </button>
-        ) : (
-          <GoogleLogin
-            onSuccess={handleLoginSuccess}
-            onError={handleLoginFailure}
-            theme="outline"
-          />
-        )}
+          {isLoggedIn ? (
+            <button onClick={handleLogout} className={styles.logoutButton}>
+              Logout
+            </button>
+          ) : (
+            <button onClick={handleGoogleLogin} className={styles.loginButton}>
+              Login
+            </button>
+          )}
         </li>
       </ul>
 
@@ -124,7 +135,10 @@ const NavBar = () => {
         >
           <ul className="flex flex-col space-y-4">
             {["Play", "Leaderboard"].map((item, index) => (
-              <li key={index} className={`text-4xl text-pink-500 font-pixel py-2 ${styles.popIn}`}>
+              <li
+                key={index}
+                className={`text-4xl text-pink-500 font-pixel py-2 ${styles.popIn} neonEffect`}
+              >
                 <Link
                   to={`/${item.toLowerCase()}`}
                   onClick={() => setIsOpen(false)}
@@ -133,18 +147,24 @@ const NavBar = () => {
                 </Link>
               </li>
             ))}
-            {/* Add Sign In/Sign Out Button for mobile */}
+            <li
+              className={`text-blue-300 font-pixel text-3xl cursor-pointer ${styles.neonEffect}`}
+              onClick={openModal}
+            >
+              Rules
+            </li>
             <li className="text-4xl text-pink-500 font-pixel py-2">
               {isLoggedIn ? (
-                <button onClick={handleLogout} className="text-2xl">
-                  Sign Out
+                <button onClick={handleLogout} className={styles.logoutButton}>
+                  Logout
                 </button>
               ) : (
-                <GoogleLogin
-                  onSuccess={handleLoginSuccess}
-                  onError={handleLoginFailure}
-                  theme="outline"
-                />
+                <button
+                  onClick={handleGoogleLogin}
+                  className={styles.loginButton}
+                >
+                  Login
+                </button>
               )}
             </li>
           </ul>
@@ -157,4 +177,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default Navbar;

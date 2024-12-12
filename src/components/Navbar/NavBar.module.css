@@ -1,137 +1,90 @@
-/* src/components/NavBar.module.css */
-
-@keyframes flicker {
-    0%, 18%, 22%, 25%, 53%, 57%, 100% {
-      opacity: 1;
-    }
-    20%, 24%, 55% {
-      opacity: 0;
-    }
+@keyframes flickering {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    opacity: 1;
   }
-  
-  @keyframes popIn {
-    0% {
-      transform: scale(0.8);
-      opacity: 0;
-    }
-    100% {
-      transform: scale(1);
-      opacity: 1;
-    }
+  20%, 24%, 55% {
+    opacity: 0.3;
   }
-  
-  .flicker {
-    animation: flicker 1.5s infinite;
-  }
-  
-  .popIn {
-    animation: popIn 0.4s ease forwards;
-  }
-  
-  /* NavBar.module.css */
-.glowBorder {
-  position: relative;
-  padding: 0.2rem; /* Adjust to control spacing */
 }
 
-.glowBorder::before {
-  content: "";
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-  border-radius: 4px; /* Adjust for a rounded or square look */
-  border: 2px solid #00bfff; /* Light blue glow color */
-  box-shadow: 0 0 15px #00bfff, 0 0 30px #00bfff, 0 0 45px #00bfff;
-  animation: glow 1.5s infinite alternate;
-  pointer-events: none; /* Avoid interfering with hover events */
-}
-
-@keyframes glow {
+@keyframes popIn {
   0% {
-    opacity: 0.6;
+    transform: scale(0.8);
+    opacity: 0;
   }
   100% {
+    transform: scale(1);
     opacity: 1;
   }
 }
-/* NavBar.module.css */
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.flickering {
+  animation: flickering 2s infinite;
+  text-shadow: 0 0 8px #ff00ff, 0 0 15px #ff00ff, 0 0 20px #ff007f;
+}
 
 .popIn {
   animation: popIn 0.5s ease forwards;
 }
 
-.glowBorder {
-  border: 2px solid #ff0099;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
+.loginButton,
+.logoutButton {
+  padding: 6px 14px;
+  font-size: 1.2rem;
+  border: 2px solid #ff007f;
+  background-color: transparent;
+  color: #00ffff;
+  font-family: "Press Start 2P", cursive;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
-@keyframes popIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+.loginButton:hover,
+.logoutButton:hover {
+  background-color: #ff007f;
+  color: #000;
+  box-shadow: 0 0 10px #ff007f, 0 0 20px #ff007f;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  .text-3xl {
-    font-size: 2rem;
-  }
-
-  .text-2xl {
-    font-size: 1.5rem;
-  }
-
-  /* Adjust spacing for smaller screens */
-  .space-x-8 {
-    gap: 1.5rem;
-  }
-
-  /* Show the navigation links in a column when open */
-  .nav-links {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
+.mobileMenu {
+  animation: slideDown 0.5s ease-out forwards;
 }
-
-nav {
+.neonEffect {
   position: relative;
+  color: #00ffff; /* Neon blue */
+  text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 20px #00ffff;
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
 }
 
-/* Animation for menu items */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
+.neonEffect:hover {
+  transform: scale(1.1); /* Slight zoom effect */
+  text-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff, 0 0 45px #00ffff;
+  animation: flicker 1.5s infinite alternate;
 }
 
-.text-pink-500 {
-  font-family: "Press Start 2P", monospace; /* For pixelated text style */
-}
-
-.fixed div a {
-  animation: fadeIn 0.4s ease-in-out forwards;
-}
-.fixed.inset-0 a {
-  color: #ff0099; /* Adjust to your preferred color */
-  font-size: 2rem;
-  font-family: "Press Start 2P", monospace;
-  margin: 1rem 0;
-  animation: fadeIn 0.4s ease-in-out forwards; /* Apply animation */
-}
-/* Ensure that the overlay is semi-transparent and doesn’t cover the items */
-.fixed.inset-0 {
-  background: rgba(0, 0, 0, 0.9); /* Dark overlay with transparency */
-  z-index: 50; /* Ensure it stays above the main nav */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+@keyframes flicker {
+  0% {
+    opacity: 1;
+    text-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff, 0 0 45px #00ffff;
+  }
+  50% {
+    opacity: 0.8;
+    text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 35px #00ffff;
+  }
+  100% {
+    opacity: 1;
+    text-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff, 0 0 45px #00ffff;
+  }
 }

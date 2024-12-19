@@ -1,94 +1,103 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGoogleLogin } from "@react-oauth/google";
-import { jwtDecode } from "jwt-decode";
-import "./Home.css";
-import cityscape from "/assets/cityscape.png";
-
+import useContext from "../context/UserContext";
 import Footer from "../../components/Footer/Footer";
+import cityscape from "/assets/cityscape.png";
+import characterSprite from "/assets/character.png";
+import endpoints from "../../utils/APIendpoints";
+import "./Home.css";
 
 const Home = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [user, setUser] = useState(null);
   const navigate = useNavigate();
+  const context = useContext();
+  const [characterPosition, setCharacterPosition] = useState({ left: 0, top: 0 });
+  const [dialogue, setDialogue] = useState("Welcome, Player 1!");
+  const [playSignGlowing, setPlaySignGlowing] = useState(false);
+  const [actionButtonGlow, setActionButtonGlow] = useState(false);
 
   const handleGoogleLogin = useGoogleLogin({
-    onSuccess: async (tokenResponse) => {
-      try {
-        const token = tokenResponse.credential || tokenResponse.access_token;
-
-        console.log("Received token:", token); // Debug: check the token
-
-        // Validate token format
-        if (!token || token.split(".").length !== 3) {
-          throw new Error("Invalid token format");
-        }
-
-        // Decode the token if valid
-        const decoded = jwtDecode(token);
-        console.log("Decoded token:", decoded);
-
-        setUser(decoded);
-        setIsLoggedIn(true);
-
-        // Save the token to localStorage for persistence
-        localStorage.setItem("userToken", token);
-
-        navigate("/play"); // Redirect to play page
-        console.log("Login Success:", decoded);
-      } catch (error) {
-        console.error("Login failed:", error.message);
-      }
+    onSuccess: (tokenResponse) => {
+      fetch(
+        `https://www.googleapis.com/oauth2/v3/userinfo?access_token=${tokenResponse.access_token}`
+      )
+        .then((res) => res.json())
+        .then((userInfo) => {
+          fetch(endpoints.SOCIAL_LOGIN_TOKEN, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              access_token: tokenResponse.access_token,
+              ...userInfo,
+            }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.token) {
+                context.login(data.token);
+                navigate("/play");
+              }
+            })
+            .catch((error) => console.error("Backend login error:", error));
+        })
+        .catch((error) => console.error("Google login error:", error));
     },
     onError: (error) => {
       console.error("Login failed:", error);
     },
   });
 
-  useEffect(() => {
-    const savedToken = localStorage.getItem("userToken");
-    if (savedToken) {
-      try {
-        const decoded = jwtDecode(savedToken);
-        setUser(decoded);
-        setIsLoggedIn(true);
-      } catch (error) {
-        console.error("Invalid token in localStorage:", error.message);
-        localStorage.removeItem("userToken"); // Clear invalid token
-      }
-    }
-  }, []);
-
   const handlePlayNow = () => {
-    if (isLoggedIn) {
+    if (context.token || localStorage.getItem("fictionary_frontend")) {
       navigate("/play");
     } else {
       handleGoogleLogin();
     }
   };
 
+  useEffect(() => {
+   
+    setCharacterPosition({ left: 50, top: "80%" });
+
+    const moveToPlayTimer = setTimeout(() => {
+      setCharacterPosition({ left: "50%", top: "50%" }); 
+    }, 1000);
+
+    const playGlowTimer = setTimeout(() => {
+      setPlaySignGlowing(true); // Glow Play button
+    }, 1500);
+
+    const returnToActionTimer = setTimeout(() => {
+      setCharacterPosition({ left: 50, top: "80%" }); // Return to Action button
+      setDialogue("Let's Begin!");
+      setActionButtonGlow(true); // Glow Action button
+    }, 3000);
+
+    return () => {
+      clearTimeout(moveToPlayTimer);
+      clearTimeout(playGlowTimer);
+      clearTimeout(returnToActionTimer);
+    };
+  }, []);
+
   return (
     <div
-      className="bg-dark-blue h-96 flex flex-col relative"
+      className="bg-dark-blue h-screen flex flex-col relative"
       style={{
-        height: "88vh",
         backgroundImage: `url(${cityscape})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
-
       }}
     >
-     
-      {/* Shooting Stars */}
       <div className="shooting-stars">
         <span></span>
         <span></span>
         <span></span>
         <span></span>
       </div>
-
-      {/* Twinkling Stars */}
       <div className="stars">
         <span></span>
         <span></span>
@@ -98,20 +107,52 @@ const Home = () => {
       </div>
 
       <div className="flex-grow flex flex-col items-center justify-center pb-5 z-10">
+        {/* Pixel-Art Character */}
+        <div
+          className="character-container"
+          style={{
+            position: "absolute",
+            left: characterPosition.left,
+            top: characterPosition.top,
+            transform: "translate(-50%, -50%)",
+            transition: "left 1s, top 1s",
+          }}
+        >
+          <img
+            src={characterSprite}
+            alt="Character"
+            className="character-sprite"
+            style={{
+              width: "50px",
+              height: "50px",
+            }}
+          />
+          {/* Speech Bubble */}
+          <div className="speech-bubble">{dialogue}</div>
+        </div>
+
+        {/* Event Title */}
         <h1 className="title text-neon-pink font-pixel flicker text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl">
           FICTIONARY
         </h1>
-        {/* Play Now Button */}
+
+        {/* Play Button */}
         <button
-          onClick={handlePlayNow}
-          className="mt-10 px-8 py-4 text-3xl font-pixel text-blue-300 bg-glass hover:bg-pink-700 glow-border hover:shadow-neon transition-all rounded-lg neonEffect"
-        >
-          {isLoggedIn ? "Play Now" : "Play"}
-        </button>
-         <Footer className="footer" />
+  onClick={handlePlayNow}
+  className={`mt-10 px-8 py-4 text-2xl font-bold font-pixel text-blue-300 bg-glass hover:bg-pink-700 glow-border hover:shadow-neon transition-all rounded-lg neonEffect ${
+    playSignGlowing ? "glowing" : ""
+  }`}
+>
+  <span className="play-text">Play</span>
+</button>
+
+
+        {/* On-Screen Controls */}
+       
+        <Footer className="footer" />
       </div>
 
-     
+      
     </div>
   );
 };

@@ -4,7 +4,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import styles from "./Footer.module.css";
-
+import image from "/assets/DEBSOClogowhitePNG.svg";
 const SocialLinks = () => {
   const handleClick = (e) => {
     const ripple = document.createElement("span");
@@ -35,6 +35,9 @@ const SocialLinks = () => {
         className={styles["social-icon"]}
       >
         <YouTubeIcon style={{ color: "red" }} /> 
+      </a>
+      <a href="https://www.debsocnitdgp.in/" target="_blank" rel="noreferrer">
+        <img className={styles.logods} src={image} alt="ds-logo" />
       </a>
       <a
         href="https://www.linkedin.com/company/debating-society-nit-durgapur/people/"

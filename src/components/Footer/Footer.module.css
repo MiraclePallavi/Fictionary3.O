@@ -12,6 +12,10 @@
 }
 
 /* Social icon styles */
+.logods{
+  height: 36px;
+  color: #fff;
+}
 .social-icon {
   position: relative;
   width: 3.5vw;

@@ -1,41 +1,62 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
 import { Menu, Close } from "@mui/icons-material";
 import { useGoogleLogin } from "@react-oauth/google";
 import styles from "./NavBar.module.css";
 import RulesModal from "../../pages/Rules/RulesModal";
-
+import useContext from "../../pages/context/UserContext";
+import { Link, useNavigate } from "react-router-dom";
+import endpoints from "../../utils/APIendpoints";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [user, setUser] = useState(null);
+ 
+
   const menuRef = useRef(null);
   const toggleButtonRef = useRef(null);
-  const navigate = useNavigate(); // Initialize useNavigate
 
-  // Initialize user state from localStorage on component mount
-  useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem("user"));
-    if (storedUser) {
-      setUser(storedUser);
-      setIsLoggedIn(true);
-    }
-  }, []);
+
+
+  const context = useContext();
+  const navigate = useNavigate();
 
   const handleGoogleLogin = useGoogleLogin({
     onSuccess: (tokenResponse) => {
-      // Fetch user info from Google's API
-      fetch(
-        `https://www.googleapis.com/oauth2/v3/userinfo?access_token=${tokenResponse.access_token}`
-      )
+      // Fetch user info from Google using the access token
+      fetch(`https://www.googleapis.com/oauth2/v3/userinfo?access_token=${tokenResponse.access_token}`)
         .then((res) => res.json())
         .then((userInfo) => {
-          localStorage.setItem("user", JSON.stringify(userInfo));
-          setUser(userInfo);
-          setIsLoggedIn(true);
-          console.log("Logged in:", userInfo);
-          navigate("/play"); // Redirect to Play page after login
+          // Send the data to the backend for authentication
+          fetch(endpoints.SOCIAL_LOGIN_TOKEN, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              access_token: tokenResponse.access_token, // Include Google access token
+              ...userInfo, // Include the user's Google profile info
+            }),
+          })
+            .then((response) => response.json())
+            .then((backendResponse) => {
+              if (backendResponse.token) {
+               
+              /*  localStorage.setItem("authToken", backendResponse.token);
+                console.log("Token saved:", backendResponse.token); 
+               
+                localStorage.setItem("user", JSON.stringify(userInfo));
+                console.log("User saved:", userInfo); 
+              
+                localStorage.setItem("fictionary_token", tokenResponse.access_token);*/
+                context.login(backendResponse.token);
+
+                setUser(userInfo); 
+         
+                navigate("/play");
+              } else {
+                console.error("Failed to log in:", backendResponse.message);
+              }
+            })
+            .catch((error) => console.error("Backend login error:", error));
         })
         .catch((error) => console.error("Google login error:", error));
     },
@@ -43,15 +64,13 @@ const Navbar = () => {
       console.error("Login failed:", error);
     },
   });
+  
+  
 
   const handleLogout = () => {
-    localStorage.removeItem("user");
-    setUser(null);
-    setIsLoggedIn(false);
-    console.log("Logged out successfully");
-    navigate("/"); // Redirect to Home page after logout
+    context.logout();
+    navigate("/");
   };
-
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -115,15 +134,16 @@ const Navbar = () => {
           Rules
         </li>
         <li className="text-blue-300 font-pixel text-2xl cursor-pointer">
-          {isLoggedIn ? (
-            <button onClick={handleLogout} className={styles.logoutButton}>
-              Logout
-            </button>
-          ) : (
-            <button onClick={handleGoogleLogin} className={styles.loginButton}>
-              Login
-            </button>
-          )}
+          
+           {context.token || localStorage.getItem("fictionary_frontend") ? (
+         
+            <button onClick={handleLogout} className={styles.logoutButton}>LOG OUT</button>
+          
+        ) : (
+         
+            <button className={styles.loginButton} onClick={handleGoogleLogin}> SIGN IN</button>
+          
+        ) }
         </li>
       </ul>
 
@@ -154,18 +174,15 @@ const Navbar = () => {
               Rules
             </li>
             <li className="text-4xl text-pink-500 font-pixel py-2">
-              {isLoggedIn ? (
-                <button onClick={handleLogout} className={styles.logoutButton}>
-                  Logout
-                </button>
-              ) : (
-                <button
-                  onClick={handleGoogleLogin}
-                  className={styles.loginButton}
-                >
-                  Login
-                </button>
-              )}
+            {context.token || localStorage.getItem("fictionary_frontend") ? (
+         
+         <button onClick={handleLogout} className={styles.logoutButton}>LOG OUT</button>
+       
+     ) : (
+      
+         <button className={styles.loginButton} onClick={handleGoogleLogin}> SIGN IN</button>
+       
+     ) }
             </li>
           </ul>
         </div>

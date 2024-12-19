@@ -14,10 +14,11 @@
   color:#4BC8ED; 
   /* font-family: 'Press Start 2P', monospace; */
   font-family: myFont;
-  font-size: 5rem;
+  font-size: clamp(20px, 5vw, 48px); 
+  
   text-align: center;
   margin-bottom: 1.5rem;
-  animation:  3s infinite, forward-glitch 5s linear infinite; /* Forward movement */
+  animation:  5s infinite, forward-glitch 5s linear infinite; /* Forward movement */
   letter-spacing: 2px;
 }
 
@@ -49,7 +50,7 @@
   text-shadow: -3px 0 #4BC8ED;
 
   clip: rect(10px, 900px, 30px, 0);
-  animation: glitch-animation 2s infinite linear alternate-reverse;
+  animation: glitch-animation 3s infinite linear alternate-reverse;
 }
 
 /* Keyframe Animations */
@@ -144,7 +145,7 @@ body {
 
 @media (max-width: 800px) {
   .leaderboardHeader{
-    font-size: 1.2 rem;
+    font-size: 1.2 vw;
     margin-bottom: 40px;
   }
 

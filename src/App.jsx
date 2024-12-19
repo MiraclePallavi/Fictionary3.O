@@ -17,16 +17,14 @@ import Footer from "./components/Footer/Footer";
 const App = () => {
   return (
     <Router>
-      <Navbar />      <Routes>
-        
-      <Route path="/" element={<Home />} />
-        <Route path="/play" element={<PlayQuiz />} />
-        
-        <Route path="/leaderboard" element={<Leaderboard />} />
-        <Route path="/sign-in" element={<Login/>} />
-    
-       
-      </Routes>
+      <Navbar />  <Routes>
+  <Route path="/" element={<Home />} />
+  <Route path="/play" element={<PlayQuiz />} />
+  <Route path="/leaderboard" element={<Leaderboard />} />
+  <Route path="/sign-in" element={<Login />} />
+  <Route path="*" element={<div>404 - Page Not Found</div>} />
+</Routes>
+
     </Router>
   );
 };

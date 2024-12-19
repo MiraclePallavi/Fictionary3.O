@@ -1,0 +1,20 @@
+.CardDetailView {
+    border: 1px black;
+    min-height: calc(55vh - 144px);
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    display: inline-block;
+    background-color: aqua;
+    max-width: 45vh;
+    margin: 10px;
+    padding: 5px;
+}
+
+.CardName {
+    color: gray;
+}
+
+.CardDesc {
+    color: blueviolet;
+}

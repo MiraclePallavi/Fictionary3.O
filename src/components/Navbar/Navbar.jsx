@@ -49,7 +49,7 @@ const Navbar = () => {
                 localStorage.setItem("fictionary_token", tokenResponse.access_token);*/
                 context.login(backendResponse.token);
 
-                setUser(userInfo); 
+              
          
                 navigate("/play");
               } else {
@@ -118,7 +118,7 @@ const Navbar = () => {
 
       {/* Desktop menu */}
       <ul className="hidden sm:flex space-x-8">
-        {["Play", "Leaderboard"].map((item, index) => (
+        {["Play", "Leaderboard","PowerUps"].map((item, index) => (
           <li
             key={index}
             className={`text-blue-300 font-pixel text-3xl cursor-pointer ${styles.neonEffect}`}
@@ -154,10 +154,10 @@ const Navbar = () => {
           className="fixed inset-0 bg-gray-900 bg-opacity-90 flex flex-col items-center justify-center sm:hidden z-50"
         >
           <ul className="flex flex-col space-y-4">
-            {["Play", "Leaderboard"].map((item, index) => (
+            {["Play", "Leaderboard","PowerUps"].map((item, index) => (
               <li
                 key={index}
-                className={`text-4xl text-pink-500 font-pixel py-2 ${styles.popIn} neonEffect`}
+                className={`text-blue-300 font-pixel text-3xl cursor-pointer ${styles.neonEffect}`}
               >
                 <Link
                   to={`/${item.toLowerCase()}`}

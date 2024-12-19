@@ -1,6 +1,6 @@
 @font-face {
    font-family: 'myFont';
-  src: url(Gameplay.ttf); 
+  src: url(Glitch.otf); 
    /* font-family: 'space';
   src: url("./SPACEArmor.otf"); */
 } 
@@ -40,7 +40,7 @@
   color: #ff2e63; 
   text-shadow: -3px 0 #ff2e63;
   clip: rect(2px, 900px, 40px, 0);
-  animation: glitch-animation 2.5s infinite linear alternate-reverse;
+
 }
 
 .leaderboardHeader::after {
@@ -50,7 +50,7 @@
   text-shadow: -3px 0 #4BC8ED;
 
   clip: rect(10px, 900px, 30px, 0);
-  animation: glitch-animation 3s infinite linear alternate-reverse;
+  animation: glitch-animation 8s infinite linear alternate-reverse;
 }
 
 /* Keyframe Animations */
@@ -67,7 +67,7 @@
   0%, 50% {
     transform: translateX(0);
   }
-  51%, 100% {
+   100% {
     transform: translateX(3px);
   }
 }
@@ -77,10 +77,7 @@
     clip: rect(10px, 900px, 0, 0);
     transform: translate(0px, 0px);
   }
-  10% {
-    clip: rect(20px, 9999px, 30px, 0);
-    transform: translate(-6px, -3px) skewX(-3deg);
-  }
+ 
   20% {
     clip: rect(30px, 900px, 40px, 0);
     transform: translate(6px, 3px) skewX(2deg);
@@ -89,10 +86,7 @@
     clip: rect(15px, 9999px, 50px, 0);
     transform: translate(-5px, 0px) skewX(-2deg);
   }
-  40% {
-    clip: rect(5px, 900px, 20px, 0);
-    transform: translate(5px, -2px) skewX(1deg);
-  }
+
   50% {
     clip: rect(25px, 9999px, 30px, 0);
     transform: translate(0px, 2px) skewX(-1deg);
@@ -101,10 +95,7 @@
     clip: rect(10px, 900px, 15px, 0);
     transform: translate(-5px, -3px) skewX(-2deg);
   }
-  70% {
-    clip: rect(25px, 9999px, 40px, 0);
-    transform: translate(6px, 0px) skewX(1deg);
-  }
+
   80% {
     clip: rect(5px, 900px, 25px, 0);
     transform: translate(-6px, 4px) skewX(-1deg);

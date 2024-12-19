@@ -1,0 +1,111 @@
+/* General Container */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+.arcade-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  color: #fff;
+  font-family: 'Orbitron', sans-serif;
+}
+
+/* Arcade Screen */
+.arcade-screen {
+  width: 600px;
+  padding: 20px;
+  border: 8px solid #ff00ff;
+  border-radius: 12px;
+  background: #0f0f0f;
+  box-shadow: 0 0 20px #ff00ff, 0 0 40px #00ffff;
+  text-align: center;
+}
+
+/* Round Display */
+.round-display {
+  font-size: 16px;
+  color: #00ffff;
+  text-shadow: 0 0 8px #00ffff;
+  margin-bottom: 20px;
+}
+
+/* Question Text */
+.question-text {
+  font-size: 18px;
+  color: #fff;
+  margin-bottom: 20px;
+  text-shadow: 0 0 8px #ff00ff;
+}
+
+/* Media Display */
+.media-display {
+  margin: 20px 0;
+}
+.media-image {
+  max-width: 100%;
+  border: 4px solid #00ffff;
+  border-radius: 8px;
+  box-shadow: 0 0 12px #00ffff;
+}
+
+/* Input Field */
+.answer-input {
+  width: 80%;
+  padding: 10px;
+  font-size: 16px;
+  color: #000;
+  background: #00ffff;
+  border: 4px solid #ff00ff;
+  border-radius: 8px;
+  outline: none;
+  margin-bottom: 20px;
+  text-align: center;
+  font-family: 'Press Start 2P', sans-serif;
+}
+
+/* Buttons */
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 14px;
+  color: #fff;
+  background: #ff00ff;
+  border: 4px solid #00ffff;
+  border-radius: 8px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-family: 'Press Start 2P', sans-serif;
+  box-shadow: 0 0 8px #00ffff, 0 0 15px #ff00ff;
+}
+
+button:hover {
+  background: #00ffff;
+  color: #000;
+  box-shadow: 0 0 12px #ff00ff, 0 0 20px #00ffff;
+}
+
+button.disabled {
+  background: #555;
+  color: #aaa;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Loading Spinner */
+.loading {
+  margin-top: 50px;
+  text-align: center;
+}
+
+/* Neon Glow Effect */
+.arcade-screen, .answer-input, .question-text {
+  text-shadow: 0 0 8px #00ffff, 0 0 16px #ff00ff;
+}
+

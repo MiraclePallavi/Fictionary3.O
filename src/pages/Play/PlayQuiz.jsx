@@ -9,6 +9,7 @@ import Footer from "../../components/Footer/Footer";
 import endpoints from "../../utils/APIendpoints";
 import { useNavigate } from "react-router-dom";
 import useContext from "../context/UserContext";
+import gamebg from './gamebg.jpg';
 import "../../index.css"
 const QuizGame = () => {
   const [animationStopped, setAnimationStopped] = useState(false);
@@ -136,7 +137,7 @@ const QuizGame = () => {
       className="bg-dark-blue min-h-screen flex flex-col relative"
       style={{
         height: "88vh",
-        backgroundImage: `url(${cityscape})`,
+        backgroundImage: `url(${gamebg})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",

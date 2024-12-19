@@ -7,7 +7,7 @@ import cityscape from "/assets/cityscape.png";
 import characterSprite from "/assets/character.png";
 import endpoints from "../../utils/APIendpoints";
 import "./Home.css";
-
+import bg from "/assets/bg.jpg";
 const Home = () => {
   const navigate = useNavigate();
   const context = useContext();
@@ -86,7 +86,7 @@ const Home = () => {
     <div
       className="bg-dark-blue h-screen flex flex-col relative"
       style={{
-        backgroundImage: `url(${cityscape})`,
+        backgroundImage: `url(${bg})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
@@ -132,9 +132,9 @@ const Home = () => {
         </div>
 
         {/* Event Title */}
-        <h1 className="title text-neon-pink font-pixel flicker text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl">
-          FICTIONARY
-        </h1>
+        <h1 className="title text-neon-pink font-[PressStart2P, 'Courier New', monospace] flicker text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl">
+  FICTIONARY
+</h1>
 
         {/* Play Button */}
         <button

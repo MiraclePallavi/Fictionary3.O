@@ -12,7 +12,10 @@ const endpoints = {
     CLUE: BASE_URL + '/api/clue/',
     SOCIAL_LOGIN_TOKEN: BASE_URL + '/api/accounts/get-social-token/',
     LEADERBOARD: BASE_URL + '/api/leaderboard/',
-    CHECK_GAME_LIVE: BASE_URL + '/api/check-game-live/'
+    CHECK_GAME_LIVE: BASE_URL + '/api/check-game-live/',
+    CARDS: BASE_URL + '/api/cards/',
+    CHANGE_CARD_STATUS: BASE_URL + '/api/change-card-status/',
+    GET_USER_COINS: BASE_URL + '/api/get-user-coins/',
 }
 
 export default endpoints;

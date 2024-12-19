@@ -41,11 +41,11 @@
 .loginButton,
 .logoutButton {
   padding: 6px 14px;
-  font-size: 1.2rem;
+  font-size: 1rem;
   border: 2px solid #ff007f;
   background-color: transparent;
   color: #00ffff;
-  font-family: "Press Start 2P", cursive;
+  font-family: "Press Start 1P", cursive;
   text-transform: uppercase;
   transition: all 0.3s ease;
   cursor: pointer;
@@ -63,13 +63,13 @@
 }
 .neonEffect {
   position: relative;
-  color: #00ffff; /* Neon blue */
-  text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 20px #00ffff;
+  color: #00ffff; 
+  text-shadow: 0 0 5px #c866e3, 0 0 10px #de6fe6, 0 0 20px #e9c3f2;
   transition: transform 0.3s ease, text-shadow 0.3s ease;
 }
 
 .neonEffect:hover {
-  transform: scale(1.1); /* Slight zoom effect */
+  transform: scale(1.1);
   text-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff, 0 0 45px #00ffff;
   animation: flicker 1.5s infinite alternate;
 }

@@ -5,8 +5,9 @@ import endpoints from "../../utils/APIendpoints";
 import { ColorRing } from "react-loader-spinner";
 import Score from "./Score";
 import cityscape from "/assets/cityscape.png";
-import "./Leaderboard.css";
+import bg from "/assets/bg.jpg";
 import "../../index.css"
+import "./Leaderboard.css";
 const Leaderboard = () => {
   const [leaderboard, setLeaderboard] = useState([]);
   const [loading, setLoading] = useState(true); // Add loading state
@@ -46,7 +47,7 @@ const Leaderboard = () => {
         className="bg-dark-blue min-h-screen flex flex-col relative"
         style={{
           height: "88vh",
-          backgroundImage: `url(${cityscape})`,
+          backgroundImage: `url(${bg})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",

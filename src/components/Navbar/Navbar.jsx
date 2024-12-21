@@ -6,6 +6,7 @@ import RulesModal from "../../pages/Rules/RulesModal";
 import useContext from "../../pages/context/UserContext";
 import { Link, useNavigate } from "react-router-dom";
 import endpoints from "../../utils/APIendpoints";
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -21,32 +22,25 @@ const Navbar = () => {
 
   const handleGoogleLogin = useGoogleLogin({
     onSuccess: (tokenResponse) => {
-      // Fetch user info from Google using the access token
+     
       fetch(`https://www.googleapis.com/oauth2/v3/userinfo?access_token=${tokenResponse.access_token}`)
         .then((res) => res.json())
         .then((userInfo) => {
-          // Send the data to the backend for authentication
+         
           fetch(endpoints.SOCIAL_LOGIN_TOKEN, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              access_token: tokenResponse.access_token, // Include Google access token
-              ...userInfo, // Include the user's Google profile info
+              access_token: tokenResponse.access_token, 
+              ...userInfo, 
             }),
           })
             .then((response) => response.json())
             .then((backendResponse) => {
               if (backendResponse.token) {
                
-              /*  localStorage.setItem("authToken", backendResponse.token);
-                console.log("Token saved:", backendResponse.token); 
-               
-                localStorage.setItem("user", JSON.stringify(userInfo));
-                console.log("User saved:", userInfo); 
-              
-                localStorage.setItem("fictionary_token", tokenResponse.access_token);*/
                 context.login(backendResponse.token);
 
               
@@ -104,11 +98,11 @@ const Navbar = () => {
   return (
     <nav className="bg-gray-900 py-4 px-8 flex justify-between items-center border-b-4 border-pink-500">
       <Link to="/">
-      <div className={`${styles.flickering} text-pink-500 font-pixel text-3xl cursor-pointer`}>
+      <div className={`${styles.flickering} text-pink-500  text-3xl cursor-pointer`}>
         FICTIONARY
       </div>
       </Link>
-      <div ref={toggleButtonRef} className="sm:hidden" onClick={toggleMenu}>
+      <div ref={toggleButtonRef} className="lg:hidden" onClick={toggleMenu}>
         {isOpen ? (
           <Close className="text-pink-500" />
         ) : (
@@ -117,23 +111,23 @@ const Navbar = () => {
       </div>
 
       {/* Desktop menu */}
-      <ul className="hidden sm:flex space-x-8">
-        {["Play", "Leaderboard","PowerUps"].map((item, index) => (
+      <ul className="hidden sm:flex space-x-8 mt-4">
+        {["Play", "Leaderboard","PowerUps","PowerUpShop"].map((item, index) => (
           <li
             key={index}
-            className={`text-blue-300 font-pixel text-3xl cursor-pointer ${styles.neonEffect}`}
+            className={`text-blue-300 font-pixel text-xl cursor-pointer ${styles.neonEffect}`}
             style={{ animationDelay: `${index * 0.2}s` }}
           >
             <Link to={`/${item.toLowerCase()}`}>{item}</Link>
           </li>
         ))}
         <li
-          className={`text-blue-300 font-pixel text-3xl cursor-pointer ${styles.neonEffect}`}
+          className={`text-blue-300 font-pixel text-xl cursor-pointer ${styles.neonEffect}`}
           onClick={openModal}
         >
           Rules
         </li>
-        <li className="text-blue-300 font-pixel text-2xl cursor-pointer">
+        <li className="text-blue-300 font-pixel text-xl cursor-pointer mb-2">
           
            {context.token || localStorage.getItem("fictionary_frontend") ? (
          
@@ -153,11 +147,11 @@ const Navbar = () => {
           ref={menuRef}
           className="fixed inset-0 bg-gray-900 bg-opacity-90 flex flex-col items-center justify-center sm:hidden z-50"
         >
-          <ul className="flex flex-col space-y-4">
-            {["Play", "Leaderboard","PowerUps"].map((item, index) => (
+          <ul className="flex flex-col space-y-4 mt-3 pt-7">
+            {["Play", "Leaderboard","PowerUps","PowerUpShop"].map((item, index) => (
               <li
                 key={index}
-                className={`text-blue-300 font-pixel text-3xl cursor-pointer ${styles.neonEffect}`}
+                className={`text-blue-300 font-pixel text-xl cursor-pointer mt-6 ${styles.neonEffect}`}
               >
                 <Link
                   to={`/${item.toLowerCase()}`}
@@ -168,12 +162,12 @@ const Navbar = () => {
               </li>
             ))}
             <li
-              className={`text-blue-300 font-pixel text-3xl cursor-pointer ${styles.neonEffect}`}
+              className={`text-blue-300 font-pixel text-xl cursor-pointer ${styles.neonEffect}`}
               onClick={openModal}
             >
               Rules
             </li>
-            <li className="text-4xl text-pink-500 font-pixel py-2">
+            <li className="text-xl text-pink-500 font-pixel py-2">
             {context.token || localStorage.getItem("fictionary_frontend") ? (
          
          <button onClick={handleLogout} className={styles.logoutButton}>LOG OUT</button>

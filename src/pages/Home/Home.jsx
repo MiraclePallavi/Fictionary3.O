@@ -66,13 +66,13 @@ const Home = () => {
     }, 1000);
 
     const playGlowTimer = setTimeout(() => {
-      setPlaySignGlowing(true); // Glow Play button
+      setPlaySignGlowing(true); 
     }, 1500);
 
     const returnToActionTimer = setTimeout(() => {
-      setCharacterPosition({ left: 50, top: "80%" }); // Return to Action button
+      setCharacterPosition({ left: 50, top: "80%" }); 
       setDialogue("Let's Begin!");
-      setActionButtonGlow(true); // Glow Action button
+      setActionButtonGlow(true); 
     }, 3000);
 
     return () => {
@@ -97,8 +97,15 @@ const Home = () => {
         <span></span>
         <span></span>
         <span></span>
+        <span></span>
+        <span></span>
+        
       </div>
       <div className="stars">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
         <span></span>
         <span></span>
         <span></span>
@@ -132,14 +139,14 @@ const Home = () => {
         </div>
 
         {/* Event Title */}
-        <h1 className="title text-neon-pink font-[PressStart2P, 'Courier New', monospace] flicker text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl">
+        <h1 className="title text-neon-pink  flicker text-5xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
   FICTIONARY
 </h1>
 
         {/* Play Button */}
         <button
   onClick={handlePlayNow}
-  className={`mt-10 px-8 py-4 text-2xl font-bold font-pixel text-blue-300 bg-glass hover:bg-pink-700 glow-border hover:shadow-neon transition-all rounded-lg neonEffect ${
+  className={`mt-10 px-5 py-4 text-2xl sm:text-1xl font-bold font-pixel text-blue-300 bg-glass hover:bg-pink-700 glow-border hover:shadow-neon transition-all rounded-lg neonEffect ${
     playSignGlowing ? "glowing" : ""
   }`}
 >

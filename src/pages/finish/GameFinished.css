@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  color: white;
+  font-family:  cursive;
+}
+
+.game-finished-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #000000, #1a1a1a);
+}
+
+.game-finished-content {
+  text-align: center;
+  border: 5px solid #00ff00;
+  padding: 30px;
+  background: black;
+  box-shadow: 0 0 20px #00ff00, 0 0 40px #00ff00;
+}
+
+.game-over-title {
+  font-size: 2.5rem;
+  color: #ff0000;
+  text-shadow: 0 0 5px #ff0000, 0 0 20px #ff0000, 0 0 40px #ff0000;
+}
+
+.score-display {
+  margin: 20px 0;
+  font-size: 1.2rem;
+  color: #00ff00;
+}
+
+.score-display span {
+  color: #ffff00;
+}
+
+.buttons {
+  margin-top: 20px;
+}
+
+.btn {
+  font-size: 1rem;
+  margin: 10px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  color: white;
+  text-transform: uppercase;
+  border: 2px solid #00ff00;
+  box-shadow: 0 0 10px #00ff00;
+  transition: all 0.3s ease;
+}
+
+.neon-btn:hover {
+  background: #00ff00;
+  color: black;
+  box-shadow: 0 0 20px #00ff00, 0 0 40px #00ff00;
+}

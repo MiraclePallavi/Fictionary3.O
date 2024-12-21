@@ -1,76 +1,72 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import "./PowerUpsView.css";
 import useContext from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import ENDPOINTS from "../../utils/APIendpoints";
+import powercard from "/assets/powercard.jpg";
 
-const PowerUpsViews = ({card, refreshUpdateState}) => {
+const PowerUpsViews = ({ card, refreshUpdateState }) => {
+  const [isClicked, setIsClicked] = useState(false);
+  const [available, setAvailable] = useState(false);
 
-    const [isClicked, setIsClicked] = useState(false);
-    const [available, setAvailable] = useState(false);
+  const navigate = useNavigate();
+  const context = useContext();
 
+  // Check if the card is available
+  const checkAval = () => {
+    setAvailable(card.aval_cards[card.index] === "1");
+    console.log("CheckAval");
+  };
 
-    const navigate = useNavigate();
-    const context = useContext();
+  // Handle click event
+  const handleClick = () => {
+    fetch(ENDPOINTS.CHANGE_CARD_STATUS, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Token ${context.token || localStorage.getItem("fictionary_token")}`,
+      },
+      body: JSON.stringify({ index: card.index, coins: card.coins }),
+    })
+      .then((res) => res.json())
+      .then(() => {
+        console.log("Button clicked");
+        console.log(card.coins);
+        refreshUpdateState();
+      });
 
-    let checkAval = () => {
-        setAvailable(card.aval_cards[card.index] === '1');
-        console.log('CheckAval')
-    }
+    setIsClicked(!isClicked);
+  };
 
-    let handleAvalText = () => {
-        if(available){
-            return(
-                <div>
-                    This card is available
-                </div>
-            )
-        } else {
-            return(
-                <div>
-                    This card is not available
-                </div>
-            )
-        }
-    }
+  useEffect(() => {
+    checkAval();
+  }, [card, isClicked]);
 
-    let handleClick = () => {
-        fetch(ENDPOINTS.CHANGE_CARD_STATUS, {
-            method:"POST",
-            headers: {
-                "Content-Type" : "application/json",
-                Authorization: `Token ${
-                    context.token || localStorage.getItem("fictionary_token")
-                }`,
+  // Render the card if available
+  if (!available) return null;
 
-            },
-            body: JSON.stringify({index : card.index, coins: card.coins}),
-        })
-            .then((res) => res.json())
-            .then((res) => {
-                console.log('button clicked');
-                console.log(card.coins);
-                refreshUpdateState();
-            })
-        setIsClicked(!isClicked);
-    }
-
-    useEffect(checkAval, [card, isClicked]);
-
-    return (
-        <div className="CardDetailView" onClick={handleClick}>
-            <div className="CardName">
-                {card.text}
-            </div>
-            <div className="CardDesc">
-                {card.desc}
-            </div>
-            <div className="CardCoins">
-                Coins : {card.coins}
-            </div>
-            {handleAvalText()}
+  return (
+    <div
+      className={`p-6 max-w-sm rounded-lg shadow-lg text-white relative ${
+        available ? "hover:shadow-green" : "hover:shadow-red"
+      }`}
+      onClick={handleClick}
+      style={{
+        backgroundImage: `url(${powercard})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        height: "350px",
+      }}
+    >
+      <div className="absolute inset-0 bg-black bg-opacity-50 rounded-lg">
+        <div className="relative z-10 text-xl font-arcade uppercase mb-4 flex-auto mt-12 text-center">
+          {card.text}
         </div>
-    )
-}
+        <div className="relative z-10 text-sm mb-2 ml-5 mr-5 text-center">{card.desc}</div>
+        <div className="relative z-10 text-lg font-bold text-center">Coins: {card.coins}</div>
+      </div>
+    </div>
+  );
+};
 
 export default PowerUpsViews;

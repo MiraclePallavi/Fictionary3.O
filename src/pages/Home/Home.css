@@ -1,4 +1,4 @@
-/* Glowing Effect */
+
 .glowing {
   box-shadow: 0 0 20px #ff007f, 0 0 40px #ff007f, 0 0 60px #ff007f;
 }
@@ -21,8 +21,7 @@
 }
 
 .title {
-  /* Neon color */
- 
+
   color: #ff00ff;
   position: relative;
   animation: flicker 3s infinite alternate ease-in-out, slowPulse 5s infinite ease-in-out;
@@ -30,7 +29,7 @@
     0 0 5px #f8ff9c, 
     0 0 10px #e7eda2, 
     0 0 15px #ecf3c7, 
-    0 0 20px rgba(252, 222, 33, 0.5); /* Reduced glow intensity */
+    0 0 20px rgba(252, 222, 33, 0.5); 
 }
 @keyframes flicker {
   0%, 18%, 22%, 25%, 53%, 57%, 100% {
@@ -84,25 +83,24 @@
 .control-button:hover {
   background-color: rgba(255, 255, 255, 0.3);
 }
-/* Bold and Glowing Text for Play */
+
 .play-text {
-  font-size: 3rem; /* Slightly larger font */
-  font-weight: 600; /* Bold text */
+  font-size: 2rem; 
+  font-weight: 500; 
   text-shadow: 
-    0 0 5px #d585ed, /* Neon glow - inner */
-    0 0 10px #d586eb, /* Neon glow - outer */
-    0 0 20px #e990eb; /* Stronger glow */
-  color: #00ffff; /* Neon blue text */
+    0 0 5px #d585ed, 
+    0 0 10px #d586eb, 
+    0 0 20px #e990eb; 
+  color: #00ffff; 
   transition: text-shadow 0.3s ease, color 0.3s ease;
 }
 
-/* Button Glowing State */
 .glowing {
   box-shadow: 
-    0 0 15px #aaebeb, /* Outer pink glow */
-    0 0 30px #95eff4, /* Stronger pink glow */
-    0 0 45px #8dd3ea; /* Intense pink neon */
-  border: 2px solid #ff007f; /* Pink border */
+    0 0 15px #aaebeb, 
+    0 0 30px #95eff4, 
+    0 0 45px #8dd3ea; 
+  border: 2px solid #ff007f; 
 }
 
 .neonEffect:hover .play-text {

@@ -1,115 +1,104 @@
 @font-face {
-   font-family: 'myFont';
-  src: url(Glitch.otf); 
-   /* font-family: 'space';
-  src: url("./SPACEArmor.otf"); */
-} 
-
-
-
+  font-family: 'myFont';
+  src: url(lcdSolid.ttf); 
+}
 
 .leaderboardHeader {
-
-  position: relative;
-  color:#4BC8ED; 
-  /* font-family: 'Press Start 2P', monospace; */
-  font-family: myFont;
-  font-size: clamp(20px, 5vw, 48px); 
-  
-  text-align: center;
-  margin-bottom: 1.5rem;
-  animation:  5s infinite, forward-glitch 5s linear infinite; /* Forward movement */
-  letter-spacing: 2px;
+ position: relative;
+ color: #00FFCC; /* Neon aqua */
+ font-family: myFont;
+ font-size: clamp(25px, 6vw, 48px); 
+ font-weight: 600;
+ text-align: center;
+ margin-bottom: 1.5rem;
+ animation: flicker 6s infinite, forward-glitch 3s linear infinite;
+ letter-spacing: 2px;
+ 
 }
 
 /* Glitch Effect Layers */
 .leaderboardHeader::before,
 .leaderboardHeader::after {
-  content: "Leaderboard";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: transparent;
-  overflow: hidden;
+ content: "Leaderboard";
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100%;
+ background: transparent;
+ overflow: hidden;
+ z-index: -1;
 }
 
 .leaderboardHeader::before {
-  left: 2px;
-  color: #ff2e63; 
-  text-shadow: -3px 0 #ff2e63;
-  clip: rect(2px, 900px, 40px, 0);
-
+ left: -2px;
+ color: #FF00FF; /* Neon pink */
+ text-shadow: -3px 0 #FF00FF, 0 0 10px #FF00FF;
+ clip: rect(2px, 900px, 40px, 0);
+ animation: glitch-animation 2s infinite;
 }
 
 .leaderboardHeader::after {
-  left: -2px;
-  /* color: #2defff;  */
-  color: #4BC8ED;
-  text-shadow: -3px 0 #4BC8ED;
+ left: 2px;
+ color: #00FFFF; /* Neon cyan */
 
-  clip: rect(10px, 900px, 30px, 0);
-  animation: glitch-animation 8s infinite linear alternate-reverse;
+ clip: rect(5px, 9999px, 60px, 0);
+ animation: glitch-animation 4s infinite reverse;
 }
 
 /* Keyframe Animations */
 @keyframes flicker {
-  0%, 18%, 22%, 25%, 53%, 57%, 100% {
-    opacity: 1;
-  }
-  20%, 24%, 55% {
-    opacity: 0.6;
-  }
+ 0%, 18%, 22%, 25%, 53%, 57%, 100% {
+   opacity: 1;
+ }
+ 20%, 24%, 55% {
+   opacity: 0.6;
+ }
 }
 
 @keyframes forward-glitch {
-  0%, 50% {
-    transform: translateX(0);
-  }
-   100% {
-    transform: translateX(3px);
-  }
+ 0%, 50% {
+   transform: translateX(0);
+ }
+ 100% {
+   transform: translateX(3px);
+ }
 }
 
 @keyframes glitch-animation {
-  0% {
-    clip: rect(10px, 900px, 0, 0);
-    transform: translate(0px, 0px);
-  }
- 
-  20% {
-    clip: rect(30px, 900px, 40px, 0);
-    transform: translate(6px, 3px) skewX(2deg);
-  }
-  30% {
-    clip: rect(15px, 9999px, 50px, 0);
-    transform: translate(-5px, 0px) skewX(-2deg);
-  }
-
-  50% {
-    clip: rect(25px, 9999px, 30px, 0);
-    transform: translate(0px, 2px) skewX(-1deg);
-  }
-  60% {
-    clip: rect(10px, 900px, 15px, 0);
-    transform: translate(-5px, -3px) skewX(-2deg);
-  }
-
-  80% {
-    clip: rect(5px, 900px, 25px, 0);
-    transform: translate(-6px, 4px) skewX(-1deg);
-  }
-  90% {
-    clip: rect(15px, 9999px, 40px, 0);
-    transform: translate(3px, -5px) skewX(2deg);
-  }
-  100% {
-    clip: rect(0, 9999px, 5px, 0);
-    transform: translate(0px, 0px);
-  }
+ 0% {
+   clip: rect(10px, 900px, 0, 0);
+   transform: translate(0px, 0px);
+ }
+ 20% {
+   clip: rect(30px, 900px, 40px, 0);
+   transform: translate(6px, 3px) skewX(2deg);
+ }
+ 30% {
+   clip: rect(15px, 9999px, 50px, 0);
+   transform: translate(-5px, 0px) skewX(-2deg);
+ }
+ 50% {
+   clip: rect(25px, 9999px, 30px, 0);
+   transform: translate(0px, 2px) skewX(-1deg);
+ }
+ 60% {
+   clip: rect(10px, 900px, 15px, 0);
+   transform: translate(-5px, -3px) skewX(-2deg);
+ }
+ 80% {
+   clip: rect(5px, 900px, 25px, 0);
+   transform: translate(-6px, 4px) skewX(-1deg);
+ }
+ 90% {
+   clip: rect(15px, 9999px, 40px, 0);
+   transform: translate(3px, -5px) skewX(2deg);
+ }
+ 100% {
+   clip: rect(0, 9999px, 5px, 0);
+   transform: translate(0px, 0px);
+ }
 }
-
 
 .leaderboardItems {
   min-height: calc(60vh - 120px);

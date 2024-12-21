@@ -1,7 +1,7 @@
 import React from "react";
 import "./Question.css";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import HintModal from "./HintModal";
 import SnackBar from "./SnackBar";
 import HintCountDown from "./HintCountDown";
@@ -10,6 +10,7 @@ import endpoints from "../../utils/APIendpoints";
 import { useNavigate } from "react-router-dom";
 import { ColorRing } from "react-loader-spinner";
 import bg from "/assets/bg.jpg";
+
 const QuestionTextRenderer = ({ text }) => {
   while (text.indexOf("\n") > -1) {
     text = text.replace("\n", "<br />");
@@ -32,7 +33,7 @@ const QuestionTextRenderer = ({ text }) => {
 };
 
 const Question = () => {
-  const [state, setState] = React.useState({
+  const [state, setState] = useState({
     question: {
       text: "Loading...",
       round: 0,
@@ -44,6 +45,7 @@ const Question = () => {
       show_media: false,
       show_language: false,
       show_year: false,
+      media:" ",
     },
     loaded: true,
   });
@@ -56,6 +58,7 @@ const Question = () => {
   const [hintAvailable, setHintAvailable] = useState(null);
   const [hintCountdown, setHintCountdown] = useState(null);
   const [timer, setTimer] = useState(0);
+  const [showIntro, setShowIntro] = useState(true);
 
   const navigate = useNavigate();
   const context = useContext();
@@ -97,7 +100,7 @@ const Question = () => {
       .then((res) => {
         if (res.status === 401) {
           context.logout();
-          navigate("/signin?redirected=true");
+          navigate("/sign-in?redirected=true");
           return;
         }
         return res.json();
@@ -175,18 +178,28 @@ const Question = () => {
       });
   };
 
-  React.useEffect(getQuestion, [context.token]);
+  useEffect(() => {
+    getQuestion();
+    const introTimer = setTimeout(() => setShowIntro(false), 5000);
+    return () => clearTimeout(introTimer);
+  }, [context.token]);
 
   return (
-     <div
-          className="bg-dark-blue h-screen flex flex-col relative"
-          style={{
-            backgroundImage: `url(${bg})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-          }}
-        >
+    <div
+      className="bg-dark-blue h-screen flex flex-col relative items-center justify-center"
+      style={{
+        backgroundImage: `url(${bg})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      {showIntro && (
+        <div className="cinematic-intro">
+          <h1 className="text-white text-4xl md:text-6xl glow-effect">Welcome to Fictionary!</h1>
+          <p className="text-white text-xl md:text-2xl mt-4">Get ready to challenge your mind...</p>
+        </div>
+      )}
       <HintModal
         open={hintModalOpen}
         onClose={() => {
@@ -198,65 +211,98 @@ const Question = () => {
         text={snackbarOptions.text}
         success={snackbarOptions.success}
       />
-      <div className="arcade-screen">
-        {state.loaded ? (
-          <>
-            <div className="question-box">
-              <div className="round-display">Round: {state.question.round}</div>
-              <QuestionTextRenderer text={state.question.text} />
-              {state.question.ogmedia && (
-                <div className="media-display">
-                  <img
-                    src={endpoints.BASE_URL + state.question.ogmedia}
-                    alt="hint"
-                    className="media-image"
-                  />
+      {!showIntro && (
+        <div className="arcade-screen">
+          {state.loaded ? (
+            <>
+              <div className="question-box">
+                <div className="round-display">
+                  Round: {state.question.round}
                 </div>
-              )}
-              <input
-                className="answer-input"
-                id="answerInput"
-                type="text"
-                placeholder="Type your answer"
-                onKeyDown={(evt) => {
-                  if (evt.key === "Enter") {
-                    checkAnswer();
+                <QuestionTextRenderer text={state.question.text} />
+                {state.question.media && state.question.media.trim() !== "" ? (
+  <div className="media-display">
+    <img
+      src={state.question.media}
+      alt="Question media"
+      className="media-image"
+    />
+  </div>
+) : (
+  <></>
+)}
+                <input
+                  className="answer-input"
+                  id="answerInput"
+                  type="text"
+                  placeholder="Type your answer"
+                  onKeyDown={(evt) => {
+                    if (evt.key === "Enter") {
+                      checkAnswer();
+                    }
+                  }}
+                />
+                {hintCountdown && <HintCountDown time={hintCountdown} />}
+              </div>
+              <div className="controls">
+                <button
+                  className={`hint-button ${
+                    hintCountdown !== null || !hintAvailable ? "disabled" : ""
+                  }`}
+                  onClick={
+                    hintCountdown !== null || !hintAvailable
+                      ? () => {}
+                      : () => setHintModalOpen(true)
                   }
-                }}
+                >
+                  HINT
+                </button>
+                <button className="submit-button" onClick={checkAnswer}>
+                  SUBMIT
+                </button>
+              </div>
+              <div>
+                {state.question.show_country && (
+                  <>
+                    Country: {state.question.country}
+                    <br />
+                  </>
+                )}
+                {state.question.show_media && (
+                  <>
+                    Original Media: {state.question.ogmedia}
+                    <br />
+                  </>
+                )}
+                {state.question.show_language && (
+                  <>
+                    Language: {state.question.language}
+                    <br />
+                  </>
+                )}
+                {state.question.show_year && <>Year: {state.question.year}</>}
+              </div>
+            </>
+          ) : (
+            <div className="loading">
+              <ColorRing
+                visible={true}
+                height="135"
+                width="135"
+                ariaLabel="loading"
+                wrapperClass="spinner"
+                colors={[
+                  "#f2e0d6",
+                  "#f2e0d6",
+                  "#f2e0d6",
+                  "#f2e0d6",
+                  "#f2e0d6",
+                ]}
               />
-              {hintCountdown && <HintCountDown time={hintCountdown} />}
             </div>
-            <div className="controls">
-              <button
-                className={`hint-button ${
-                  hintCountdown !== null || !hintAvailable ? "disabled" : ""
-                }`}
-                onClick={
-                  hintCountdown !== null || !hintAvailable
-                    ? () => {}
-                    : () => setHintModalOpen(true)
-                }
-              >
-                HINT
-              </button>
-              <button className="submit-button" onClick={checkAnswer}>
-                SUBMIT
-              </button>
-            </div>
-          </>
-        ) : (
-          <div className="loading">
-            <ColorRing
-              visible={true}
-              height="135"
-              width="135"
-              ariaLabel="loading"
-              wrapperClass="spinner"
-              colors={["#f2e0d6", "#f2e0d6", "#f2e0d6", "#f2e0d6", "#f2e0d6"]}
-            />
-          </div>
-        )}
-      </div>
+          )}
+        </div>
+      )}
     </div>
   );
 };

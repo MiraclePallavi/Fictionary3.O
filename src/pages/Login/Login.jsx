@@ -1,68 +1,83 @@
 import React, { useEffect, useState } from "react";
-import { useGoogleLogin } from "@react-oauth/google";
 import "./Login.css";
+import endpoints from "../../utils/APIendpoints";
+import { useNavigate } from "react-router-dom";
+import bg from "/assets/bg.jpg";
+import useContext from "../context/UserContext";
+import { useGoogleLogin } from "@react-oauth/google";
+
+export const handleGoogleLogin = () => {
+  const form = document.createElement("form");
+  form.method = "POST";
+  form.action = endpoints.GOOGLE_LOGIN;
+  document.body.appendChild(form);
+  form.submit();
+};
 
 const Login = () => {
-  const [message, setMessage] = useState("");
-  const [user, setUser] = useState(null);
-
+  const navigate = useNavigate();
+  const context = useContext();
+  const [message, setMessage] = useState();
   const handleGoogleLogin = useGoogleLogin({
     onSuccess: (tokenResponse) => {
       setMessage("Fetching your information from Google...");
       fetch(
-        `https://www.googleapis.com/oauth2/v3/userinfo?access_token=${tokenResponse.access_token}`
+        "https://www.googleapis.com/oauth2/v3/userinfo?access_token=" +
+          tokenResponse.access_token
       )
-        .then((response) => response.json())
-        .then((userInfo) => {
-          setMessage("Welcome, " + userInfo.name);
-          setUser(userInfo);
-          localStorage.setItem("user", JSON.stringify(userInfo)); 
-          localStorage.setItem("access_token", tokenResponse.access_token);
-        })
-        .catch((error) => {
-          setMessage("Failed to fetch user information");
-          console.error(error);
+        .then((json) => json.json())
+        .then((res) => {
+          setMessage("Signing you in...")
+          fetch(endpoints.SOCIAL_LOGIN_TOKEN, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              access_token: tokenResponse.access_token,
+              ...res
+            }),
+          })
+            .then((res) => res.json())
+            .then((res) => {
+              setMessage("Logged in succesfully. Redirecting...");
+              context.login(res.token);
+              navigate("/play");
+            })
+            .catch((err) => console.error(err));
         });
     },
     onFailure: (error) => {
-      setMessage("Login failed. Please try again.");
-      console.error(error);
-    },
+      console.log(error)
+    }
   });
 
   useEffect(() => {
-    // Check if user is already logged in
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-      setMessage("Welcome back, " + JSON.parse(storedUser).name);
-    } else {
-      setMessage("Please log in to continue.");
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("redirected") === "true") {
+      setMessage("Please log in to continue");
     }
   }, []);
 
-  const handleLogout = () => {
-    localStorage.removeItem("user");
-    localStorage.removeItem("access_token");
-    setUser(null);
-    setMessage("You have been logged out.");
-  };
-
   return (
+    <div
+          className="bg-dark-blue h-screen flex flex-col relative"
+          style={{
+            backgroundImage: `url(${bg})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
+        >
     <div className="login-container">
       <div className="login-box">
-        <h1>Login</h1>
-        <div className="login-message">{message}</div>
-        {!user ? (
-          <button className="login-btn" onClick={handleGoogleLogin}>
-            Login with Google
-          </button>
-        ) : (
-          <button className="login-btn" onClick={handleLogout}>
-            Logout
-          </button>
-        )}
+        <h1 className="mb-2">Login</h1>
+        <div className="login-message font-pixel text-5xl">{message}</div>
+        <button className="login-btn" onClick={handleGoogleLogin}>
+          Click to login
+        </button>
       </div>
+    </div>
     </div>
   );
 };

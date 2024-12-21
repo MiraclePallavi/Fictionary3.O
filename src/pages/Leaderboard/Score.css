@@ -16,16 +16,16 @@
   margin: 0.5rem 0;
   box-shadow: 0 0 10px rgba(198, 20, 20, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
-  background: rgba(28, 26, 26, 0.1); /* Light translucent background */
-  backdrop-filter: blur(7px); /* Applies a blur to the background */
-  -webkit-backdrop-filter: blur(7px); /* Safari support */
-  border-radius: 10px; /* Optional: rounded corners */
-  border: 1px solid rgba(34, 30, 30, 0.2); /* Optional: subtle border */
+  background: rgba(28, 26, 26, 0.1);
+  backdrop-filter: blur(7px); 
+  -webkit-backdrop-filter: blur(7px); 
+  border-radius: 10px; 
+  border: 1px solid rgba(34, 30, 30, 0.2); 
 }
 
 .first-place {
   width: 90%;
-  font-size: 6rem; /* Increased from 5rem */
+  font-size: 6rem; 
    box-shadow: 0 0 3px 3px #e6eb9d, 0 0 20px #cd7f32; 
   margin: 0 0 1rem 0;
 }
@@ -33,14 +33,14 @@
 .second-place {
   width: 85%;
   
-  font-size: 5.5rem; /* Increased from 5rem */
+  font-size: 5.5rem; 
   box-shadow: 0 0 3px 3px #dced90, 0 0 20px #cd7f32;
   margin: 1rem 0 0 0;
 }
 
 .third-place {
   width: 80%;
-  font-size: 5.5rem; /* Increased from 5rem */
+  font-size: 5.5rem; 
   box-shadow: 0 0 3px 3px #ebeb9f, 0 0 20px #cd7f32;
   margin: 2rem 0 1rem 0;
 }
@@ -51,7 +51,7 @@
 }
 
 .score-rank {
-  font-size: 2rem; /* Increased from 1.5rem */
+  font-size: 2rem;
   color: rgb(255, 255, 255);
   margin-right: 1rem;
 }
@@ -87,10 +87,10 @@
 }
 @media (max-width: 800px) {
   .score-name, .score-points, .score-rank {
-    font-size: 1rem; /* Increased font size for small screens */
+    font-size: 1rem; 
   }
   .profile-picture {
-    width: 30px; /* Slightly larger size */
+    width: 30px; 
     height: 30px;
   }
 }

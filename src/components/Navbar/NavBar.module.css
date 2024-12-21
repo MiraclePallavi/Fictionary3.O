@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 @keyframes flickering {
   0%, 18%, 22%, 25%, 53%, 57%, 100% {
     opacity: 1;
@@ -40,12 +41,12 @@
 
 .loginButton,
 .logoutButton {
-  padding: 6px 14px;
+  padding: 6px 12px;
   font-size: 1rem;
   border: 2px solid #ff007f;
   background-color: transparent;
   color: #00ffff;
-  font-family: "Press Start 1P", cursive;
+  font-family: "Press Start 2P", cursive;
   text-transform: uppercase;
   transition: all 0.3s ease;
   cursor: pointer;

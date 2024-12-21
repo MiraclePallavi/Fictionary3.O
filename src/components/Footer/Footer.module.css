@@ -13,8 +13,18 @@
 
 /* Social icon styles */
 .logods{
-  height: 36px;
-  color: #fff;
+  position: relative;
+  width: 3vw;
+  height: 3.5vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ 
+  border: 2px solid #555;
+  border-radius: 8px; /* Slightly rounded for a retro-modern feel */
+  box-shadow: 0 4px 0 #000, 0 8px 10px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+  cursor: pointer;
 }
 .social-icon {
   position: relative;
@@ -23,32 +33,36 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  
+ padding-left: 8px;
+ padding-right: 8px;
   border: 2px solid #555;
   border-radius: 8px; /* Slightly rounded for a retro-modern feel */
-  box-shadow: 0 4px 0 #000, 0 8px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 0 #e8e4e4, 0 8px 10px rgb(253, 251, 251);
   transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
   cursor: pointer;
+  box-shadow: 0 0 15px rgba(233, 237, 240, 0.8); 
 }
 .social-icon:nth-child(1) {
-  box-shadow: 0 0 15px rgba(0, 0, 255, 0.8); /* Blue glow for Facebook */
+  box-shadow: 0 0 15px rgba(0, 0, 255, 0.8); 
 }
 
 .social-icon:nth-child(2) {
-  box-shadow: 0 0 15px rgba(255, 0, 0, 0.8); /* Red glow for YouTube */
-}
-
-.social-icon:nth-child(3) {
-  box-shadow: 0 0 15px rgba(0, 119, 181, 0.8); /* Blue glow for LinkedIn */
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.8); 
 }
 
 .social-icon:nth-child(4) {
-  box-shadow: 0 0 15px rgba(225, 48, 108, 0.8); /* Pink glow for Instagram */
+  box-shadow: 0 0 15px rgba(0, 119, 181, 0.8); 
 }
 
+.social-icon:nth-child(5) {
+  box-shadow: 0 0 15px rgba(225, 48, 108, 0.8); 
+}
+
+
 .social-icon svg {
-  font-size: 2rem; /* Adjust icon size */
-  color: white; /* Ensure the icon itself remains visible */
+  font-size: 2rem; 
+  color: white; 
+  box-shadow: 0 0 15px rgba(226, 234, 239, 0.8);
 }
 /* Hover effect */
 .social-icon:hover {

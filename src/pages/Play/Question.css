@@ -1,90 +1,128 @@
-/* General Container */
+/* General Styling */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
 .arcade-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
   background: linear-gradient(135deg, #1a1a2e, #16213e);
   color: #fff;
   font-family: 'Orbitron', sans-serif;
+  min-height: 100vh;
 }
 
 /* Arcade Screen */
 .arcade-screen {
-  width: 600px;
+  width: 80%;
+  max-width: 700px;
   padding: 20px;
+  min-height: 50vh;
   border: 8px solid #ff00ff;
   border-radius: 12px;
   background: #0f0f0f;
   box-shadow: 0 0 20px #ff00ff, 0 0 40px #00ffff;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+
+}
+
+@media screen and (max-width: 700px) {
+  .arcade-screen {
+    width: 95%; /* Adjust the width to fit smaller screens */
+    padding: 15px; /* Reduce padding for smaller screens */
+  }
 }
 
 /* Round Display */
 .round-display {
-  font-size: 16px;
+  font-size: 1rem;
   color: #00ffff;
   text-shadow: 0 0 8px #00ffff;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  font-family: 'Press Start 2P', sans-serif;
+}
+
+@media screen and (max-width: 700px) {
+  .round-display {
+    font-size: 0.875rem; /* Adjust font size for smaller screens */
+  }
 }
 
 /* Question Text */
 .question-text {
-  font-size: 18px;
+  font-size: 1rem;
   color: #fff;
   margin-bottom: 20px;
   text-shadow: 0 0 8px #ff00ff;
+  line-height: 1.4;
 }
 
-/* Media Display */
-.media-display {
-  margin: 20px 0;
-}
-.media-image {
-  max-width: 100%;
-  border: 4px solid #00ffff;
-  border-radius: 8px;
-  box-shadow: 0 0 12px #00ffff;
+@media screen and (max-width: 700px) {
+  .question-text {
+    font-size: 0.9rem; /* Adjust font size for smaller screens */
+    margin-bottom: 15px; /* Adjust spacing */
+  }
 }
 
 /* Input Field */
 .answer-input {
-  width: 80%;
+  width: 95%;
   padding: 10px;
-  font-size: 16px;
-  color: #000;
-  background: #00ffff;
-  border: 4px solid #ff00ff;
-  border-radius: 8px;
+  font-size: 1rem;
+  color: #0ff;
+  background: #121212;
+  border: 3px solid #0ff;
+  border-radius: 12px;
   outline: none;
-  margin-bottom: 20px;
   text-align: center;
+  box-shadow: 0 0 10px #0ff, inset 0 0 5px #00f;
+  transition: all 0.3s ease-in-out;
   font-family: 'Press Start 2P', sans-serif;
 }
 
-/* Buttons */
+.answer-input:hover,
+.answer-input:focus {
+  border-color: #f0f;
+  box-shadow: 0 0 15px #f0f, inset 0 0 8px #00f;
+  background: linear-gradient(145deg, #320458, #1a1a1a);
+  color: #fff;
+}
+
+@media screen and (max-width: 700px) {
+  .answer-input {
+    font-size: 0.9rem; 
+    padding: 8px; 
+  }
+}
+
+
 .controls {
   display: flex;
   justify-content: center;
-  gap: 20px;
-  margin-top: 20px;
+  gap: 15px;
+  margin-top: 15px;
 }
 
 button {
   padding: 10px 20px;
-  font-size: 14px;
+  font-size: 1rem;
   color: #fff;
   background: #ff00ff;
   border: 4px solid #00ffff;
   border-radius: 8px;
   cursor: pointer;
   text-transform: uppercase;
-  font-family: 'Press Start 2P', sans-serif;
   box-shadow: 0 0 8px #00ffff, 0 0 15px #ff00ff;
+  transition: transform 0.2s, box-shadow 0.2s;
+  font-family: 'Press Start 2P', sans-serif;
 }
-
+.hint-button{
+  background: #e5f62d;
+  color: black;
+}
 button:hover {
   background: #00ffff;
   color: #000;
@@ -98,14 +136,52 @@ button.disabled {
   box-shadow: none;
 }
 
-/* Loading Spinner */
+@media screen and (max-width: 700px) {
+  button {
+    font-size: 0.875rem; 
+    padding: 8px 16px; 
+  }
+}
+
 .loading {
-  margin-top: 50px;
+  margin-top: 30px;
   text-align: center;
 }
 
-/* Neon Glow Effect */
 .arcade-screen, .answer-input, .question-text {
   text-shadow: 0 0 8px #00ffff, 0 0 16px #ff00ff;
 }
 
+.cinematic-intro {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+  animation: fadeIn 1s ease-in, fadeOut 1s ease-out 4s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.glow-effect {
+  text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff;
+}

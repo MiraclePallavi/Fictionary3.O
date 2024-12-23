@@ -134,16 +134,14 @@ const Home = () => {
               height: "50px",
             }}
           />
-          {/* Speech Bubble */}
+        
           <div className="speech-bubble">{dialogue}</div>
         </div>
 
-        {/* Event Title */}
         <h1 className="title text-neon-pink  flicker font-operius  text-3xl sm:text-4xl md:text-4xl lg:text-4xl xl:text-5xl ">
   FICTIONARY
 </h1>
 
-        {/* Play Button */}
         <button
   onClick={handlePlayNow}
   className={`mt-10 px-5 py-4 text-2xl sm:text-1xl font-bold font-pixel text-blue-300 bg-glass hover:bg-pink-700 glow-border hover:shadow-neon transition-all rounded-lg neonEffect ${
@@ -154,7 +152,7 @@ const Home = () => {
 </button>
 
 
-        {/* On-Screen Controls */}
+    
        
         <Footer className="footer" />
       </div>

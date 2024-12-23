@@ -19,7 +19,7 @@ const PowerUps = () => {
   const context = useContext();
 
   const getCards = async () => {
-    setIsLoading(true); // Set loading to true before fetch
+    setIsLoading(true); 
     try {
       const response = await fetch(endpoints.CARDS, {
         headers: {
@@ -34,11 +34,11 @@ const PowerUps = () => {
       }
 
       const data = await response.json();
-      setCards(data.cards || []); // Safely set cards
+      setCards(data.cards || []); 
     } catch (error) {
       console.error("Error fetching cards:", error);
     } finally {
-      setIsLoading(false); // Always turn off loading
+      setIsLoading(false); 
     }
   };
 
@@ -57,7 +57,7 @@ const PowerUps = () => {
       }
 
       const data = await response.json();
-      setUserCoins(data.coins || 0); // Safely set coins
+      setUserCoins(data.coins || 0); 
     } catch (error) {
       console.error("Error fetching user coins:", error);
     }
@@ -70,19 +70,19 @@ const PowerUps = () => {
 
   let cardItems;
   if (isLoading) {
-    // Show loading spinner or message while fetching
+   
     cardItems = (
       <div className="text-center text-gray-400 font-expo text-xl mt-8">
         Loading Power Cards...
       </div>
     );
   } else if (cards.length > 0) {
-    // Render cards if available
+  
     cardItems = cards.map((card, index) => (
       <PowerUpsViews key={index} card={card} refreshUpdateState={refreshUpdateState} />
     ));
   } else {
-    // Show message if no cards are available
+    
     cardItems = (
       <div className="text-center text-gray-400 font-expo text-xl mt-8">
         You have no Power Cards right now. Check back later!

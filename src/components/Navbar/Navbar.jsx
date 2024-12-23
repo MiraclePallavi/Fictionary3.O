@@ -98,11 +98,11 @@ const Navbar = () => {
   return (
     <nav className="bg-gray-900 py-4 px-8 flex justify-between items-center border-b-4 border-pink-500">
       <Link to="/">
-      <div className={`${styles.flickering} text-pink-500  text-3xl cursor-pointer`}>
+      <div className={`${styles.flickering} text-pink-500  cursor-pointer font-operius text-2xl sm:text-1xl md:text-2xl lg:text-3xl xl:text-3xl`}>
         FICTIONARY
       </div>
       </Link>
-      <div ref={toggleButtonRef} className="lg:hidden" onClick={toggleMenu}>
+      <div ref={toggleButtonRef} className="2xl:hidden" onClick={toggleMenu}>
         {isOpen ? (
           <Close className="text-pink-500" />
         ) : (
@@ -111,7 +111,7 @@ const Navbar = () => {
       </div>
 
       {/* Desktop menu */}
-      <ul className="hidden sm:flex space-x-8 mt-4">
+      <ul className="hidden xl:flex space-x-8 mt-4">
         {["Play", "Leaderboard","PowerUps","PowerUpShop"].map((item, index) => (
           <li
             key={index}
@@ -145,13 +145,13 @@ const Navbar = () => {
       {isOpen && (
         <div
           ref={menuRef}
-          className="fixed inset-0 bg-gray-900 bg-opacity-90 flex flex-col items-center justify-center sm:hidden z-50"
+          className="fixed inset-0 bg-gray-900 bg-opacity-90 flex flex-col items-center justify-center xl:hidden z-50"
         >
-          <ul className="flex flex-col space-y-4 mt-3 pt-7">
+          <ul className="flex flex-col space-y-12 mt-3 pt-7 text-1xl">
             {["Play", "Leaderboard","PowerUps","PowerUpShop"].map((item, index) => (
               <li
                 key={index}
-                className={`text-blue-300 font-pixel text-xl cursor-pointer mt-6 ${styles.neonEffect}`}
+                className={`text-blue-300 font-pixel text-1xl cursor-pointer mt-6 ${styles.neonEffect}`}
               >
                 <Link
                   to={`/${item.toLowerCase()}`}
@@ -162,7 +162,7 @@ const Navbar = () => {
               </li>
             ))}
             <li
-              className={`text-blue-300 font-pixel text-xl cursor-pointer ${styles.neonEffect}`}
+              className={`text-blue-300 font-pixel text-1xl cursor-pointer ${styles.neonEffect}`}
               onClick={openModal}
             >
               Rules
@@ -182,7 +182,7 @@ const Navbar = () => {
         </div>
       )}
 
-      {/* Rules Modal */}
+      
       <RulesModal isOpen={isModalOpen} onClose={closeModal} />
     </nav>
   );

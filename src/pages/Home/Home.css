@@ -19,6 +19,13 @@
     transform: translateY(-5px);
   }
 }
+@font-face {
+  font-family: 'myFont';
+  src: url(/assets/operius-mono.ttf); 
+}
+.font-operius{
+  font-family: myFont;
+}
 
 .title {
 

@@ -1,4 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@font-face {
+  font-family: 'myFont';
+  src: url(/assets/operius-mono.ttf); 
+}
+.font-operius{
+  font-family: myFont;
+}
 @keyframes flickering {
   0%, 18%, 22%, 25%, 53%, 57%, 100% {
     opacity: 1;
@@ -32,11 +39,11 @@
 
 .flickering {
   animation: flickering 2s infinite;
-  text-shadow: 0 0 8px #ff00ff, 0 0 15px #ff00ff, 0 0 20px #ff007f;
+  text-shadow: 0 0 8px #eef4a0, 0 0 15px #e3e9cd, 0 0 20px #f8ee94;
 }
 
 .popIn {
-  animation: popIn 0.5s ease forwards;
+  animation: popIn 0.5s ease forwards; 
 }
 
 .loginButton,

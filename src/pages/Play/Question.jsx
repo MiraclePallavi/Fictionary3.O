@@ -12,6 +12,8 @@ import { ColorRing } from "react-loader-spinner";
 import bg from "/assets/bg.jpg";
 
 const QuestionTextRenderer = ({ text }) => {
+  text = typeof text === "string" ? text : "";
+
   while (text.indexOf("\n") > -1) {
     text = text.replace("\n", "<br />");
   }
@@ -195,7 +197,7 @@ const Question = () => {
       }}
     >
       {showIntro && (
-        <div className="cinematic-intro">
+        <div className="cinematic-intro justify-center items-center">
           <h1 className="text-white text-4xl md:text-6xl glow-effect">Welcome to Fictionary!</h1>
           <p className="text-white text-xl md:text-2xl mt-4">Get ready to challenge your mind...</p>
         </div>
@@ -219,8 +221,8 @@ const Question = () => {
                 <div className="round-display">
                   Round: {state.question.round}
                 </div>
-                <QuestionTextRenderer text={state.question.text} />
-                {state.question.media && state.question.media.trim() !== "" ? (
+                <QuestionTextRenderer text={state.question.text} className="question" />
+               {/*{state.question.media && state.question.media.trim() !== "" ? (
   <div className="media-display">
     <img
       src={state.question.media}
@@ -230,7 +232,7 @@ const Question = () => {
   </div>
 ) : (
   <></>
-)}
+)}*/} 
                 <input
                   className="answer-input"
                   id="answerInput"
@@ -261,7 +263,7 @@ const Question = () => {
                   SUBMIT
                 </button>
               </div>
-              <div>
+              <div className="text-xl font-bold" >
                 {state.question.show_country && (
                   <>
                     Country: {state.question.country}

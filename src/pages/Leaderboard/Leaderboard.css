@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'myFont';
-  src: url(lcdSolid.ttf); 
+  src: url(/assets/lcdSolid.ttf); 
 }
 
 .leaderboardHeader {
@@ -106,10 +106,15 @@
   flex-direction: column;
   align-items: center;
   padding-top: 20px;
-
+  min-height: calc(100vh - 144px);
+  z-index: 1;
+  position: relative;
  
 }
-
+.leaderboard-container {
+  height: 100vh;
+  overflow-y: auto; /* Enable scrolling for the leaderboard items */
+}
 
 body {
   background-image: url("./assets/2.jpg");
@@ -131,5 +136,4 @@ body {
 
 
 }
-
 

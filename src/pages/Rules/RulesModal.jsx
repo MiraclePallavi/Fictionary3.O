@@ -26,7 +26,7 @@ const RulesModal = ({ isOpen, onClose }) => {
         >
           Game Rules
         </h2>
-        <ul className="text-blue-300 text-xl space-y-4">
+        <ul className="text-blue-300 text-xl space-y-4 font-vt323">
           {rulesData.map((rule, index) => (
             <motion.li
               key={index}

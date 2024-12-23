@@ -42,7 +42,7 @@ const Leaderboard = () => {
   }, [token]);
 
   return (
-    <div className="leaderboard-container">
+    
       <div
         className="bg-dark-blue min-h-screen flex flex-col relative"
         style={{
@@ -51,8 +51,11 @@ const Leaderboard = () => {
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
+          minHeight:"100vh",
+          position:"sticky",
         }}
       >
+        <div className="leaderboard-container">
 <div className="shooting-stars">
         <span></span>
         <span></span>
@@ -73,7 +76,6 @@ const Leaderboard = () => {
         Leaderboard
       </h1>
 
-        {/* Loading spinner while fetching data */}
         {loading ? (
           <div className="loader">
             <ColorRing
@@ -107,7 +109,7 @@ const Leaderboard = () => {
             />
           ))
         ) : (
-          // Show a message if no leaderboard data is available
+      
           <p className="no-data">No data available</p>
         )}
       </div>

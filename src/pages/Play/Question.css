@@ -1,6 +1,6 @@
 /* General Styling */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 .arcade-container {
   display: flex;
   justify-content: center;
@@ -51,6 +51,7 @@
   }
 }
 
+
 /* Question Text */
 .question-text {
   font-size: 1rem;
@@ -58,11 +59,14 @@
   margin-bottom: 20px;
   text-shadow: 0 0 8px #ff00ff;
   line-height: 1.4;
+
+  font-family: 'VT323';
+  font-size: 22px; /* Bigger font for questions */
 }
 
 @media screen and (max-width: 700px) {
   .question-text {
-    font-size: 0.9rem; /* Adjust font size for smaller screens */
+    font-size: 1.2rem; /* Adjust font size for smaller screens */
     margin-bottom: 15px; /* Adjust spacing */
   }
 }

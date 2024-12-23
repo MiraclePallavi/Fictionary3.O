@@ -93,4 +93,7 @@
     width: 30px; 
     height: 30px;
   }
+  .score{
+    width: 80%;
+  }
 }

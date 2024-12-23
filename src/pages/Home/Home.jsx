@@ -12,7 +12,7 @@ const Home = () => {
   const navigate = useNavigate();
   const context = useContext();
   const [characterPosition, setCharacterPosition] = useState({ left: 0, top: 0 });
-  const [dialogue, setDialogue] = useState("Welcome, Player 1!");
+  const [dialogue, setDialogue] = useState("Welcome, Player !");
   const [playSignGlowing, setPlaySignGlowing] = useState(false);
   const [actionButtonGlow, setActionButtonGlow] = useState(false);
 
@@ -139,7 +139,7 @@ const Home = () => {
         </div>
 
         {/* Event Title */}
-        <h1 className="title text-neon-pink  flicker text-5xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
+        <h1 className="title text-neon-pink  flicker font-operius  text-3xl sm:text-4xl md:text-4xl lg:text-4xl xl:text-5xl ">
   FICTIONARY
 </h1>
 

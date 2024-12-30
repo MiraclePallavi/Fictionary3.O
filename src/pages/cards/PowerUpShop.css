@@ -1,0 +1,56 @@
+/* Add retro gaming fonts and glowing effects */
+
+.shop-container {
+    background: linear-gradient(to bottom, #000428, #004e92);
+  }
+  
+  .font-arcade {
+    font-family: "Press Start 2P", cursive;
+  }
+  
+  .font-pixel {
+    font-family: "Pixelated", sans-serif;
+  }
+  
+  .text-neon-pink {
+    color: #ff00e6;
+    text-shadow: 0 0 8px #ff00e6, 0 0 16px #ff00e6, 0 0 24px #ff00e6;
+  }
+  
+  .text-neon-green {
+    color: #0aff99;
+    text-shadow: 0 0 8px #0aff99, 0 0 16px #0aff99, 0 0 24px #0aff99;
+  }
+  
+  .text-neon-yellow {
+    color: #fffb00;
+    text-shadow: 0 0 8px #fffb00, 0 0 16px #fffb00, 0 0 24px #fffb00;
+  }
+  
+  .flicker {
+    animation: flicker 1.5s infinite;
+  }
+  
+  @keyframes flicker {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.85;
+    }
+  }
+  
+  .grid > div {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 0 12px #0aff99, 0 0 24px #0aff99, 0 0 36px #0aff99;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .grid > div:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 16px #ff00e6, 0 0 32px #ff00e6, 0 0 48px #ff00e6;
+  }
+  

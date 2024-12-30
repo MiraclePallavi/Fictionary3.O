@@ -8,6 +8,7 @@ import characterSprite from "/assets/character.png";
 import endpoints from "../../utils/APIendpoints";
 import "./Home.css";
 import bg from "/assets/bg.jpg";
+
 const Home = () => {
   const navigate = useNavigate();
   const context = useContext();
@@ -15,6 +16,14 @@ const Home = () => {
   const [dialogue, setDialogue] = useState("Welcome, Player !");
   const [playSignGlowing, setPlaySignGlowing] = useState(false);
   const [actionButtonGlow, setActionButtonGlow] = useState(false);
+
+  useEffect(() => {
+
+    const token = context.token || localStorage.getItem("fictionary_frontend");
+    if (token) {
+      navigate("/play"); 
+    }
+  }, [context.token, navigate]);
 
   const handleGoogleLogin = useGoogleLogin({
     onSuccess: (tokenResponse) => {
@@ -58,21 +67,20 @@ const Home = () => {
   };
 
   useEffect(() => {
-   
     setCharacterPosition({ left: 50, top: "80%" });
 
     const moveToPlayTimer = setTimeout(() => {
-      setCharacterPosition({ left: "50%", top: "50%" }); 
+      setCharacterPosition({ left: "50%", top: "50%" });
     }, 1000);
 
     const playGlowTimer = setTimeout(() => {
-      setPlaySignGlowing(true); 
+      setPlaySignGlowing(true);
     }, 1500);
 
     const returnToActionTimer = setTimeout(() => {
-      setCharacterPosition({ left: 50, top: "80%" }); 
+      setCharacterPosition({ left: 50, top: "80%" });
       setDialogue("Let's Begin!");
-      setActionButtonGlow(true); 
+      setActionButtonGlow(true);
     }, 3000);
 
     return () => {
@@ -99,7 +107,6 @@ const Home = () => {
         <span></span>
         <span></span>
         <span></span>
-        
       </div>
       <div className="stars">
         <span></span>
@@ -114,7 +121,6 @@ const Home = () => {
       </div>
 
       <div className="flex-grow flex flex-col items-center justify-center pb-5 z-10">
-        {/* Pixel-Art Character */}
         <div
           className="character-container"
           style={{
@@ -134,30 +140,24 @@ const Home = () => {
               height: "50px",
             }}
           />
-        
           <div className="speech-bubble">{dialogue}</div>
         </div>
 
-        <h1 className="title text-neon-pink  flicker font-operius  text-3xl sm:text-4xl md:text-4xl lg:text-4xl xl:text-5xl ">
-  FICTIONARY
-</h1>
+        <h1 className="title text-neon-pink flicker font-operius text-3xl sm:text-4xl md:text-4xl lg:text-4xl xl:text-5xl">
+          FICTIONARY
+        </h1>
 
         <button
-  onClick={handlePlayNow}
-  className={`mt-10 px-5 py-4 text-2xl sm:text-1xl font-bold font-pixel text-blue-300 bg-glass hover:bg-pink-700 glow-border hover:shadow-neon transition-all rounded-lg neonEffect ${
-    playSignGlowing ? "glowing" : ""
-  }`}
->
-  <span className="play-text">Play</span>
-</button>
+          onClick={handlePlayNow}
+          className={`mt-10 px-5 py-4 text-2xl sm:text-1xl font-bold font-pixel text-blue-300 bg-glass hover:bg-pink-700 glow-border hover:shadow-neon transition-all rounded-lg neonEffect ${
+            playSignGlowing ? "glowing" : ""
+          }`}
+        >
+          <span className="play-text">Play</span>
+        </button>
 
-
-    
-       
         <Footer className="footer" />
       </div>
-
-      
     </div>
   );
 };

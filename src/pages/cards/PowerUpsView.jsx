@@ -42,7 +42,7 @@ const PowerUpsViews = ({ card, refreshUpdateState }) => {
     checkAval();
   }, [card, isClicked]);
 
-  // Render the card if available
+ 
   if (!available) return null;
 
   return (

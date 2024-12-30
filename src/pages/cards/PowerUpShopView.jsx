@@ -9,7 +9,7 @@ const PowerUpShopView = ({ card, refreshUpdateState }) => {
   const isAvailable = card.aval_cards[card.index] === "1";
 
   const handleClick = () => {
-    if (!isAvailable) return; // Prevent click for unavailable cards
+    if (!isAvailable) return; 
 
     fetch(ENDPOINTS.CHANGE_CARD_STATUS, {
       method: "POST",
@@ -46,7 +46,7 @@ const PowerUpShopView = ({ card, refreshUpdateState }) => {
         cursor: isAvailable ? "pointer" : "not-allowed",
       }}
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-blue-950 via-purple-950 to-black  bg-opacity-50 rounded-lg">
+      <div className="absolute inset-0 bg-black bg-opacity-50 rounded-lg">
         <div className="relative z-10 text-xl font-arcade uppercase mb-4 text-center mt-12">
           {card.text}
         </div>

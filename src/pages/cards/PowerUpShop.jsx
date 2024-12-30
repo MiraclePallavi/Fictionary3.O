@@ -3,7 +3,7 @@ import useContext from "../context/UserContext";
 import endpoints from "../../utils/APIendpoints";
 import { useNavigate } from "react-router-dom";
 import PowerUpShopView from "./PowerUpShopView";
-import "./PowerUpShop.css"; // Add a custom CSS file for advanced styles
+import "./PowerUpShop.css"; 
 
 const PowerUpShop = () => {
   const [cards, setCards] = useState({ cardList: [], loaded: true });
@@ -70,7 +70,7 @@ const PowerUpShop = () => {
 
   return (
     <div className="shop-container bg-gradient-to-b from-blue-950 via-purple-950 to-black min-h-screen flex flex-col items-center p-8">
-      <h1 className="text-5xl text-neon-pink flicker mb-4 font-arcade">Power-Up Shop</h1>
+      <h1 className="text-4xl text-neon-pink flicker mb-4 font-arcade">Power-Up Shop</h1>
       <h2 className="text-3xl text-neon-green mb-8 font-pixel">
         Coins: <span className="text-neon-yellow">{userCoins}</span>
       </h2>

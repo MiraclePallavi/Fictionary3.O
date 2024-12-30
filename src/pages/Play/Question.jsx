@@ -188,7 +188,7 @@ const Question = () => {
 
   return (
     <div
-      className="bg-dark-blue h-screen flex flex-col relative items-center justify-center"
+      className="bg-dark-blue h-screen flex flex-col relative items-center justify-center main"
       style={{
         backgroundImage: `url(${bg})`,
         backgroundSize: "cover",

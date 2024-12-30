@@ -92,7 +92,7 @@ const Home = () => {
 
   return (
     <div
-      className="bg-dark-blue h-screen flex flex-col relative"
+      className="bg-dark-blue h-screen flex flex-col relative main"
       style={{
         backgroundImage: `url(${bg})`,
         backgroundSize: "cover",

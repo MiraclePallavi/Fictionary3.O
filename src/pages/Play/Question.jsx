@@ -197,8 +197,8 @@ const Question = () => {
       }}
     >
       {showIntro && (
-        <div className="cinematic-intro justify-center items-center">
-          <h1 className="text-white text-4xl md:text-6xl glow-effect">Welcome to Fictionary!</h1>
+        <div className="cinematic-intro justify-center items-center font-alagard">
+          <h1 className="text-white text-2xl md:text-6xl glow-effect">Welcome to Fictionary!</h1>
           <p className="text-white text-xl md:text-2xl mt-4">Get ready to challenge your mind...</p>
         </div>
       )}

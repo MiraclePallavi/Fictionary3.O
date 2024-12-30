@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'myFont';
-  src: url(/assets/lcdSolid.ttf); 
+  src: url(/assets/alagard.ttf); 
 }
 
 .leaderboardHeader {
  position: relative;
- color: #00FFCC; /* Neon aqua */
+ color: #00FFCC; 
  font-family: myFont;
  font-size: clamp(25px, 6vw, 48px); 
  font-weight: 600;
@@ -16,7 +16,6 @@
  
 }
 
-/* Glitch Effect Layers */
 .leaderboardHeader::before,
 .leaderboardHeader::after {
  content: "Leaderboard";

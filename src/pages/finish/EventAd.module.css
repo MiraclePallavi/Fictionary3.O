@@ -1,0 +1,82 @@
+.arcadeBackground {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.glowText {
+  text-shadow: 0 0 10px #ff00e4, 0 0 20px #ff00e4, 0 0 30px #ff00e4;
+}
+
+.glowBox {
+  box-shadow: 0 0 15px #fffb00, 0 0 30px #fffb00, 0 0 45px #fffb00;
+}
+
+.glowButton {
+  box-shadow: 0 0 15px #ff00e4, 0 0 25px #00ffcc, 0 0 35px #fffb00;
+}
+
+.glowButton:hover {
+  transform: scale(1.1);
+}
+
+.flicker {
+  animation: flicker 1.5s infinite;
+}
+
+@keyframes flicker {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.floatingStars span {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: radial-gradient(circle, #ffffff, transparent);
+  border-radius: 50%;
+  animation: float 4s infinite ease-in-out;
+}
+
+.floatingStars span:nth-child(1) {
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.floatingStars span:nth-child(2) {
+  top: 40%;
+  left: 60%;
+  animation-delay: 1s;
+}
+
+.floatingStars span:nth-child(3) {
+  top: 70%;
+  left: 30%;
+  animation-delay: 2s;
+}
+
+.floatingStars span:nth-child(4) {
+  top: 80%;
+  left: 80%;
+  animation-delay: 3s;
+}
+
+.floatingStars span:nth-child(5) {
+  top: 50%;
+  left: 50%;
+  animation-delay: 4s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}

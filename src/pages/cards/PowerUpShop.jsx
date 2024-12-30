@@ -74,7 +74,7 @@ const PowerUpShop = () => {
   }
   
   return(
-    <div className="bg-black min-h-screen flex flex-col items-center p-8">
+    <div className="bg-gradient-to-b from-blue-950 via-purple-950 to-black min-h-screen flex flex-col items-center p-8">
       <h1 className="text-3xl font-arcade text-yellow-400 mb-4 font-expo">
        Buy PowerUps 
       </h1>

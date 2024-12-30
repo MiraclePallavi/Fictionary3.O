@@ -1,4 +1,6 @@
-
+body{
+  overflow-y: hidden;
+}
 .glowing {
   box-shadow: 0 0 20px #ff007f, 0 0 40px #ff007f, 0 0 60px #ff007f;
 }

@@ -1,4 +1,7 @@
 /* General Styling */
+body{
+  overflow-y: hidden;
+}
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 .arcade-container {
@@ -28,7 +31,13 @@
   gap: 20px;
 
 }
-
+@font-face {
+  font-family: 'myFont';
+  src: url(/assets/alagard.ttf); 
+}
+.font-alagard{
+  font-family: myFont;
+}
 @media screen and (max-width: 700px) {
   .arcade-screen {
     width: 95%; /* Adjust the width to fit smaller screens */

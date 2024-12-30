@@ -78,15 +78,20 @@ const Leaderboard = () => {
 
         {loading ? (
           <div className="loader">
-            <ColorRing
-              visible={true}
-              height="135"
-              width="135"
-              ariaLabel="blocks-loading"
-              wrapperStyle={{}}
-              wrapperClass="blocks-wrapper"
-              colors={["#f2e0d6", "#f2e0d6", "#f2e0d6", "#f2e0d6", "#f2e0d6"]}
-            />
+           <ColorRing
+             visible={true}
+             height="135"
+             width="135"
+             ariaLabel="loading"
+             wrapperClass="spinner"
+             colors={[
+               "#ff00e4", // Vibrant pink
+               "#00ffcc", // Neon green
+               "#fffb00", // Electric yellow
+               "#ff6f00", // Bright orange
+               "#0000ff", // Bold blue
+             ]}
+           />
           </div>
         ) : leaderboard.length ? (
           // If leaderboard data exists, map through and render it

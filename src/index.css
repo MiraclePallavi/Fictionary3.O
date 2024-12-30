@@ -131,3 +131,14 @@
   .stars span:nth-child(9) { top: 5%; left: 98%; animation-delay: 0.8s; }
   .stars span:nth-child(10) { top: 6%; left: 94%; animation-delay: 0.7s; }
 }
+.spinner {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle, #000000, #1a1a1a, #333333);
+  padding: 20px;
+  border: 5px solid #ff00e4;
+  box-shadow: 0 0 15px #ff00e4, 0 0 25px #00ffcc, 0 0 35px #fffb00;
+  border-radius: 50%;
+}

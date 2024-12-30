@@ -1,6 +1,6 @@
 import React from "react";
 import "./Question.css";
-
+import "../../index.css";
 import { useState, useEffect } from "react";
 import HintModal from "./HintModal";
 import SnackBar from "./SnackBar";
@@ -14,7 +14,7 @@ import bg from "/assets/bg.jpg";
 const QuestionTextRenderer = ({ text }) => {
   text = typeof text === "string" ? text : "";
 
-  while (text.indexOf("\n") > -1) {
+  while (text.indexOf("\n") > -1) { 
     text = text.replace("\n", "<br />");
   }
   const start = text.indexOf("__linkstart__");
@@ -288,19 +288,20 @@ const Question = () => {
           ) : (
             <div className="loading">
               <ColorRing
-                visible={true}
-                height="135"
-                width="135"
-                ariaLabel="loading"
-                wrapperClass="spinner"
-                colors={[
-                  "#f2e0d6",
-                  "#f2e0d6",
-                  "#f2e0d6",
-                  "#f2e0d6",
-                  "#f2e0d6",
-                ]}
-              />
+  visible={true}
+  height="135"
+  width="135"
+  ariaLabel="loading"
+  wrapperClass="spinner"
+  colors={[
+    "#ff00e4", // Vibrant pink
+    "#00ffcc", // Neon green
+    "#fffb00", // Electric yellow
+    "#ff6f00", // Bright orange
+    "#0000ff", // Bold blue
+  ]}
+/>
+
             </div>
           )}
         </div>

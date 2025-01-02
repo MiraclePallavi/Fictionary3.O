@@ -18,11 +18,14 @@ const App = () => {
   return (
     <Router>
       <Navbar />  <Routes>
+    
   <Route path="/" element={<Home />} />
   <Route path="/play" element={<Question />} />
-  <Route path="/leaderboard" element={<Leaderboard />} />
+ 
   <Route path="/sign-in" element={<Login />} />
+  <Route path="/leaderboard" element={<Leaderboard />} />
   <Route path="/powerups" element={<PowerUps />} />
+
   <Route path="/powerupshop" element={<PowerUpShop />} />
   <Route path="/game-finished" element={<GameFinished />} />
   <Route path="*" element={<div>404 - Page Not Found</div>} />

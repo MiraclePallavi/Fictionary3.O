@@ -1,6 +1,6 @@
 import React from "react";
 import "./Question.css";
-import "../../index.css";
+
 import { useState, useEffect } from "react";
 import HintModal from "./HintModal";
 import SnackBar from "./SnackBar";
@@ -14,7 +14,7 @@ import bg from "/assets/bg.jpg";
 const QuestionTextRenderer = ({ text }) => {
   text = typeof text === "string" ? text : "";
 
-  while (text.indexOf("\n") > -1) { 
+  while (text.indexOf("\n") > -1) {
     text = text.replace("\n", "<br />");
   }
   const start = text.indexOf("__linkstart__");
@@ -197,8 +197,8 @@ const Question = () => {
       }}
     >
       {showIntro && (
-        <div className="cinematic-intro justify-center items-center font-alagard">
-          <h1 className="text-white text-2xl md:text-2xl glow-effect">Welcome to Fictionary!</h1>
+        <div className="cinematic-intro justify-center items-center">
+          <h1 className="text-white text-4xl md:text-6xl glow-effect">Welcome to Fictionary!</h1>
           <p className="text-white text-xl md:text-2xl mt-4">Get ready to challenge your mind...</p>
         </div>
       )}
@@ -301,7 +301,6 @@ const Question = () => {
     "#0000ff", // Bold blue
   ]}
 />
-
             </div>
           )}
         </div>

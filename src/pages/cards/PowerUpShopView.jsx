@@ -1,6 +1,6 @@
 import React from "react";
 import "./PowerUpShopView.css";
-import useContext from "../context/UserContext"; // Ensure UserContext is imported correctly
+import useContext from "../context/UserContext"; 
 import ENDPOINTS from "../../utils/APIendpoints";
 import powercard from "/assets/powercard.jpg";
 

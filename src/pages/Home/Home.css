@@ -1,6 +1,4 @@
-body{
-  overflow-y: hidden;
-}
+
 .glowing {
   box-shadow: 0 0 20px #ff007f, 0 0 40px #ff007f, 0 0 60px #ff007f;
 }
@@ -11,6 +9,68 @@ body{
 
 .character-sprite {
   animation: character-idle 2s infinite;
+}
+
+
+.play_now .play {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1.2em;
+  color: #000;
+  text-decoration: none;
+  background: linear-gradient(90deg, #ff477e, #ffcc33);
+  border: 2px solid #ffffff;
+  border-radius: 5px;
+  text-shadow: 2px 2px 0px #000000;
+  box-shadow: 0px 0px 10px 3px #ff477e;
+  transition: all 0.3s ease;
+}
+
+.play_now .play:hover {
+  background: linear-gradient(90deg, #ffcc33, #ff477e);
+  box-shadow: 0px 0px 15px 5px #ffcc33;
+}
+
+.time-up {
+  text-align: center;
+  font-size: 1.5em;
+  color: #ffcc33;
+}
+
+.arcade-text {
+  font-family: 'Press Start 2P', sans-serif;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0px #ff477e, -2px -2px 0px #33ccff;
+}
+
+.ComSoon {
+  text-align: center;
+  font-size: 2em;
+  color: #33ccff;
+  animation: blink 1s step-start infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.landing-sign-in {
+  font-family: 'Press Start 2P', sans-serif;
+  color: #ffffff;
+  background: #1a1a1a;
+  border: 2px solid #ff477e;
+  padding: 10px 20px;
+  cursor: pointer;
+  text-shadow: 2px 2px 0px #ffcc33;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.landing-sign-in:hover {
+  color: #ff477e;
+  background: #ffcc33;
+  box-shadow: 0px 0px 10px 3px #ff477e;
 }
 
 @keyframes character-idle {

@@ -8,7 +8,7 @@ import characterSprite from "/assets/character.png";
 import endpoints from "../../utils/APIendpoints";
 import "./Home.css";
 import bg from "/assets/bg.jpg";
-
+import { Link } from "react-router-dom";
 const Home = () => {
   const navigate = useNavigate();
   const context = useContext();
@@ -20,7 +20,7 @@ const Home = () => {
   const [playSignGlowing, setPlaySignGlowing] = useState(false);
   const [actionButtonGlow, setActionButtonGlow] = useState(false);
   const [gameLive, setGameLive] = useState({
-    game_live: false,
+    game_live: true,
     time_up: true,
     date: new Date(),
   });
@@ -166,16 +166,61 @@ const Home = () => {
         <h1 className="title text-neon-pink flicker font-operius text-3xl sm:text-4xl md:text-4xl lg:text-4xl xl:text-5xl">
           FICTIONARY
         </h1>
-        <button
-          onClick={handlePlayNow}
-          className={`mt-10 px-5 py-4 text-2xl sm:text-1xl font-bold font-pixel text-blue-300 bg-glass hover:bg-pink-700 glow-border hover:shadow-neon transition-all rounded-lg neonEffect ${
-            playSignGlowing ? "glowing" : ""
-          }`}
-        >
-          <span className="play-text">
-            {gameLive.game_live ? "Play Now" : "Play"}
-          </span>
-        </button>
+        {context.token || localStorage.getItem("fictionary_frontend") ? (
+  gameLive.game_live ? (
+    <div className="play_now">
+      <Link to="/question" className="play">
+        PLAY NOW
+      </Link>
+    </div>
+  ) : (
+    <div className="time">
+      {true ? (
+        <div className="time-up">
+          <p className="arcade-text">
+            <div>
+              Fictionary has ended now!
+              <br />
+              But wait, that's not the end!
+              <br />
+              <br />
+              <br />
+              The decision is your own voice, an opinion is the echo of
+              someone else's voice: Choose the right one.
+              <br />
+              <br />
+              <br />
+              Reverberate. Coming Soon...
+            </div>
+          </p>
+        </div>
+      ) : (
+        <>
+          <Timer timer={timeoutDate} refresh={refresh} />
+          {new URLSearchParams(window.location.search).get("redirected") ===
+            "true" && (
+            <div className="game-not-live arcade-text">
+              The game is not live yet!
+            </div>
+          )}
+        </>
+      )}
+    </div>
+  )
+) : (
+  <>
+    <div className="ComSoon arcade-text">
+      
+      Coming Soon
+    </div>
+    <div className="landing-sign-wrapper">
+      <button className="landing-sign-in" onClick={handleGoogleLogin}>
+        
+        Sign In
+      </button>
+    </div>
+  </>
+)}
 
         <Footer className="footer" />
       </div>

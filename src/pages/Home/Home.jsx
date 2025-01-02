@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGoogleLogin } from "@react-oauth/google";
 import useContext from "../context/UserContext";
@@ -12,18 +12,39 @@ import bg from "/assets/bg.jpg";
 const Home = () => {
   const navigate = useNavigate();
   const context = useContext();
-  const [characterPosition, setCharacterPosition] = useState({ left: 0, top: 0 });
-  const [dialogue, setDialogue] = useState("Welcome, Player !");
+  const [characterPosition, setCharacterPosition] = useState({
+    left: 0,
+    top: 0,
+  });
+  const [dialogue, setDialogue] = useState("Welcome, Player!");
   const [playSignGlowing, setPlaySignGlowing] = useState(false);
   const [actionButtonGlow, setActionButtonGlow] = useState(false);
+  const [gameLive, setGameLive] = useState({
+    game_live: false,
+    time_up: true,
+    date: new Date(),
+  });
+
+  const refresh = useCallback(() => {
+    fetch(endpoints.CHECK_GAME_LIVE).then((res) => {
+      if (res.status === 200) {
+        res.json().then((serverResponse) => {
+          setGameLive((live) => ({ ...live, ...serverResponse }));
+        });
+      }
+    });
+  }, []);
 
   useEffect(() => {
-
     const token = context.token || localStorage.getItem("fictionary_frontend");
     if (token) {
-      navigate("/play"); 
+      if (gameLive.game_live) {
+        navigate("/play");
+      }
+    } else {
+      refresh();
     }
-  }, [context.token, navigate]);
+  }, [context.token, gameLive.game_live, navigate, refresh]);
 
   const handleGoogleLogin = useGoogleLogin({
     onSuccess: (tokenResponse) => {
@@ -60,7 +81,11 @@ const Home = () => {
 
   const handlePlayNow = () => {
     if (context.token || localStorage.getItem("fictionary_frontend")) {
-      navigate("/play");
+      if (gameLive.game_live) {
+        navigate("/play");
+      } else {
+        setDialogue("The game is not live yet!");
+      }
     } else {
       handleGoogleLogin();
     }
@@ -106,13 +131,8 @@ const Home = () => {
         <span></span>
         <span></span>
         <span></span>
-        <span></span>
       </div>
       <div className="stars">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
         <span></span>
         <span></span>
         <span></span>
@@ -146,14 +166,15 @@ const Home = () => {
         <h1 className="title text-neon-pink flicker font-operius text-3xl sm:text-4xl md:text-4xl lg:text-4xl xl:text-5xl">
           FICTIONARY
         </h1>
-
         <button
           onClick={handlePlayNow}
           className={`mt-10 px-5 py-4 text-2xl sm:text-1xl font-bold font-pixel text-blue-300 bg-glass hover:bg-pink-700 glow-border hover:shadow-neon transition-all rounded-lg neonEffect ${
             playSignGlowing ? "glowing" : ""
           }`}
         >
-          <span className="play-text">Play</span>
+          <span className="play-text">
+            {gameLive.game_live ? "Play Now" : "Check Back Later"}
+          </span>
         </button>
 
         <Footer className="footer" />

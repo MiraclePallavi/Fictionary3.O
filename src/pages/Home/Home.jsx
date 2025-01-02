@@ -173,7 +173,7 @@ const Home = () => {
           }`}
         >
           <span className="play-text">
-            {gameLive.game_live ? "Play Now" : "Check Back Later"}
+            {gameLive.game_live ? "Play Now" : "Play"}
           </span>
         </button>
 

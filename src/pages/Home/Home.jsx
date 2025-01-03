@@ -222,7 +222,7 @@ const Home = () => {
   </>
 )}
 
-        <Footer className="footer" />
+        <Footer className="footer mt-7" />
       </div>
     </div>
   );

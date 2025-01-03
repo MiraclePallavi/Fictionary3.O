@@ -198,8 +198,8 @@ const Question = () => {
     >
       {showIntro && (
         <div className="cinematic-intro justify-center items-center font-alagard">
-          <h1 className="text-white text-4xl md:text-4xl sm:text-2xl glow-effect">Welcome to Fictionary!</h1>
-          <p className="text-white text-2xl md:text-2xl sm:text-1xl mt-4">Get ready to challenge your mind...</p>
+          <h1 className="text-white xl:text-4xl md:text-4xl sm:text-2xl glow-effect">Welcome to Fictionary!</h1>
+          <p className="text-white xl:text-2xl md:text-2xl sm:text-1xl mt-4">Get ready to challenge your mind...</p>
         </div>
       )}
       <HintModal

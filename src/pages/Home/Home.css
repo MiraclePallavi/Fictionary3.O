@@ -162,6 +162,21 @@
     0 0 15px #ecf3c7, 
     0 0 20px rgba(252, 222, 33, 0.5); 
 }
+@keyframes slowPulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
 @keyframes flicker {
   0%, 18%, 22%, 25%, 53%, 57%, 100% {
     opacity: 1;

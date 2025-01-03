@@ -163,7 +163,7 @@ const Home = () => {
           <div className="speech-bubble">{dialogue}</div>
         </div>
 
-        <h1 className="title retro-arcade text-neon-blue flicker font-operius text-3xl sm:text-4xl md:text-4xl lg:text-4xl xl:text-5xl">
+        <h1 className="title text-neon-pink font-pixel flicker text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl">
           FICTIONARY
         </h1>
         {context.token || localStorage.getItem("fictionary_frontend") ? (

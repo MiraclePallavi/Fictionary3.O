@@ -168,7 +168,7 @@ const Home = () => {
         </h1>
         {context.token || localStorage.getItem("fictionary_frontend") ? (
   gameLive.game_live ? (
-    <div className="play_now">
+    <div className="play_now mt-7">
       <Link to="/question" className="play">
         PLAY NOW
       </Link>

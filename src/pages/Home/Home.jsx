@@ -163,7 +163,7 @@ const Home = () => {
           <div className="speech-bubble">{dialogue}</div>
         </div>
         <div class="retro-container">
-        <h1 className="flicker font-pixel sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl">
+        <h1 className="flicker font-pixel sm:text-4xl md:text-5xl lg:text-6xl xl:text-8xl">
           FICTIONARY
         </h1>
         </div>

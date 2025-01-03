@@ -209,7 +209,6 @@
 }
 
 .flicker {
-  font-size: 6rem; /* Larger font size for better visibility */
   color: #00ffcc; /* Bright neon color */
   animation: flicker 1.5s infinite alternate, glitch 0.5s infinite;
   text-transform: uppercase;

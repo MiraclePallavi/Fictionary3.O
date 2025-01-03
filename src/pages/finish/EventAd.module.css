@@ -80,3 +80,27 @@
     transform: translateY(-20px);
   }
 }
+.text-neon-pink{
+  color: #ff00ff; /* Bright pink color */
+  text-shadow: 
+    0 0 5px #c5ec45, 
+    0 0 10px #e5cce5, 
+    0 0 20px #eaea07, 
+    0 0 30px #f3f9be, 
+    0 0 40px #d2f645, 
+    0 0 50px #e3f639, 
+    0 0 60px #f3df7c;
+  font-weight: bold; /* Optional: makes the text stand out */
+}
+.text-neon-blue{
+  color: #00ffff; /* Bright neon blue color */
+  text-shadow: 
+    0 0 5px #00ffff, 
+    0 0 10px #00ffff, 
+    0 0 20px #00ffff, 
+    0 0 30px #00ffff, 
+    0 0 40px #00ffff, 
+    0 0 50px #00ffff, 
+    0 0 60px #00ffff;
+  font-weight: bold; /* Optional: emphasizes the text */
+}

@@ -163,7 +163,7 @@ const Home = () => {
           <div className="speech-bubble">{dialogue}</div>
         </div>
 
-        <h1 className="title text-neon-pink flicker font-operius text-3xl sm:text-4xl md:text-4xl lg:text-4xl xl:text-5xl">
+        <h1 className="title retro-arcade text-neon-blue flicker font-operius text-3xl sm:text-4xl md:text-4xl lg:text-4xl xl:text-5xl">
           FICTIONARY
         </h1>
         {context.token || localStorage.getItem("fictionary_frontend") ? (
@@ -211,7 +211,7 @@ const Home = () => {
   <>
     <div className="ComSoon arcade-text">
       
-      Coming Soon
+      {/*Coming Soon*/}
     </div>
     <div className="landing-sign-wrapper">
       <button className="landing-sign-in" onClick={handleGoogleLogin}>

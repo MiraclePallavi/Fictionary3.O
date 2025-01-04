@@ -39,7 +39,7 @@ const Home = () => {
     const token = context.token || localStorage.getItem("fictionary_frontend");
     if (token) {
       if (gameLive.game_live) {
-        navigate("/play");
+        navigate("/");
       }
     } else {
       refresh();
@@ -67,7 +67,7 @@ const Home = () => {
             .then((data) => {
               if (data.token) {
                 context.login(data.token);
-                navigate("/play");
+                navigate("/");
               }
             })
             .catch((error) => console.error("Backend login error:", error));
@@ -116,6 +116,7 @@ const Home = () => {
   }, []);
 
   return (
+
     <div
       className="bg-dark-blue h-screen flex flex-col relative"
       style={{
@@ -162,11 +163,12 @@ const Home = () => {
           />
           <div className="speech-bubble">{dialogue}</div>
         </div>
-        <div class="retro-container">
-        <h1 className="flicker font-pixel sm:text-4xl md:text-5xl lg:text-6xl xl:text-8xl">
-          FICTIONARY
-        </h1>
-        </div>
+        <div className="flex items-center justify-center">
+  <div className="sign font-pixel text-3xl md:text-5xl lg:text-6xl xl:text-8xl text-white">
+    <span className="fast-flicker">F</span>ICT<span className="fast-flicker">I</span>O
+    <span className="flicker">N</span>ARY
+  </div>
+</div>
         {context.token || localStorage.getItem("fictionary_frontend") ? (
   gameLive.game_live ? (
     <div className="play_now mt-7">
@@ -226,6 +228,7 @@ const Home = () => {
         <Footer className="footer mt-7" />
       </div>
     </div>
+   
   );
 };
 

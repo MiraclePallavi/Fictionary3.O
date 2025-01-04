@@ -10,33 +10,6 @@
 .character-sprite {
   animation: character-idle 2s infinite;
 }
-/* Keyframes for flicker effect */
-@keyframes flicker {
-  0% {
-    opacity: 1;
-  }
-  5% {
-    opacity: 0.8;
-  }
-  10% {
-    opacity: 1;
-  }
-  15% {
-    opacity: 0.6;
-  }
-  20% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.9;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-
-
 
 
 .play_now .play {
@@ -204,47 +177,192 @@
     0 0 30px #ff007f;
   color: #90e2eb;
 }
-.retro-container {
-  text-align: center;
+
+
+.sign {
+
+  width: 50%;
+  height: 50%;
+ 
+  transform: translate(-50%, -50%);
+  letter-spacing: 2;
+  display: inline-block;
+
+  text-transform: uppercase;
+  color: #ffe6ff;
+  text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
+    -0.2rem 0.1rem 1rem #a6edf9, 0.2rem 0.1rem 1rem #99dff7,
+    0 -0.5rem 2rem #4daef8, 0 0.5rem 3rem #59e0e4;
+  animation: shine 2s forwards, flicker 2s infinite;
+}
+
+@keyframes blink {
+  0%,
+  22%,
+  36%,
+  75% {
+    color: #ffe6ff;
+    text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
+      -0.2rem 0.1rem 1rem #51e8ee, 0.2rem 0.1rem 1rem #aeedf7,
+      0 -0.5rem 2rem #5fd3ed, 0 0.5rem 3rem #acd4f8;
+  }
+  28%,
+  33% {
+    color: #c4dce9;
+    text-shadow: none;
+  }
+  82%,
+  97% {
+    color: #cfd9e3;
+    text-shadow: none;
+  }
 }
 
 .flicker {
-  color: #00ffcc; /* Bright neon color */
-  animation: flicker 1.5s infinite alternate, glitch 0.5s infinite;
-  text-transform: uppercase;
+  animation: shine 2s forwards, blink 3s 2s infinite;
 }
-@keyframes flicker {
-  0%, 100% {
-    opacity: 1;
-    text-shadow: 
-      0 0 8px #00ffcc, 
-      0 0 16px #00ffcc, 
-      0 0 24px #00ffcc, 
-      0 0 32px #00ff99,
-      0 0 40px #00ff99,
-      0 0 50px #00ff99,
-      0 0 75px #00ff66;
+
+.fast-flicker {
+  animation: shine 2s forwards, blink 10s 1s infinite;
+}
+
+@keyframes shine {
+  0% {
+    color: #6b1839;
+    text-shadow: none;
   }
-  50% {
-    opacity: 0.9;
-    text-shadow: 
-      0 0 4px #00ffcc, 
-      0 0 8px #00ffcc, 
-      0 0 12px #00ffcc, 
-      0 0 16px #00ff99,
-      0 0 20px #00ff99,
-      0 0 30px #00ff99,
-      0 0 40px #00ff66;
+  100% {
+    color: #ffe6ff;
+    text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
+      -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd,
+      0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
   }
 }
 
-@keyframes glitch {
-  0% { transform: translate(0); }
-  20% { transform: translate(-1px, 1px); }
-  40% { transform: translate(1px, -1px); }
-  60% { transform: translate(-2px, 2px); }
-  80% { transform: translate(2px, -2px); }
-  100% { transform: translate(0); }
+@keyframes flicker {
+  from {
+    opacity: 1;
+  }
+
+  4% {
+    opacity: 0.9;
+  }
+
+  6% {
+    opacity: 0.85;
+  }
+
+  8% {
+    opacity: 0.95;
+  }
+
+  10% {
+    opacity: 0.9;
+  }
+
+  11% {
+    opacity: 0.922;
+  }
+
+  12% {
+    opacity: 0.9;
+  }
+
+  14% {
+    opacity: 0.95;
+  }
+
+  16% {
+    opacity: 0.98;
+  }
+
+  17% {
+    opacity: 0.9;
+  }
+
+  19% {
+    opacity: 0.93;
+  }
+
+  20% {
+    opacity: 0.99;
+  }
+
+  24% {
+    opacity: 1;
+  }
+
+  26% {
+    opacity: 0.94;
+  }
+
+  28% {
+    opacity: 0.98;
+  }
+
+  37% {
+    opacity: 0.93;
+  }
+
+  38% {
+    opacity: 0.5;
+  }
+
+  39% {
+    opacity: 0.96;
+  }
+
+  42% {
+    opacity: 1;
+  }
+
+  44% {
+    opacity: 0.97;
+  }
+
+  46% {
+    opacity: 0.94;
+  }
+
+  56% {
+    opacity: 0.9;
+  }
+
+  58% {
+    opacity: 0.9;
+  }
+
+  60% {
+    opacity: 0.99;
+  }
+
+  68% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 0.9;
+  }
+
+  72% {
+    opacity: 0.95;
+  }
+
+  93% {
+    opacity: 0.93;
+  }
+
+  95% {
+    opacity: 0.95;
+  }
+
+  97% {
+    opacity: 0.93;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 

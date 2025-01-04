@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import bg from "/assets/bg.jpg";
 import useContext from "../context/UserContext";
 import { useGoogleLogin } from "@react-oauth/google";
-
+import "../../index.css"
 export const handleGoogleLogin = () => {
   const form = document.createElement("form");
   form.method = "POST";
@@ -69,6 +69,21 @@ const Login = () => {
             backgroundRepeat: "no-repeat",
           }}
         >
+           <div className="shooting-stars">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div className="stars">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
     <div className="login-container">
       <div className="login-box">
         <h1 className="mb-2">Login</h1>

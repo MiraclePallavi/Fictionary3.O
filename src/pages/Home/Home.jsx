@@ -39,7 +39,7 @@ const Home = () => {
     const token = context.token || localStorage.getItem("fictionary_frontend");
     if (token) {
       if (gameLive.game_live) {
-        navigate("/play");
+        navigate("/");
       }
     } else {
       refresh();
@@ -67,7 +67,7 @@ const Home = () => {
             .then((data) => {
               if (data.token) {
                 context.login(data.token);
-                navigate("/play");
+                navigate("/");
               }
             })
             .catch((error) => console.error("Backend login error:", error));
@@ -82,7 +82,7 @@ const Home = () => {
   const handlePlayNow = () => {
     if (context.token || localStorage.getItem("fictionary_frontend")) {
       if (gameLive.game_live) {
-        navigate("/play");
+        navigate("/");
       } else {
         setDialogue("The game is not live yet!");
       }
@@ -172,7 +172,7 @@ const Home = () => {
         {context.token || localStorage.getItem("fictionary_frontend") ? (
   gameLive.game_live ? (
     <div className="play_now mt-7">
-      <Link to="/question" className="play">
+      <Link to="/question" className="play retro-btn">
         PLAY NOW
       </Link>
     </div>
@@ -216,8 +216,8 @@ const Home = () => {
       
       {/*Coming Soon*/}
     </div>
-    <div className="landing-sign-wrapper">
-      <button className="landing-sign-in" onClick={handleGoogleLogin}>
+    <div className="play_now mt-7">
+      <button className="play retro-btn" onClick={handleGoogleLogin}>
         
         Sign In
       </button>

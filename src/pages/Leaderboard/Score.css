@@ -1,7 +1,7 @@
 .score {
   font-family: "VT323", monospace;
   font-weight: 700;
-  font-size: 12vw; 
+  font-size: 27px; 
   font-style: normal;
   display: flex;
   align-items: center;
@@ -9,7 +9,7 @@
   background-color: rgba(20, 20, 20, 0.7);
   border-radius: 8px;
   letter-spacing: 5px;
-/*   padding: 1rem;  */
+  padding: 1rem; 
   width: 55%;
   min-width: 230px;
   max-width: 900px;

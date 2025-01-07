@@ -39,7 +39,7 @@ const Home = () => {
     const token = context.token || localStorage.getItem("fictionary_frontend");
     if (token) {
       if (gameLive.game_live) {
-        navigate("/");
+        navigate("/play");
       }
     } else {
       refresh();
@@ -67,7 +67,7 @@ const Home = () => {
             .then((data) => {
               if (data.token) {
                 context.login(data.token);
-                navigate("/");
+                navigate("/play");
               }
             })
             .catch((error) => console.error("Backend login error:", error));
@@ -82,7 +82,7 @@ const Home = () => {
   const handlePlayNow = () => {
     if (context.token || localStorage.getItem("fictionary_frontend")) {
       if (gameLive.game_live) {
-        navigate("/");
+        navigate("/play");
       } else {
         setDialogue("The game is not live yet!");
       }

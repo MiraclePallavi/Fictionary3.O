@@ -32,7 +32,7 @@ const RulesModal = ({ isOpen, onClose }) => {
               initial={{ x: -100, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: index * 0.2, duration: 0.5 }}
-              className="flex items-start space-x-2"
+              className="flex items-start space-x-2 text-start"
             >
               <span className="font-bold text-pink-500">{index + 1}.</span>
               <span>{rule}</span>

@@ -62,7 +62,7 @@ const PowerUpShop = () => {
   const cardItems =
     cards.cardList.length !== 0 ? (
       cards.cardList.map((card, index) => (
-        <PowerUpShopView key={index} card={card} refreshUpdateState={refreshUpdateState} />
+        <PowerUpShopView  card={card} refreshUpdateState={refreshUpdateState} />
       ))
     ) : (
       <p className="text-white text-lg font-pixel text-center">No Power-Ups Available</p>
@@ -71,7 +71,7 @@ const PowerUpShop = () => {
   return (
     <div className="shop-container bg-gradient-to-b from-blue-950 via-purple-950 to-black min-h-screen flex flex-col items-center p-8">
       <h1 className="xl:text-4xl sm:text-2xl md:text-3xl lg:text-3xl text-neon-pink flicker mb-4 font-arcade">Power-Up Shop</h1>
-      <h2 className="text-3xl text-neon-green mb-8 font-pixel">
+      <h2 className="xl:text-3xl sm:text-2xl md:text-3xl lg:text-3xl text-neon-green mb-8 font-pixel">
         Coins: <span className="text-neon-yellow">{userCoins}</span>
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-6xl justify-center items-center">

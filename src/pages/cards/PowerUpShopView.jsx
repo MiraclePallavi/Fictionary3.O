@@ -13,9 +13,8 @@ const PowerUpShopView = ({ card, refreshUpdateState }) => {
   const context = useContext();
 
   const checkAval = () => {
-    const isAvailable = card.aval_cards[card.index] === "1";
-    setAvailable(isAvailable);
-    console.log("CheckAval: ", isAvailable);
+    setAvailable(card.aval_cards[card.index] === '1');
+    console.log('CheckAval')
   };
 
 
@@ -26,7 +25,6 @@ const PowerUpShopView = ({ card, refreshUpdateState }) => {
       </div>
     ) : null;
   };
-
  
   const handleClick = () => {
     if (!available) {

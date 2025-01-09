@@ -6,7 +6,7 @@ import RulesModal from "../../pages/Rules/RulesModal";
 import useContext from "../../pages/context/UserContext";
 import { Link, useNavigate } from "react-router-dom";
 import endpoints from "../../utils/APIendpoints";
-
+import CloseIcon from '@mui/icons-material/Close';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -111,31 +111,45 @@ const Navbar = () => {
               <button onClick={handleLogout} className={styles.logoutButton}>LOG OUT</button>
             </li>
           </ul>
-
-          {/* Mobile menu */}
           {isOpen && (
-            <div ref={menuRef} className="fixed inset-0 bg-gray-900 bg-opacity-90 flex flex-col items-center justify-center xl:hidden z-50">
-              <ul className="flex flex-col space-y-12 mt-3 pt-7 text-1xl">
-                {["Play", "Leaderboard", "PowerUps", "PowerUpShop"].map((item, index) => (
-                  <li
-                    key={index}
-                    className={`text-blue-300 font-pixel text-1xl cursor-pointer mt-6 ${styles.neonEffect}`}
-                  >
-                    <Link to={`/${item.toLowerCase()}`} onClick={() => setIsOpen(false)}>
-                      {item}
-                    </Link>
-                  </li>
-                ))}
-                <li className={`text-blue-300 font-pixel text-1xl cursor-pointer ${styles.neonEffect}`} onClick={openModal}>
-                  Rules
-                </li>
-                <li className="text-xl text-pink-500 font-pixel py-2">
-                  <button onClick={handleLogout} className={styles.logoutButton}>LOG OUT</button>
-                </li>
-              </ul>
-            </div>
-          )}
-          
+  <div
+    ref={menuRef}
+    className="fixed inset-0 bg-gray-900 bg-opacity-90 flex flex-col items-center justify-center xl:hidden z-50"
+  >
+    {/* Cross Icon */}
+    <button
+      className="absolute top-5 right-5 text-white text-2xl focus:outline-none"
+      onClick={() => setIsOpen(false)}
+    >
+    <CloseIcon />
+    </button>
+
+    <ul className="flex flex-col space-y-12 mt-3 pt-7 text-1xl">
+      {["Play", "Leaderboard", "PowerUps", "PowerUpShop"].map((item, index) => (
+        <li
+          key={index}
+          className={`text-blue-300 font-pixel text-1xl cursor-pointer mt-6 ${styles.neonEffect}`}
+        >
+          <Link to={`/${item.toLowerCase()}`} onClick={() => setIsOpen(false)}>
+            {item}
+          </Link>
+        </li>
+      ))}
+      <li
+        className={`text-blue-300 font-pixel text-1xl cursor-pointer ${styles.neonEffect}`}
+        onClick={openModal}
+      >
+        Rules
+      </li>
+      <li className="text-xl text-pink-500 font-pixel py-2">
+        <button onClick={handleLogout} className={styles.logoutButton}>
+          LOG OUT
+        </button>
+      </li>
+    </ul>
+  </div>
+)}
+
           <RulesModal isOpen={isModalOpen} onClose={closeModal} />
         </nav>
       ) : (

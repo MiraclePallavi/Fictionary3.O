@@ -89,12 +89,12 @@ const Leaderboard = () => {
                "#00ffcc", // Neon green
                "#fffb00", // Electric yellow
                "#ff6f00", // Bright orange
-               "#0000ff", // Bold blue
+               "#0000ff", 
              ]}
            />
           </div>
         ) : leaderboard.length ? (
-          // If leaderboard data exists, map through and render it
+         
           leaderboard.map((elem, index) => (
             <Score
               className={`score ${

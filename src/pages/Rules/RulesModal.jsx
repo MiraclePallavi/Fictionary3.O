@@ -5,7 +5,8 @@ import "./RulesModal.css";
 // Rules data to be shared
 export const rulesData = [
   "Answering each question will award you 10 points",
-  "With every question answered, you earn coins. Coins can be redeemed against Power Ups in the Shop section",
+  "With every question answered, you earn coins.",
+  "Coins can be redeemed against Power Ups in the Shop section",
   "Each question's hint will be provided after a specific time displayed in the timer",
   "No negative scoring for wrong answers. This means you can try any question for an unlimited number of times",
 ];
@@ -25,7 +26,7 @@ const RulesModal = ({ isOpen, onClose }) => {
         <h2 className="text-pink-500 font-pixel text-2xl mb-4 glow">
           Game Rules
         </h2>
-        <ul className="text-blue-300 text-xl space-y-4 font-vt323">
+        <ul className="text-blue-300 text-1xl space-y-4 font-vt323">
           {rulesData.map((rule, index) => (
             <motion.li
               key={index}

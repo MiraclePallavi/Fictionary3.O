@@ -1,4 +1,6 @@
-
+body{
+  overflow-y: hidden;
+}
 .glowing {
   box-shadow: 0 0 20px #3b96f0, 0 0 40px #74d4f0, 0 0 60px #daedef;
 }
@@ -20,7 +22,7 @@
 .retro-btn {
   display: inline-block;
   padding: 10px 20px;
-  font-family: 'Press Start 2P', sans-serif; 
+  font-family: 'Press Start 2P', sans-serif; /* Use a pixel font */
   font-size: 16px;
   color: #00ffcc;
   text-decoration: none;

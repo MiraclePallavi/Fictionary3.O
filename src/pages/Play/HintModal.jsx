@@ -1,4 +1,4 @@
-import styles from "./HintModel.module.css";
+import styles from "./HintModal.module.css";
 import { useState, useEffect } from "react";
 import endpoints from "../../utils/APIendpoints";
 import useContext from "../context/UserContext";
@@ -15,35 +15,34 @@ export default function HintModal(props) {
         headers: {
           Authorization: `Token ${token}`,
         },
-      }).then((res) => {
-        res.json().then((serverResponse) => {
+      })
+        .then((res) => res.json())
+        .then((serverResponse) => {
           if (res.status === 200) {
             setLoaded(true);
             if (serverResponse.success) {
-              var clue = serverResponse.clue;
-              while (clue.indexOf("\n") > -1) {
-                clue = clue.replace("\n", "<br />");
-              }
+              let clue = serverResponse.clue.replace(/\n/g, "<br />");
               const start = clue.indexOf("__linkstart__");
               const end = clue.indexOf("__linkend__");
               if (start > -1 && end > -1) {
                 clue =
                   clue.slice(0, start) +
-                  '<a href="' +
-                  clue.slice(start + 13, end) +
-                  '" target="blank" class="neon-link">' +
+                  `<a href="${clue.slice(
+                    start + 13,
+                    end
+                  )}" target="_blank" class="${styles.neonLink}">` +
                   clue.slice(start + 13, end) +
                   "</a>" +
                   clue.slice(end + 11);
               }
               setClue(clue);
             } else {
-              setClue([serverResponse.message]);
+              setClue(serverResponse.message);
             }
           }
         });
-      });
     };
+
     setmodalOpen(props.open);
     setLoaded(false);
     if (props.open) {
@@ -52,7 +51,7 @@ export default function HintModal(props) {
   }, [props, token]);
 
   const handleClick = (evt) => {
-    if (evt.target !== document.getElementById("hintModalBox")) {
+    if (evt.target.id !== "hintModalBox") {
       setmodalOpen(false);
       props.onClose();
     }
@@ -61,20 +60,20 @@ export default function HintModal(props) {
   return (
     <div
       className={styles.hintModalOverlay}
-      style={{ display: modalOpen ? "block" : "none" }}
+      style={{ display: modalOpen ? "flex" : "none" }}
       onClick={handleClick}
     >
       <div id="hintModalBox" className={styles.hintModalBox}>
         {loaded ? (
           <>
-            <h2 className={`${styles.title} neon-text`}>Clue</h2>
+            <h2 className={`${styles.title} ${styles.neonText}`}>Clue</h2>
             <p
-              className={`${styles.clueText} neon-paragraph`}
+              className={`${styles.clueText} ${styles.neonParagraph}`}
               dangerouslySetInnerHTML={{ __html: clue }}
             ></p>
           </>
         ) : (
-          <h2 className={`${styles.title} neon-text`}>Loading...</h2>
+          <h2 className={`${styles.title} ${styles.neonText}`}>Loading...</h2>
         )}
       </div>
     </div>

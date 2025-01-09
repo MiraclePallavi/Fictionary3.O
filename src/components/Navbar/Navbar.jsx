@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback  } from "react";
 import { Menu, Close } from "@mui/icons-material";
 import { useGoogleLogin } from "@react-oauth/google";
 import styles from "./NavBar.module.css";

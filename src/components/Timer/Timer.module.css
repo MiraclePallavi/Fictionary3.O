@@ -1,28 +1,110 @@
-.timerBox {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #222;
-    padding: 10px;
-    border: 4px solid #f6ec5a;
-    border-radius: 8px;
-    box-shadow: 0 0 10px #dff48d;
-    width: fit-content;
-    margin: 0 auto;
-  }
+
+.clock {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Audiowide";
+  text-align: center;
+  letter-spacing: 0.1rem;
+  text-shadow: 0 0 20px #9b2805, 0 0 30px #9b2805, 0 0 40px #9b2805;
+  font-size: 80px;
+  color: #f2e0d6;
+  opacity: 0.9;
+  font-weight: bold;
+}
+
+.clock span{
+  /* margin: auto; */
+  /* display: flex;
+  justify-content: center;
+  align-items: center;
   
-  .timerText {
-    font-family: "Press Start 2P", sans-serif;
-    color: #f6ffa7;
-    font-size: 18px;
-    text-shadow: 0 0 5px #f6ec5a, 0 0 10px #dff48d;
-  }
+  text-align: center; */
+  font-size: 60px;
+  align-items: normal;
+}
+.element {
   
-  .timerValue {
-    font-family: "Press Start 2P", sans-serif;
-    color: #ff6e6e;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.element p {
+  margin: 0;
+}
+
+.element span {
+  font-size: 30px;
+}
+
+
+
+
+
+
+@media screen and (max-width: 1000px){
+
+  .clock{
+    color: #f2e0d6;
+     font-size: 70px;
+     font-weight: bold;
+  }
+  .element span {
+    font-size: 24px;
+  }
+}
+
+@media screen and (max-width: 800px){
+  .clock{
+    color: #f2e0d6;
+     font-size: 50px;
+     font-weight: bold;
+  }
+  .element span {
     font-size: 20px;
-    margin-left: 10px;
-    text-shadow: 0 0 5px #ff6e6e, 0 0 10px #ff6e6e;
   }
-  
+} 
+
+@media screen and (max-width: 650px){
+  .clock{
+    color: #f2e0d6;
+     font-size: 40px;
+     font-weight: bold;
+  }
+  .element span {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 480px){
+  .clock{
+    color: #f2e0d6;
+    font-size: 36px;
+    font-weight: bold;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .element span{
+    font-size: 16px;
+    display: block !important;
+  }
+  .clock span {
+    display: none;
+  }
+}
+
+/* @media screen and (max-width: 330px) {
+
+  .clock{
+    color: #f2e0d6;
+     font-size: 20px;
+     font-weight: bold
+
+  }
+  .element span{
+    font-size: 8px;
+  }
+} */

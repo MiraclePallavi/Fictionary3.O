@@ -9,6 +9,7 @@ import endpoints from "../../utils/APIendpoints";
 import "./Home.css";
 import bg from "/assets/bg.jpg";
 import { Link } from "react-router-dom";
+import Timer from "../../components/Timer/Timer";
 const Home = () => {
   const navigate = useNavigate();
   const context = useContext();
@@ -20,8 +21,8 @@ const Home = () => {
   const [playSignGlowing, setPlaySignGlowing] = useState(false);
   const [actionButtonGlow, setActionButtonGlow] = useState(false);
   const [gameLive, setGameLive] = useState({
-    game_live: true,
-    time_up: true,
+    game_live: false,
+    time_up: false,
     date: new Date(),
   });
 

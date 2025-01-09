@@ -202,7 +202,7 @@ const Question = () => {
       }}
     >
       {gameLive && showIntro && (
-      <div className="cinematic-intro justify-center items-center font-alagard">
+      <div className="cinematic-intro justify-center items-center font-alagard text-center">
         <h1 className="text-white xl:text-4xl md:text-4xl sm:text-2xl glow-effect">
           Welcome to Fictionary!
         </h1>

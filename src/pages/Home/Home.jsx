@@ -180,6 +180,16 @@ const Home = () => {
   ) : (
     <div className="time">
       {true ? (
+        <>
+          <Timer timer={timeoutDate} refresh={refresh} />
+          {new URLSearchParams(window.location.search).get("redirected") ===
+            "true" && (
+            <div className="game-not-live arcade-text">
+              The game is not live yet!
+            </div>
+          )}
+        </>
+      ): (
         <div className="time-up">
           <p className="arcade-text">
             <div>
@@ -198,16 +208,6 @@ const Home = () => {
             </div>
           </p>
         </div>
-      ) : (
-        <>
-          <Timer timer={timeoutDate} refresh={refresh} />
-          {new URLSearchParams(window.location.search).get("redirected") ===
-            "true" && (
-            <div className="game-not-live arcade-text">
-              The game is not live yet!
-            </div>
-          )}
-        </>
       )}
     </div>
   )

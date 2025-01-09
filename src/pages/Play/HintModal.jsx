@@ -1,7 +1,7 @@
 import styles from "./HintModel.module.css";
 import { useState, useEffect } from "react";
 import endpoints from "../../utils/APIendpoints";
-import useContext from "../../utils/Context";
+import useContext from "../context/UserContext";
 
 export default function HintModal(props) {
   const [modalOpen, setmodalOpen] = useState(props.open);

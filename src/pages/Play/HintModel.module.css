@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 .rules1 {
   display: flex;
   justify-content: center;
@@ -14,10 +15,12 @@
   z-index: 11000;
   backdrop-filter: blur(4px); /* Slight blur for the retro arcade glow */
   animation: fadeIn 0.5s ease-in-out; /* Smooth fade-in animation */
+  font-family: 'Orbitron', sans-serif;
 }
 
 /* Main modal container */
 .modal {
+  font-family: 'Orbitron', sans-serif;
   background: linear-gradient(135deg, #ff00cc, #8000ff); /* Neon purple-pink gradient */
   border: 3px solid #f2e0d6;
   backdrop-filter: blur(12px);

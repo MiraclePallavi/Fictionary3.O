@@ -7,13 +7,31 @@ import useContext from "../../pages/context/UserContext";
 import { Link, useNavigate } from "react-router-dom";
 import endpoints from "../../utils/APIendpoints";
 import CloseIcon from '@mui/icons-material/Close';
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  
   const menuRef = useRef(null);
   const toggleButtonRef = useRef(null);
   const context = useContext();
   const navigate = useNavigate();
+  const [gameLive, setGameLive] = useState({
+      game_live: false,
+      time_up: false,
+      date: new Date(),
+    });
+  useEffect(() => {
+    const token = context.token || localStorage.getItem("fictionary_frontend");
+    if (token) {
+      if (gameLive.game_live) {
+       setGameLive(true)
+      }
+    } else {
+      refresh();
+    }
+  }, [context.token, gameLive.game_live, navigate, refresh]
+);
 
   const handleGoogleLogin = useGoogleLogin({
     onSuccess: (tokenResponse) => {
@@ -95,11 +113,20 @@ const Navbar = () => {
 
           {/* Desktop menu */}
           <ul className="hidden xl:flex space-x-8 mt-4">
-            {["Play", "Leaderboard", "PowerUps", "PowerUpShop"].map((item, index) => (
+            {["Play", "Leaderboard"].map((item, index) => (
               <li
                 key={index}
                 className={`text-blue-300 font-pixel text-xl cursor-pointer ${styles.neonEffect}`}
                 style={{ animationDelay: `${index * 0.2}s` }}
+              >
+                <Link to={`/${item.toLowerCase()}`}>{item}</Link>
+              </li>
+            ))}
+           
+            {gameLive && ["PowerUps", "PowerUpShop"].map((item, index) => (
+              <li
+                key={index}
+                className={`text-blue-300 font-pixel text-xl cursor-pointer ${styles.neonEffect}`}
               >
                 <Link to={`/${item.toLowerCase()}`}>{item}</Link>
               </li>
@@ -112,43 +139,52 @@ const Navbar = () => {
             </li>
           </ul>
           {isOpen && (
-  <div
-    ref={menuRef}
-    className="fixed inset-0 bg-gray-900 bg-opacity-90 flex flex-col items-center justify-center xl:hidden z-50"
-  >
-    {/* Cross Icon */}
-    <button
-      className="absolute top-5 right-5 text-white text-2xl focus:outline-none"
-      onClick={() => setIsOpen(false)}
-    >
-    <CloseIcon />
-    </button>
+            <div
+              ref={menuRef}
+              className="fixed inset-0 bg-gray-900 bg-opacity-90 flex flex-col items-center justify-center xl:hidden z-50"
+            >
+              <button
+                className="absolute top-5 right-5 text-white text-2xl focus:outline-none"
+                onClick={() => setIsOpen(false)}
+              >
+                <CloseIcon />
+              </button>
 
-    <ul className="flex flex-col space-y-12 mt-3 pt-7 text-1xl">
-      {["Play", "Leaderboard", "PowerUps", "PowerUpShop"].map((item, index) => (
-        <li
-          key={index}
-          className={`text-blue-300 font-pixel text-1xl cursor-pointer mt-6 ${styles.neonEffect}`}
-        >
-          <Link to={`/${item.toLowerCase()}`} onClick={() => setIsOpen(false)}>
-            {item}
-          </Link>
-        </li>
-      ))}
-      <li
-        className={`text-blue-300 font-pixel text-1xl cursor-pointer ${styles.neonEffect}`}
-        onClick={openModal}
-      >
-        Rules
-      </li>
-      <li className="text-xl text-pink-500 font-pixel py-2">
-        <button onClick={handleLogout} className={styles.logoutButton}>
-          LOG OUT
-        </button>
-      </li>
-    </ul>
-  </div>
-)}
+              <ul className="flex flex-col space-y-12 mt-3 pt-7 text-1xl">
+                {["Play", "Leaderboard"].map((item, index) => (
+                  <li
+                    key={index}
+                    className={`text-blue-300 font-pixel text-1xl cursor-pointer mt-6 ${styles.neonEffect}`}
+                  >
+                    <Link to={`/${item.toLowerCase()}`} onClick={() => setIsOpen(false)}>
+                      {item}
+                    </Link>
+                  </li>
+                ))}
+                {gameLive && ["PowerUps", "PowerUpShop"].map((item, index) => (
+                  <li
+                    key={index}
+                    className={`text-blue-300 font-pixel text-1xl cursor-pointer mt-6 ${styles.neonEffect}`}
+                  >
+                    <Link to={`/${item.toLowerCase()}`} onClick={() => setIsOpen(false)}>
+                      {item}
+                    </Link>
+                  </li>
+                ))}
+                <li
+                  className={`text-blue-300 font-pixel text-1xl cursor-pointer ${styles.neonEffect}`}
+                  onClick={openModal}
+                >
+                  Rules
+                </li>
+                <li className="text-xl text-pink-500 font-pixel py-2">
+                  <button onClick={handleLogout} className={styles.logoutButton}>
+                    LOG OUT
+                  </button>
+                </li>
+              </ul>
+            </div>
+          )}
 
           <RulesModal isOpen={isModalOpen} onClose={closeModal} />
         </nav>

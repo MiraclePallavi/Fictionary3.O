@@ -1,14 +1,32 @@
 import React, { useState } from "react";
 import  "./EventAd.module.css";
 import bgImage from "/assets/bg.jpg";
+import "../../index.css"
 const GameFinished = () => {
   const [gameOver, setGameOver] = useState(true); 
 
   return (
     <div
       className={`relative h-screen w-full flex flex-col items-center justify-center arcadeBackground`}
-      style={{ backgroundImage: `url(${bgImage})` }}
+      style={{ backgroundImage: `url(${bgImage})`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat", }}
     >
+      <div className="shooting-stars">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div className="stars">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
      
           <h1 className="xl:text-6xl  lg:text-5xl sm:text-3xl md:text-4xl font-bold text-neon-red flicker mb-4 font-pixel">
             GAME OVER

@@ -79,7 +79,7 @@ const Home = () => {
       console.error("Login failed:", error);
     },
   });
-
+  const timeoutDate = useMemo(() => gameLive.date, [gameLive]);
   const handlePlayNow = () => {
     if (context.token || localStorage.getItem("fictionary_frontend")) {
       if (gameLive.game_live) {

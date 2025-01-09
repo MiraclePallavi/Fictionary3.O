@@ -1,4 +1,6 @@
-
+body{
+    overflow-y: auto;
+  }
 .cards{
     font-family: 'Orbitron', sans-serif;
 }

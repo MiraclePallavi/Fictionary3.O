@@ -1,43 +1,58 @@
-.modal {
-    background: rgba(19, 16, 189, 0.4);
-    border: 3px solid #f2e0d6;
-    backdrop-filter: blur(16px);
-    border-radius: 24px;
-    align-items: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    min-width: 50vw;
-    padding: 16px 24px;
-    opacity: 4;
-  }
-  .h2 {
-    font-family: "Oxanium";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 40px;
-    line-height: 60px;
-    color: #ffffff;
-    text-align: center;
-  }
-  .p {
-    font-family: "Oxanium";
-    font-style: normal;
-    /* font-weight: 700; */
-    font-size: 18px;
-    line-height: 20px;
-  
-    color: #ffffff;
-  }
-  .rules1 {
-    align-items: center;
-    position: fixed;
-    top: 0%;
-    left: 0%;
-    width: 100%;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.4);
-    z-index: 11000;
-    backdrop-filter: blur(2px);
-  }
+
+.hintModalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9); /* Dark overlay */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.hintModalBox {
+  background: linear-gradient(135deg, #000428, #004e92); /* Retro gradient */
+  border: 3px solid #00ffcc; /* Neon border */
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 0 30px #00ffcc, 0 0 10px #ff6f00;
+  width: 80%;
+  max-width: 500px;
+  text-align: center;
+  font-family: "Press Start 2P", sans-serif; /* Retro arcade font */
+}
+
+.title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.clueText {
+  font-size: 16px;
+  color: #fffb00;
+  line-height: 1.6;
+}
+
+.neon-text {
+  color: #ffffff;
+  text-shadow: 0 0 8px #00ffcc, 0 0 15px #ff6f00;
+}
+
+.neon-paragraph {
+  color: #00ffcc;
+  text-shadow: 0 0 5px #fffb00, 0 0 10px #ff6f00;
+}
+
+.neon-link {
+  color: #ff00e4;
+  text-decoration: none;
+  text-shadow: 0 0 5px #ff00e4, 0 0 15px #ff6f00;
+}
+
+.neon-link:hover {
+  color: #ff6f00;
+  text-shadow: 0 0 10px #fffb00, 0 0 20px #ff6f00;
+}

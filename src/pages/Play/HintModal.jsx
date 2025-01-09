@@ -31,7 +31,7 @@ export default function HintModal(props) {
                   clue.slice(0, start) +
                   '<a href="' +
                   clue.slice(start + 13, end) +
-                  '" target="blank">' +
+                  '" target="blank" class="neon-link">' +
                   clue.slice(start + 13, end) +
                   "</a>" +
                   clue.slice(end + 11);
@@ -50,31 +50,32 @@ export default function HintModal(props) {
       getClue();
     }
   }, [props, token]);
+
   const handleClick = (evt) => {
     if (evt.target !== document.getElementById("hintModalBox")) {
       setmodalOpen(false);
       props.onClose();
     }
   };
+
   return (
     <div
-      className={styles.rules1}
+      className={styles.hintModalOverlay}
       style={{ display: modalOpen ? "block" : "none" }}
       onClick={handleClick}
     >
-      <div id="hintModalBox" className={styles.modal}>
-        {(() => {
-          if (loaded) {
-            return (
-              <>
-                <h2 className={styles.h2}>Clue</h2>
-                <p className={styles.p} dangerouslySetInnerHTML={{__html: clue}}></p>
-              </>
-            );
-          } else {
-            return <h2 className={styles.h2}>Loading...</h2>;
-          }
-        })()}
+      <div id="hintModalBox" className={styles.hintModalBox}>
+        {loaded ? (
+          <>
+            <h2 className={`${styles.title} neon-text`}>Clue</h2>
+            <p
+              className={`${styles.clueText} neon-paragraph`}
+              dangerouslySetInnerHTML={{ __html: clue }}
+            ></p>
+          </>
+        ) : (
+          <h2 className={`${styles.title} neon-text`}>Loading...</h2>
+        )}
       </div>
     </div>
   );

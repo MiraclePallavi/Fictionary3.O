@@ -2,7 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
-
+body{
+  overflow-y: auto;
+}
 .arcade-container {
   display: flex;
   justify-content: center;

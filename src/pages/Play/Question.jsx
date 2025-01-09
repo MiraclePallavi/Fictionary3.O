@@ -89,6 +89,7 @@ const Question = () => {
       });
     });
   };
+  const [gameLive, setGameLive] = useState(true); // New state for game live status
 
   const getQuestion = () => {
     setState({ ...state, loaded: false });
@@ -109,12 +110,14 @@ const Question = () => {
       })
       .then((res) => {
         if (res.game_not_live) {
+          setGameLive(false); // Set gameLive to false if the game is not live
           navigate("/?redirected=true");
         } else if (res.gameOver) {
           navigate("/game-finished");
         } else {
           clearInterval(timer);
           updateHint();
+          setGameLive(true); // Set gameLive to true if the game is live
           setState({
             question: res,
             loaded: true,
@@ -182,9 +185,11 @@ const Question = () => {
 
   useEffect(() => {
     getQuestion();
-    const introTimer = setTimeout(() => setShowIntro(false), 5000);
-    return () => clearTimeout(introTimer);
-  }, [context.token]);
+    if (gameLive) {
+      const introTimer = setTimeout(() => setShowIntro(false), 4000);
+      return () => clearTimeout(introTimer);
+    }
+  }, [context.token, gameLive]);
 
   return (
     <div
@@ -196,12 +201,16 @@ const Question = () => {
         backgroundRepeat: "no-repeat",
       }}
     >
-      {showIntro && (
-        <div className="cinematic-intro justify-center items-center font-alagard">
-          <h1 className="text-white xl:text-4xl md:text-4xl sm:text-2xl glow-effect">Welcome to Fictionary!</h1>
-          <p className="text-white xl:text-2xl md:text-2xl sm:text-1xl mt-4">Get ready to challenge your mind...</p>
-        </div>
-      )}
+      {gameLive && showIntro && (
+      <div className="cinematic-intro justify-center items-center font-alagard">
+        <h1 className="text-white xl:text-4xl md:text-4xl sm:text-2xl glow-effect">
+          Welcome to Fictionary!
+        </h1>
+        <p className="text-white xl:text-2xl md:text-2xl sm:text-1xl mt-4">
+          Get ready to challenge your mind...
+        </p>
+      </div>
+    )}
       <HintModal
         open={hintModalOpen}
         onClose={() => {

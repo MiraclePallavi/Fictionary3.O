@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import "./HintCountDown.css";
 export default function HintCountDown({ time, id }) {
   const [hintCountdown, setHintCountdown] = useState(time);
   const [intervalId, setIntervalId] = useState([0]);
@@ -30,12 +30,7 @@ export default function HintCountDown({ time, id }) {
   seconds = seconds < 10 ? "0" + seconds : seconds;
   return hintCountdown ? (
     <span
-      style={{
-        textAlign: "center",
-        fontSize: "x-large",
-        margin: "12px 0",
-      }}
-    >
+    className="hint" >
       Hint available in <br /> {minutes + "m " + seconds + "s"}
     </span>
   ) : (

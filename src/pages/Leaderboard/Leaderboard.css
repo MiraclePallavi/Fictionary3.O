@@ -2,7 +2,9 @@
   font-family: 'myFont';
   src: url(/assets/alagard.ttf); 
 }
-
+body{
+  overflow: auto;
+}
 .leaderboardHeader {
  position: relative;
  color: #00FFCC; 

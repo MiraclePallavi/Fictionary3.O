@@ -23,14 +23,14 @@ const PowerUpShopView = ({ card, refreshUpdateState }) => {
       <div className="relative z-10 mt-4 text-center text-red-500 animate-pulse">
         Not Available
       </div>
-    ) : null;
+    ) : <div>Aval</div>;
   };
  
   const handleClick = () => {
-    if (!available) {
-      console.log("asdf");
-      return; 
-    }
+    // if (!available) {
+    //   console.log("asdf");
+    //   return; 
+    // }
 
     fetch(ENDPOINTS.CHANGE_CARD_STATUS, {
       method: "POST",

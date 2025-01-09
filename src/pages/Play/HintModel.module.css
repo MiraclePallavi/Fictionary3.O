@@ -1,54 +1,93 @@
-
-.hintModalOverlay {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  min-width: 70vw;
-  background-color: rgba(0, 0, 0, 0.8); /* Dim background */
+.rules1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(
+    rgba(0, 0, 50, 0.9),
+    rgba(10, 10, 60, 0.7)
+  ); /* Dark overlay with a hint of neon blue */
+  z-index: 11000;
+  backdrop-filter: blur(4px); /* Slight blur for the retro arcade glow */
+  animation: fadeIn 0.5s ease-in-out; /* Smooth fade-in animation */
 }
 
-.hintModalBox {
-  background-color: #1e1e1e; /* Dark background for modal */
+/* Main modal container */
+.modal {
+  background: linear-gradient(135deg, #ff00cc, #8000ff); /* Neon purple-pink gradient */
+  border: 3px solid #f2e0d6;
+  backdrop-filter: blur(12px);
+  border-radius: 24px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  max-width: 80vw; /* Responsive width */
+  min-width: 300px;
+  max-height: 90vh; /* Prevent modal from overflowing */
+  overflow-y: auto; /* Scroll for overflowing content */
+  padding: 24px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  animation: popIn 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Retro pop-in animation */
+}
+
+/* Heading style */
+.h2 {
+  font-family: "Oxanium", sans-serif; /* Retro-styled font */
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 1.2;
+  color: #00ffcc; /* Neon teal color */
+  text-align: center;
+  text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc; /* Neon glow effect */
+  margin-bottom: 16px;
+  animation: glowPulse 2s infinite alternate; /* Subtle glow effect */
+}
+
+/* Paragraph style */
+.p {
+  font-family: "Oxanium", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.6;
   color: #ffffff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  max-width: 90%; /* Responsive width */
-  width: 500px; /* Default width */
-  max-height: 80vh; /* Prevent overflowing */
-  overflow-y: auto; /* Scroll if content exceeds max height */
-  text-align: center; /* Center content within box */
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  text-align: center;
 }
 
-.title {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-.clueText {
-  font-size: 1.5vw;
-  line-height: 1.5;
+@keyframes popIn {
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
 }
 
-.neon-text {
-  color: #00ffcc; /* Neon green color */
-  text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc;
-}
-
-.neon-paragraph {
-  color: #f0f0f0; /* Softer neon for paragraphs */
-}
-
-.neon-link {
-  color: #ff00cc; /* Neon pink for links */
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.neon-link:hover {
-  text-decoration: underline;
+@keyframes glowPulse {
+  from {
+    text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 30px #00ffcc;
+  }
+  to {
+    text-shadow: 0 0 20px #00ffcc, 0 0 40px #00ffcc, 0 0 50px #00ffcc;
+  }
 }

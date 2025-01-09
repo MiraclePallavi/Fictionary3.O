@@ -1,4 +1,4 @@
-import styles from "./HintModal.module.css";
+import styles from "./HintModel.module.css";
 import { useState, useEffect } from "react";
 import endpoints from "../../utils/APIendpoints";
 import useContext from "../context/UserContext";

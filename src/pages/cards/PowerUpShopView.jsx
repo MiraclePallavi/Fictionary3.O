@@ -20,10 +20,8 @@ const PowerUpShopView = ({ card, refreshUpdateState }) => {
 
   const handleAvalText = () => {
     return !available ? (
-      <div className="relative z-10 mt-4 text-center text-red-500 animate-pulse">
-        Not Available
-      </div>
-    ) : <div>Aval</div>;
+      <></>
+    ) : <> </>;
   };
  
   const handleClick = () => {
@@ -54,18 +52,15 @@ const PowerUpShopView = ({ card, refreshUpdateState }) => {
 
   useEffect(checkAval, [card, isClicked]);
 
-  return (
+  if(!available){return (
     <div
-      className={`p-6 max-w-sm rounded-lg shadow-lg text-white relative cards ${
-        available ? "hover:shadow-green" : "hover:shadow-red"
-      }`}
+      className={`p-6 max-w-sm rounded-lg shadow-lg text-white relative cards`}
       onClick={handleClick}
       style={{
         backgroundImage: `url(${powercard})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         height: "370px",
-        cursor: available ? "pointer" : "not-allowed",
       }}
     >
       <div className="absolute inset-0 bg-black bg-opacity-50 rounded-lg">
@@ -81,7 +76,11 @@ const PowerUpShopView = ({ card, refreshUpdateState }) => {
         {handleAvalText()}
       </div>
     </div>
-  );
+  );} else {
+    return (
+      <></>
+    )
+  }
 };
 
 export default PowerUpShopView;

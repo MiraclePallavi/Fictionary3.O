@@ -16,6 +16,15 @@ const Navbar = () => {
   const toggleButtonRef = useRef(null);
   const context = useContext();
   const navigate = useNavigate();
+  const refresh = useCallback(() => {
+    fetch(endpoints.CHECK_GAME_LIVE).then((res) => {
+      if (res.status === 200) {
+        res.json().then((serverResponse) => {
+          setGameLive((live) => ({ ...live, ...serverResponse }));
+        });
+      }
+    });
+  }, []);
   const [gameLive, setGameLive] = useState({
       game_live: false,
       time_up: false,

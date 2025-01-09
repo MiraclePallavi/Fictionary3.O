@@ -143,17 +143,7 @@ const Home = () => {
       </div>
 
       <div className="flex-grow flex flex-col items-center justify-center pb-5 z-10">
-       
-        <div className="flex items-center justify-center">
-  <div className="sign font-pixel text-3xl md:text-5xl lg:text-6xl xl:text-8xl text-white">
-    <span className="fast-flicker">F</span>ICT<span className="fast-flicker">I</span>O
-    <span className="flicker">N</span>ARY
-  </div>
-</div>
-        {context.token || localStorage.getItem("fictionary_frontend") ? (
-  gameLive.game_live ? (
-    <div className="play_now mt-7">
-       <div
+        <div
           className="character-container"
           style={{
             position: "absolute",
@@ -174,6 +164,15 @@ const Home = () => {
           />
           <div className="speech-bubble">{dialogue}</div>
         </div>
+        <div className="flex items-center justify-center">
+  <div className="sign font-pixel text-3xl md:text-5xl lg:text-6xl xl:text-8xl text-white">
+    <span className="fast-flicker">F</span>ICT<span className="fast-flicker">I</span>O
+    <span className="flicker">N</span>ARY
+  </div>
+</div>
+        {context.token || localStorage.getItem("fictionary_frontend") ? (
+  gameLive.game_live ? (
+    <div className="play_now mt-7">
       <Link to="/question" className="play retro-btn">
         PLAY NOW
       </Link>

@@ -18,17 +18,17 @@ const PowerUpShopView = ({ card, refreshUpdateState }) => {
   };
 
 
-  let handleAvalText = () => {
-    if(available){
-        return(<></>
-        )
-    } else {
-        return(<></>)
-    }
-}
+  const handleAvalText = () => {
+    return !available ? (
+      <div className="relative z-10 mt-4 text-center text-red-500 animate-pulse">
+        Not Available
+      </div>
+    ) : null;
+  };
  
   const handleClick = () => {
     if (!available) {
+      console.log("asdf");
       return; 
     }
 
@@ -54,34 +54,34 @@ const PowerUpShopView = ({ card, refreshUpdateState }) => {
 
   useEffect(checkAval, [card, isClicked]);
 
-     if(!available){
-      return (
-          <div  className={`p-6 max-w-sm rounded-lg shadow-lg text-white relative cards ${
-            available ? "hover:shadow-green" : "hover:shadow-red"
-          }`}onClick={handleClick}
-          style={{
-            backgroundImage: `url(${powercard})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            height: "370px",
-            cursor: available ? "pointer" : "not-allowed",
-          }}>
-              <div className="relative z-10 text-xl font-arcade uppercase mb-4 text-center mt-12">
-                  {card.text}
-              </div>
-              <div className="relative z-10 text-md mb-2 text-center ml-7 mr-7">
-                  {card.desc}
-              </div>
-              <div className="relative z-10 text-lg font-bold text-center">
-                  Coins : {card.coins}
-              </div>
-              {handleAvalText()}
-          </div>
-      )
-  } else {
-      return (<></>)
-  }
-  
+  return (
+    <div
+      className={`p-6 max-w-sm rounded-lg shadow-lg text-white relative cards ${
+        available ? "hover:shadow-green" : "hover:shadow-red"
+      }`}
+      onClick={handleClick}
+      style={{
+        backgroundImage: `url(${powercard})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        height: "370px",
+        cursor: available ? "pointer" : "not-allowed",
+      }}
+    >
+      <div className="absolute inset-0 bg-black bg-opacity-50 rounded-lg">
+        <div className="relative z-10 text-xl font-arcade uppercase mb-4 text-center mt-12">
+          {card.text}
+        </div>
+        <div className="relative z-10 text-md mb-2 text-center ml-7 mr-7">
+          {card.desc}
+        </div>
+        <div className="relative z-10 text-lg font-bold text-center">
+          Coins: {card.coins}
+        </div>
+        {handleAvalText()}
+      </div>
+    </div>
+  );
 };
 
 export default PowerUpShopView;

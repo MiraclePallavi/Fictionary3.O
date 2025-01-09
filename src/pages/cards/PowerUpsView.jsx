@@ -12,13 +12,12 @@ const PowerUpsViews = ({ card, refreshUpdateState }) => {
   const navigate = useNavigate();
   const context = useContext();
 
-  // Check if the card is available
+
   const checkAval = () => {
     setAvailable(card.aval_cards[card.index] === "1");
     console.log("CheckAval");
   };
 
-  // Handle click event
   const handleClick = () => {
     fetch(ENDPOINTS.CHANGE_CARD_STATUS, {
       method: "POST",

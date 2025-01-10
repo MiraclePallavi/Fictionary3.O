@@ -21,9 +21,9 @@
 /* Main modal container */
 .modal {
   font-family: 'Orbitron', sans-serif;
-  background: linear-gradient(135deg, #ff00cc, #8000ff); /* Neon purple-pink gradient */
+  background: linear-gradient(135deg, #e99dd8, #b382e3); /* Neon purple-pink gradient */
   border: 3px solid #f2e0d6;
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(20px);
   border-radius: 24px;
   position: fixed;
   top: 50%;
@@ -89,7 +89,7 @@
 
 @keyframes glowPulse {
   from {
-    text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 30px #00ffcc;
+    text-shadow: 0 0 10px #cce0dc, 0 0 20px #dfeeeb, 0 0 30px #eefcf9;
   }
   to {
     text-shadow: 0 0 20px #00ffcc, 0 0 40px #00ffcc, 0 0 50px #00ffcc;

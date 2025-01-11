@@ -132,7 +132,7 @@ const Navbar = () => {
               </li>
             ))}
            
-            {gameLive && ["PowerUps", "PowerUpShop"].map((item, index) => (
+            {gameLive && ["PowerUps", "PowerUpShop","Updates"].map((item, index) => (
               <li
                 key={index}
                 className={`text-blue-300 font-pixel text-xl cursor-pointer ${styles.neonEffect}`}
@@ -170,7 +170,7 @@ const Navbar = () => {
                     </Link>
                   </li>
                 ))}
-                {gameLive && ["PowerUps", "PowerUpShop"].map((item, index) => (
+                {gameLive && ["PowerUps", "PowerUpShop","Updates"].map((item, index) => (
                   <li
                     key={index}
                     className={`text-blue-300 font-pixel text-1xl cursor-pointer mt-6 ${styles.neonEffect}`}

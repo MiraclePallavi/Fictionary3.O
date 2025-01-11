@@ -14,6 +14,7 @@ import PowerUpShop from "./pages/cards/PowerUpShop";
 import Question from "./pages/Play/Question";
 import Navbar from "./components/Navbar/Navbar";
 import GameFinished from "./pages/finish/game-finished";
+import Updates from "./pages/cards/Updates";
 const App = () => {
   return (
     <Router>
@@ -28,6 +29,7 @@ const App = () => {
 
   <Route path="/powerupshop" element={<PowerUpShop />} />
   <Route path="/game-finished" element={<GameFinished />} />
+  <Route path="/updates" element={<Updates />} />
   <Route path="*" element={<div>404 - Page Not Found</div>} />
 
 </Routes>

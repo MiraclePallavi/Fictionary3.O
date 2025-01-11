@@ -48,8 +48,7 @@
 
 .loginButton,
 .logoutButton {
-  padding: 6px 12px;
-  font-size: 1rem;
+  padding: 5px 10px;
   border: 2px solid #ff007f;
   background-color: transparent;
   color: #00ffff;

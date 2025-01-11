@@ -12,7 +12,7 @@ export default {
         'sm': '14px',
         'base': '16px',
         'lg': '20px',
-        'xl': '15px',
+        'xl': '16px',
       },
       boxShadow: {
         green: "0 0 10px 4px rgba(0, 255, 0, 0.8)",

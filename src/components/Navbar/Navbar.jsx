@@ -110,7 +110,7 @@ const Navbar = () => {
   return (
     <>
       {context.token || localStorage.getItem("fictionary_frontend") ? (
-        <nav className="bg-gray-900 py-4 px-8 flex justify-between items-center border-b-4 border-pink-500">
+        <nav className="bg-gray-900 py-3 px-8 flex justify-between items-center border-b-4 border-pink-500">
           <Link to="/">
             <div className={`${styles.flickering} text-pink-500 cursor-pointer font-operius text-2xl sm:text-1xl md:text-2xl lg:text-3xl xl:text-3xl`}>
               FICTIONARY
@@ -153,7 +153,7 @@ const Navbar = () => {
               className="fixed inset-0 bg-gray-900 bg-opacity-90 flex flex-col items-center justify-center xl:hidden z-50"
             >
               <button
-                className="absolute top-5 right-5 text-white text-2xl focus:outline-none"
+                className="absolute top-5 right-5 text-white text-1xl"
                 onClick={() => setIsOpen(false)}
               >
                 <CloseIcon />

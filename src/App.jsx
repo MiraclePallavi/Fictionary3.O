@@ -14,6 +14,7 @@ import PowerUpShop from "./pages/cards/PowerUpShop";
 import Question from "./pages/Play/Question";
 import Navbar from "./components/Navbar/Navbar";
 import GameFinished from "./pages/finish/game-finished";
+
 import Updates from "./pages/cards/Updates";
 const App = () => {
   return (

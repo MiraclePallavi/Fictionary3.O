@@ -46,6 +46,7 @@ const Updates = () => {
   }, [token]);
 
   return (
+
     <div
       className="bg-dark-blue min-h-screen flex flex-col"
       style={{
@@ -56,8 +57,8 @@ const Updates = () => {
         backgroundRepeat: "no-repeat",
       }}
     >
-
-      <div className="leaderboard-container">
+    
+    <div className="leaderboard-container">
         <div className="shooting-stars">
           <span></span>
           <span></span>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./Updates.css"; // Updated CSS file for gaming updates
+import "./Updates.css"; 
 import UpdatePoint from "./UpdatePoint";
 
 import endpoints from "../../utils/APIendpoints";
@@ -37,7 +37,7 @@ const Updates = () => {
         }
       })
       .catch((error) => {
-        console.error("Error fetching leaderboard:", error);
+        console.error("Error fetching updates:", error);
       });
   };
 
@@ -57,21 +57,7 @@ const Updates = () => {
       }}
     >
       <div className="leaderboard-container">
-      <div className="shooting-stars">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-
-      {/* Twinkling Stars */}
-      <div className="stars">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+     
         <div className="leaderboardItems">
           <h1 className="leaderboardHeader" data-text="Gaming Updates">
             <span>Updates Feed</span>

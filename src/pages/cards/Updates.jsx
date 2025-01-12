@@ -59,7 +59,7 @@ const Updates = () => {
       <div className="leaderboard-container">
      
         <div className="leaderboardItems">
-          <h1 className="leaderboardHeader" data-text="Gaming Updates">
+          <h1 className="leaderboardHeader sm:text-2xl " data-text="Gaming Updates">
             <span>Updates Feed</span>
           </h1>
           {leaderboard.length !== 0 ? (

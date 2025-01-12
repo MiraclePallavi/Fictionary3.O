@@ -110,14 +110,14 @@ const Question = () => {
       })
       .then((res) => {
         if (res.game_not_live) {
-          setGameLive(false); // Set gameLive to false if the game is not live
+          setGameLive(false); 
           navigate("/?redirected=true");
         } else if (res.gameOver) {
           navigate("/game-finished");
         } else {
           clearInterval(timer);
           updateHint();
-          setGameLive(true); // Set gameLive to true if the game is live
+          setGameLive(true); 
           setState({
             question: res,
             loaded: true,

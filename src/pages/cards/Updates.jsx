@@ -5,12 +5,13 @@ import UpdatePoint from "./UpdatePoint";
 import endpoints from "../../utils/APIendpoints";
 import { useNavigate } from "react-router-dom";
 import { ColorRing } from "react-loader-spinner";
-import useContext from "../context/UserContext";
+import useContext from "../context/UserContext"; 
+
 import bg from "/assets/bg.jpg";
 import "../../index.css"
 const Updates = () => {
   const [leaderboard, setLeaderboard] = useState([]);
-  const { token } = useContext(UserContext);
+  const { token } = useContext(useContext);
   const navigate = useNavigate();
 
   const getLeaderboard = () => {

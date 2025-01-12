@@ -4,7 +4,10 @@ import endpoints from "../../utils/APIendpoints";
 import { useNavigate } from "react-router-dom";
 import PowerUpsViews from "./PowerUpsView";
 import "./PowerUpShopView.css";
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
+import "./GamingToast.css";
 const PowerUps = () => {
   const [cards, setCards] = useState([]); 
   const [isLoading, setIsLoading] = useState(true); 
@@ -42,8 +45,18 @@ const PowerUps = () => {
     }
   };
   const showCardRedeemedAlert = (cardDescription) => {
-    alert(`You have redeemed: ${cardDescription}`);
+    toast(`🕹️ Power-Up Unlocked: ${cardDescription} ⚡`, {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      icon: "🎮", 
+      className: "gaming-toast", 
+    });
   };
+  
   const getUserCoins = async () => {
     try {
       const response = await fetch(endpoints.GET_USER_COINS, {
@@ -99,6 +112,8 @@ const PowerUps = () => {
  
 
   return (
+    <>
+    
     <div className="bg-gradient-to-b from-blue-950 via-purple-950 to-black min-h-screen flex flex-col items-center p-8 ">
       <h1 className="text-3xl font-arcade text-yellow-400 mb-4 font-expo">
         PowerUps Available
@@ -107,6 +122,8 @@ const PowerUps = () => {
         {cardItems}
       </div>
     </div>
+    <ToastContainer />
+    </>
   );
 };
 

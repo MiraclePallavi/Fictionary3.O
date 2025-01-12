@@ -1,0 +1,37 @@
+.gaming-toast {
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    color: #00ffcc; 
+    font-family: "Press Start 2P", cursive; 
+    font-size: 0.9rem;
+    border: 3px solid #00ffcc;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+    text-shadow: 0px 0px 5px #00ffcc, 0px 0px 10px #00ffcc;
+  }
+  
+  .gaming-toast svg {
+    fill: #00ffcc !important; 
+  }
+  
+  .Toastify__close-button {
+    color: #ff0080 !important; 
+  }
+  
+  .Toastify__progress-bar {
+    background: linear-gradient(90deg, #00ffcc, #ff0080); 
+    animation: progressBarGlow 2s infinite;
+  }
+  
+ 
+  @keyframes progressBarGlow {
+    0% {
+      box-shadow: 0 0 10px #00ffcc;
+    }
+    50% {
+      box-shadow: 0 0 20px #ff0080;
+    }
+    100% {
+      box-shadow: 0 0 10px #00ffcc;
+    }
+  }
+  

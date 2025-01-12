@@ -5,13 +5,12 @@ import { useNavigate } from "react-router-dom";
 import ENDPOINTS from "../../utils/APIendpoints";
 import powercard from "/assets/powercard.jpg";
 
-const PowerUpsViews = ({ card, refreshUpdateState }) => {
+const PowerUpsViews = ({ card, refreshUpdateState, onCardRedeemed }) => {
   const [isClicked, setIsClicked] = useState(false);
   const [available, setAvailable] = useState(false);
 
   const navigate = useNavigate();
   const context = useContext();
-
 
   const checkAval = () => {
     setAvailable(card.aval_cards[card.index] === "1");
@@ -23,7 +22,9 @@ const PowerUpsViews = ({ card, refreshUpdateState }) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Token ${context.token || localStorage.getItem("fictionary_token")}`,
+        Authorization: `Token ${
+          context.token || localStorage.getItem("fictionary_token")
+        }`,
       },
       body: JSON.stringify({ index: card.index, coins: card.coins }),
     })
@@ -31,7 +32,10 @@ const PowerUpsViews = ({ card, refreshUpdateState }) => {
       .then(() => {
         console.log("Button clicked");
         console.log(card.coins);
-        refreshUpdateState();
+        refreshUpdateState(); 
+        if (onCardRedeemed) {
+          onCardRedeemed(card.desc); // Call parent function to show alert
+        }
       });
 
     setIsClicked(!isClicked);
@@ -41,7 +45,6 @@ const PowerUpsViews = ({ card, refreshUpdateState }) => {
     checkAval();
   }, [card, isClicked]);
 
- 
   if (!available) return null;
 
   return (

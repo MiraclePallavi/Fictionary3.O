@@ -17,7 +17,7 @@ const PowerUps = () => {
 
   const navigate = useNavigate();
   const context = useContext();
-
+  
   const getCards = async () => {
     setIsLoading(true); 
     try {
@@ -41,7 +41,9 @@ const PowerUps = () => {
       setIsLoading(false); 
     }
   };
-
+  const showCardRedeemedAlert = (cardDescription) => {
+    alert(`You have redeemed: ${cardDescription}`);
+  };
   const getUserCoins = async () => {
     try {
       const response = await fetch(endpoints.GET_USER_COINS, {
@@ -79,7 +81,12 @@ const PowerUps = () => {
   } else if (cards.length > 0) {
   
     cardItems = cards.map((card, index) => (
-      <PowerUpsViews key={index} card={card} refreshUpdateState={refreshUpdateState} />
+      <PowerUpsViews
+       key={index} 
+       card={card} 
+       refreshUpdateState={refreshUpdateState}
+       onCardRedeemed={showCardRedeemedAlert} 
+       />
     ));
   } else {
     
@@ -89,6 +96,7 @@ const PowerUps = () => {
       </div>
     );
   }
+ 
 
   return (
     <div className="bg-gradient-to-b from-blue-950 via-purple-950 to-black min-h-screen flex flex-col items-center p-8 ">

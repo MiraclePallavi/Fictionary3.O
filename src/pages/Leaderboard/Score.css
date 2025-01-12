@@ -1,7 +1,7 @@
 .score {
   font-family: "VT323", monospace;
   font-weight: 700;
-  font-size: 27px; 
+  font-size: 30px; 
   font-style: normal;
   display: flex;
   align-items: center;
@@ -78,7 +78,7 @@
 
 @media (max-width: 800px) {
   .score-name, .score-points, .score-rank {
-    font-size: 8px; 
+    font-size: 10px; 
   }
   .profile-picture {
     width: 20px; 
@@ -87,7 +87,7 @@
 }
 @media (max-width: 800px) {
   .score-name, .score-points, .score-rank {
-    font-size: 1rem; 
+    font-size: 1.2rem; 
   }
   .profile-picture {
     width: 30px; 

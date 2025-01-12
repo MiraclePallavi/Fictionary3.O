@@ -1,4 +1,7 @@
 /* General Page Styling */
+body{
+    overflow-y: hidden;
+}
 .bg-dark-blue {
     background-color: #0d0d25;
     color: #f2e0d6;
@@ -15,6 +18,9 @@
     background: rgba(13, 13, 37, 0.8);
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+
   }
   
   /* Header */
@@ -73,8 +79,7 @@
     color: #ff3333;
     text-shadow: 0 0 8px #ff3333;
   }
-  
-  /* Animations */
+
   @keyframes fadeIn {
     from {
       opacity: 0;

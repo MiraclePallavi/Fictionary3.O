@@ -57,6 +57,21 @@ const Updates = () => {
       }}
     >
       <div className="leaderboard-container">
+      <div className="shooting-stars">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      {/* Twinkling Stars */}
+      <div className="stars">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
         <div className="leaderboardItems">
           <h1 className="leaderboardHeader" data-text="Gaming Updates">
             <span>Updates Feed</span>
@@ -66,9 +81,9 @@ const Updates = () => {
               <UpdatePoint
                 key={elem.id || index}
                 text={elem.update_text}
-                player={elem.player} // Include player name
-                points={elem.points} // Include points
-                isIncrease={elem.isIncrease} // Indicate if points increased
+                player={elem.player} 
+                points={elem.points}
+                isIncrease={elem.isIncrease} 
               />
             ))
           ) : (

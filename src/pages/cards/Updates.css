@@ -1,0 +1,88 @@
+/* General Page Styling */
+.bg-dark-blue {
+    background-color: #0d0d25;
+    color: #f2e0d6;
+    font-family: 'Press Start 2P', cursive; /* Retro gaming font */
+  }
+  
+  /* Leaderboard Container */
+  .leaderboard-container {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 800px;
+    border: 2px solid #f2e0d6;
+    border-radius: 10px;
+    background: rgba(13, 13, 37, 0.8);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(5px);
+  }
+  
+  /* Header */
+  .leaderboardHeader {
+    font-size: 2rem;
+    color: #f2e0d6;
+    text-align: center;
+    position: relative;
+    text-shadow: 0 0 8px #f2e0d6, 0 0 15px #ff99cc;
+    margin-bottom: 20px;
+  }
+  
+  /* Update Feed Items */
+  .leaderboardItems {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  /* Individual Update Point */
+  .score {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #151540;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid #f2e0d6;
+    color: #f2e0d6;
+    font-size: 1rem;
+    animation: fadeIn 0.5s ease-in-out;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Player Name */
+  .score .player {
+    font-weight: bold;
+    color: #00ff99;
+    text-shadow: 0 0 5px #00ff99;
+  }
+  
+  /* Points Section */
+  .score .points {
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .points.increase {
+    color: #00ff00;
+    text-shadow: 0 0 8px #00ff00;
+  }
+  
+  .points.decrease {
+    color: #ff3333;
+    text-shadow: 0 0 8px #ff3333;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  

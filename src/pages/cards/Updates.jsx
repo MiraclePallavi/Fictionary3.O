@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import "../Leaderboard/Leaderboard.css";
+import "./Updates.css"; // Updated CSS file for gaming updates
 import UpdatePoint from "./UpdatePoint";
 
 import endpoints from "../../utils/APIendpoints";
 import { useNavigate } from "react-router-dom";
 import { ColorRing } from "react-loader-spinner";
-import useContext from "../context/UserContext"; 
+import useContext from "../context/UserContext";
 
 import bg from "/assets/bg.jpg";
-import "../../index.css"
+
 const Updates = () => {
   const [leaderboard, setLeaderboard] = useState([]);
   const { token } = useContext(useContext);
@@ -46,7 +46,6 @@ const Updates = () => {
   }, [token]);
 
   return (
-
     <div
       className="bg-dark-blue min-h-screen flex flex-col"
       style={{
@@ -57,20 +56,19 @@ const Updates = () => {
         backgroundRepeat: "no-repeat",
       }}
     >
-    
-    <div className="leaderboard-container">
-       
-
+      <div className="leaderboard-container">
         <div className="leaderboardItems">
-          <h1 className="leaderboardHeader" data-text="Update Feed">
+          <h1 className="leaderboardHeader" data-text="Gaming Updates">
             <span>Updates Feed</span>
           </h1>
           {leaderboard.length !== 0 ? (
             leaderboard.map((elem, index) => (
               <UpdatePoint
-                className="score"
+                key={elem.id || index}
                 text={elem.update_text}
-                key={elem.id || index} 
+                player={elem.player} // Include player name
+                points={elem.points} // Include points
+                isIncrease={elem.isIncrease} // Indicate if points increased
               />
             ))
           ) : (

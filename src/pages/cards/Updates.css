@@ -33,7 +33,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
     gap: 15px;
   }
   
@@ -60,7 +59,7 @@
   
  
   .scoreUpdate .points {
-    font-size: 1.2rem;
+    font-size: 1 rem;
     display: flex;
     align-items: center;
     gap: 5px;

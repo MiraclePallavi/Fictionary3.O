@@ -56,10 +56,10 @@ const Updates = () => {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className="leaderboard-container">
+      <div className="update-container">
      
-        <div className="leaderboardItems">
-          <h1 className="leaderboardHeader sm:text-2xl " data-text="Gaming Updates">
+        <div className="updateItems">
+          <h1 className="updateHeader sm:text-2xl " data-text="Gaming Updates">
             <span>Updates Feed</span>
           </h1>
           {leaderboard.length !== 0 ? (

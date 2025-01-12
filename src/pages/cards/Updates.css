@@ -9,7 +9,7 @@ body{
   }
   
 
-  .leaderboard-container {
+  .update-container {
     margin: 20px auto;
     padding: 20px;
     max-width: 800px;
@@ -25,14 +25,14 @@ body{
   }
   
 
-  .leaderboardHeader {
+  .updateHeader {
     color: #f2e0d6;
     text-align: center;
     position: relative;
     text-shadow: 0 0 8px #f2e0d6, 0 0 15px #ff99cc;
     margin-bottom: 20px;
   }
-  .leaderboardItems {
+  .updateItems {
     display: flex;
     flex-direction: column;
     justify-content: center;

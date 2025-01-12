@@ -6,10 +6,13 @@ import endpoints from "../../utils/APIendpoints";
 import { useNavigate } from "react-router-dom";
 import { ColorRing } from "react-loader-spinner";
 import useContext from "../context/UserContext";
+import bg from "/assets/bg.jpg";
+import "../../index.css"
 const Updates = () => {
   const [leaderboard, setLeaderboard] = useState([]);
-  const token = useContext().token;
+  const { token } = useContext(UserContext);
   const navigate = useNavigate();
+
   const getLeaderboard = () => {
     fetch(endpoints.GET_UPDATES, {
       headers: {
@@ -17,53 +20,85 @@ const Updates = () => {
           token || localStorage.getItem("fictionary_token")
         }`,
       },
-    }).then((res) => {
-      if (res.status === 401) {
-        navigate("/signin?redirected=true");
-      } else {
-        res.json().then((res) => {
-          if (res.game_not_live) {
-            navigate("/?redirected=true");
-          } else {
-            setLeaderboard(res.updates);
-            console.log(res.updates);
-          }
-        });
-      }
-    });
+    })
+      .then((res) => {
+        if (res.status === 401) {
+          navigate("/signin?redirected=true");
+          return null;
+        }
+        return res.json();
+      })
+      .then((res) => {
+        if (res?.game_not_live) {
+          navigate("/?redirected=true");
+        } else if (res?.updates) {
+          setLeaderboard(res.updates);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching leaderboard:", error);
+      });
   };
 
+  useEffect(() => {
+    getLeaderboard();
+  }, [token]);
 
-  useEffect(getLeaderboard, [token]);
   return (
-    <>
-      <div className="leaderboardItems">
-        <h1 className="leaderboardHeader" data-text="Leaderboard"><span>Leaderboard</span></h1>
-        {leaderboard.length !== 0 ? (
-          <>
-            {leaderboard.map((elem, index) => (
+    <div
+      className="bg-dark-blue min-h-screen flex flex-col"
+      style={{
+        height: "100vh",
+        backgroundImage: `url(${bg})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+
+      <div className="leaderboard-container">
+        <div className="shooting-stars">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div className="stars">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <div className="leaderboardItems">
+          <h1 className="leaderboardHeader" data-text="Update Feed">
+            <span>Updates Feed</span>
+          </h1>
+          {leaderboard.length !== 0 ? (
+            leaderboard.map((elem, index) => (
               <UpdatePoint
                 className="score"
                 text={elem.update_text}
-                key={index}
+                key={elem.id || index} 
               />
-            ))}
-          </>
-        ) : (
-          <div className="loader">
-            <ColorRing
-              visible={true}
-              height="135"
-              width="135"
-              ariaLabel="blocks-loading"
-              wrapperStyle={{}}
-              wrapperClass="blocks-wrapper"
-              colors={["#f2e0d6", "#f2e0d6", "#f2e0d6", "#f2e0d6", "#f2e0d6"]}
-            />
-          </div>
-        )}
+            ))
+          ) : (
+            <div className="loader">
+              <ColorRing
+                visible={true}
+                height="135"
+                width="135"
+                ariaLabel="blocks-loading"
+                wrapperStyle={{}}
+                wrapperClass="blocks-wrapper"
+                colors={["#f2e0d6", "#f2e0d6", "#f2e0d6", "#f2e0d6", "#f2e0d6"]}
+              />
+            </div>
+          )}
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 

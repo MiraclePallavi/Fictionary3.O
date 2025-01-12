@@ -45,7 +45,7 @@ const PowerUps = () => {
     }
   };
   const showCardRedeemedAlert = (cardDescription) => {
-    toast(`🕹️ Power-Up Unlocked: ${cardDescription} ⚡`, {
+    toast(`🕹️ Power-Up Used: ${cardDescription} ⚡`, {
       position: "top-center",
       autoClose: 3000,
       hideProgressBar: true,

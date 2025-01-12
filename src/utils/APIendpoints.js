@@ -16,6 +16,7 @@ const endpoints = {
     CARDS: BASE_URL + '/api/cards/',
     CHANGE_CARD_STATUS: BASE_URL + '/api/change-card-status/',
     GET_USER_COINS: BASE_URL + '/api/get-user-coins/',
+     GET_UPDATES: BASE_URL + '/api/get-updates/'
 }
 
 export default endpoints;

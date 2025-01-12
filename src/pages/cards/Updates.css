@@ -40,7 +40,7 @@
   }
   
  
-  .score {
+  .scoreUpdate {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -54,14 +54,14 @@
     box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
   }
 
-  .score .player {
+  .scoreUpdate .player {
     font-weight: bold;
     color: #00ff99;
     text-shadow: 0 0 5px #00ff99;
   }
   
  
-  .score .points {
+  .scoreUpdate .points {
     font-size: 1.2rem;
     display: flex;
     align-items: center;

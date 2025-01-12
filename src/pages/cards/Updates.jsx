@@ -59,19 +59,7 @@ const Updates = () => {
     >
     
     <div className="leaderboard-container">
-        <div className="shooting-stars">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div className="stars">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
+       
 
         <div className="leaderboardItems">
           <h1 className="leaderboardHeader" data-text="Update Feed">

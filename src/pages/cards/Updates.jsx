@@ -47,7 +47,7 @@ const Updates = () => {
 
   return (
     <div
-      className="bg-dark-blue min-h-screen flex flex-col"
+      className="min-h-screen bg-dark-update-blue flex flex-col"
       style={{
         height: "100vh",
         backgroundImage: `url(${bg})`,

@@ -1,13 +1,11 @@
-.bg-dark-blue {
-  background-color: rgba(155, 155, 166, 0.6); /* Semi-transparent dark blue */
-  color: #f2e0d6; /* Text color */
-  font-family: 'Press Start 2P', cursive;
-  backdrop-filter: blur(10px); /* Adds the glassy effect */
-  -webkit-backdrop-filter: blur(10px); /* For Safari support */
-  border: 1px solid rgba(255, 255, 255, 0.2); /* Optional: border for a polished look */
-  border-radius: 10px; /* Optional: rounded corners */
-  padding: 20px; /* Optional: space inside the element */
-}
+
+.bg-dark-update-blue {
+    background-color: #0d0d25;
+    color: #f2e0d6;
+    font-family: 'Press Start 2P', cursive;
+  }
+  
+
   .update-container {
     margin: 20px auto;
     padding: 20px;

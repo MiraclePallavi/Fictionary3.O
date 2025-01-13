@@ -55,18 +55,15 @@ const Updates = () => {
         <span>Updates Feed</span>
       </h1>
       {leaderboard.length !== 0 ? (
-        <div className="data-box-container">
-          {leaderboard.map((elem, index) => (
-            <div key={elem.id || index} className="data-box">
-              <UpdatePoint
-                text={elem.update_text}
-                player={elem.player}
-                points={elem.points}
-                isIncrease={elem.isIncrease}
-              />
-            </div>
-          ))}
-        </div>
+        leaderboard.map((elem, index) => (
+          <UpdatePoint
+            key={elem.id || index}
+            text={elem.update_text}
+            player={elem.player}
+            points={elem.points}
+            isIncrease={elem.isIncrease}
+          />
+        ))
       ) : (
         <div className="loader">
           <ColorRing
@@ -82,6 +79,8 @@ const Updates = () => {
       )}
     </div>
   </div>
+  
+
     
   );
 };

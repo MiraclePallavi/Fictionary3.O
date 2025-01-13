@@ -89,7 +89,7 @@ const Question = () => {
       });
     });
   };
-  const [gameLive, setGameLive] = useState(true); // New state for game live status
+  const [gameLive, setGameLive] = useState(true);
 
   const getQuestion = () => {
     setState({ ...state, loaded: false });

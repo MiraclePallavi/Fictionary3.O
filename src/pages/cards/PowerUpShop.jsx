@@ -9,10 +9,11 @@ const PowerUpShop = () => {
   const [cards, setCards] = useState({ cardList: [], loaded: true });
   const [userCoins, setUserCoins] = useState(0);
   const [updateState, setUpdateState] = useState(false);
-
+  const [gameLive, setGameLive] = useState(true);
   const refreshUpdateState = () => {
     setUpdateState(!updateState);
   };
+
 
   const navigate = useNavigate();
   const context = useContext();
@@ -28,12 +29,18 @@ const PowerUpShop = () => {
       if (res.status === 401) {
         context.logout();
         navigate("/signin?redirected=true");
+        return;
       }
       res.json().then((res) => {
-        setCards({
-          cardList: res.cards,
-          loaded: true,
-        });
+        if (res.game_not_live) {
+          setGameLive(false);
+          navigate("/?redirected=true");
+        } else {
+          setCards({
+            cardList: res.cards,
+            loaded: true,
+          });
+        }
       });
     });
   };
@@ -47,6 +54,7 @@ const PowerUpShop = () => {
       if (res.status === 401) {
         context.logout();
         navigate("/sign-in?redirected=true");
+        return;
       }
       res.json().then((res) => {
         setUserCoins(res.coins);
@@ -55,9 +63,13 @@ const PowerUpShop = () => {
   };
 
   useEffect(() => {
-    getCards();
-    getUserCoins();
-  }, [context.token, updateState]);
+    if (gameLive) {
+      getCards();
+      getUserCoins();
+    } else {
+      navigate("/?redirected=true");
+    }
+  }, [context.token, updateState, gameLive]);
 
   const cardItems =
     cards.cardList.length !== 0 ? (

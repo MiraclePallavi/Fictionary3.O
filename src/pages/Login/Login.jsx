@@ -69,21 +69,7 @@ const Login = () => {
             backgroundRepeat: "no-repeat",
           }}
         >
-           <div className="shooting-stars">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <div className="stars">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-
+           
     <div className="login-container">
       <div className="login-box">
         <h1 className="mb-2">Login</h1>

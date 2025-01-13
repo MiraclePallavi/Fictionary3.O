@@ -38,11 +38,11 @@ const SocialLinks = () => {
         <YouTubeIcon style={{ color: "red" }} /> 
       </a>
       <a
-  href="https://www.debsocnitdgp.in/"
+  href="https://www.debsocnitdgp.com/"
   target="_blank"
   rel="noopener noreferrer"
   onClick={handleClick}
-  className={styles["social-icon"]} // Apply the same class as others
+  className={styles["social-icon"]}
 >
   <img src={logo} alt="ds-logo" />
 </a>

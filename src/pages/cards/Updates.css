@@ -5,19 +5,39 @@
     font-family: 'Press Start 2P', cursive;
   }
   
-
   .update-container {
     margin: 20px auto;
     padding: 20px;
     max-width: 800px;
-
     border: 2px solid #f2e0d6;
     border-radius: 10px;
-    background: rgba(13, 13, 37, 0.8);
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    background: transparent;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3), 0 0 25px #f39c12, 0 0 35px #f39c12;
     backdrop-filter: blur(5px);
+    display: flex;
     justify-content: center;
-    align-items: center;  
+    align-items: center;
+    font-family: 'Press Start 2P', cursive;
+    color: #f7d716; /* Retro neon yellow text */
+    text-shadow: 0 0 5px #f7d716, 0 0 10px #f39c12, 0 0 15px #e67e22;
+    animation: neon-border-glow 2s infinite alternate;
+  }
+  
+  /* Add a pulsing animation to the border for the neon glow */
+  @keyframes neon-border-glow {
+    0% {
+      box-shadow: 0 0 10px #f7d716, 0 0 20px #f39c12, 0 0 30px #e67e22;
+    }
+    100% {
+      box-shadow: 0 0 20px #f7d716, 0 0 30px #f39c12, 0 0 40px #e67e22;
+    }
+  }
+  
+  /* Optional: Add hover effect for more interaction */
+  .update-container:hover {
+    transform: scale(1.02);
+    transition: transform 0.2s ease-in-out;
+    box-shadow: 0 0 25px #f7d716, 0 0 35px #f39c12, 0 0 45px #e67e22;
   }
   
 
@@ -34,7 +54,7 @@
     justify-content: center;
     align-items: center;
     gap: 15px;
-    
+    font-family: 'Press Start 2P', cursive;
 
   }
   
@@ -64,6 +84,7 @@
     display: flex;
     align-items: center;
     gap: 5px;
+    font-family: 'Press Start 2P', cursive;
   }
   
   .points.increase {

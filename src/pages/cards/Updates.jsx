@@ -46,6 +46,7 @@ const Updates = () => {
   }, [token]);
 
   return (
+    <div className="bg-gradient-to-b from-blue-950 via-purple-950 to-black min-h-screen flex flex-col items-center ">
     <div className="update-container">
     <div className="updateItems">
       <h1
@@ -79,7 +80,7 @@ const Updates = () => {
       )}
     </div>
   </div>
-  
+  </div>
 
     
   );

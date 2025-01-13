@@ -1,9 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-
-
-
-
 import Leaderboard from "./pages/Leaderboard/Leaderboard";
 
 import Home from "./pages/Home/Home";
@@ -23,7 +19,6 @@ const App = () => {
     
   <Route path="/" element={<Home />} />
   <Route path="/play" element={<Question />} />
- 
   <Route path="/sign-in" element={<Login />} />
   <Route path="/leaderboard" element={<Leaderboard />} />
   <Route path="/powerups" element={<PowerUps />} />

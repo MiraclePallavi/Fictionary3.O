@@ -34,9 +34,18 @@
     justify-content: center;
     align-items: center;
     gap: 15px;
+    max-height: 90vh; 
+  overflow-y: auto; 
+
   }
   
- 
+  .updateItems::-webkit-scrollbar {
+    width: 0; 
+    display: none; 
+  }
+  .updateItems {
+    scrollbar-width: none; 
+  }
   .scoreUpdate {
     display: flex;
     justify-content: space-between;

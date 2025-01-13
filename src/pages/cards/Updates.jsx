@@ -56,37 +56,37 @@ const Updates = () => {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className="update-container">
-     
-        <div className="updateItems">
-          <h1 className="updateHeader sm:text-2xl " data-text="Gaming Updates">
-            <span>Updates Feed</span>
-          </h1>
-          {leaderboard.length !== 0 ? (
-            leaderboard.map((elem, index) => (
-              <UpdatePoint
-                key={elem.id || index}
-                text={elem.update_text}
-                player={elem.player} 
-                points={elem.points}
-                isIncrease={elem.isIncrease} 
-              />
-            ))
-          ) : (
-            <div className="loader">
-              <ColorRing
-                visible={true}
-                height="135"
-                width="135"
-                ariaLabel="blocks-loading"
-                wrapperStyle={{}}
-                wrapperClass="blocks-wrapper"
-                colors={["#f2e0d6", "#f2e0d6", "#f2e0d6", "#f2e0d6", "#f2e0d6"]}
-              />
-            </div>
-          )}
-        </div>
+     <div className="update-container">
+  <div className="updateItems">
+    <h1 className="updateHeader sm:text-2xl" data-text="Gaming Updates">
+      <span>Updates Feed</span>
+    </h1>
+    {leaderboard.length !== 0 ? (
+      leaderboard.map((elem, index) => (
+        <UpdatePoint
+          key={elem.id || index}
+          text={elem.update_text}
+          player={elem.player}
+          points={elem.points}
+          isIncrease={elem.isIncrease}
+        />
+      ))
+    ) : (
+      <div className="loader">
+        <ColorRing
+          visible={true}
+          height="135"
+          width="135"
+          ariaLabel="blocks-loading"
+          wrapperStyle={{}}
+          wrapperClass="blocks-wrapper"
+          colors={["#f2e0d6", "#f2e0d6", "#f2e0d6", "#f2e0d6", "#f2e0d6"]}
+        />
       </div>
+    )}
+  </div>
+</div>
+
     </div>
   );
 };

@@ -38,7 +38,7 @@ const Home = () => {
 
   useEffect(() => {
     const token = context.token || localStorage.getItem("fictionary_frontend");
-    if (gameLive.gameOver) {
+    if (gameLive.time_up) {
       navigate("/game-finished");
     } else if (token && gameLive.game_live) {
       navigate("/play");

@@ -34,7 +34,7 @@ const Leaderboard = () => {
           });
         }
       })
-      .finally(() => setLoading(false)); // Set loading to false when the fetch is complete
+      .finally(() => setLoading(false)); 
   };
 
   useEffect(() => {
@@ -85,10 +85,10 @@ const Leaderboard = () => {
              ariaLabel="loading"
              wrapperClass="spinner"
              colors={[
-               "#ff00e4", // Vibrant pink
-               "#00ffcc", // Neon green
-               "#fffb00", // Electric yellow
-               "#ff6f00", // Bright orange
+               "#ff00e4", 
+               "#00ffcc", 
+               "#fffb00", 
+               "#ff6f00",
                "#0000ff", 
              ]}
            />

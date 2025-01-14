@@ -80,12 +80,8 @@
   .font-arcade {
     font-family: 'Verdana', 'Arial', sans-serif; 
     color: #88C0D0; 
-    background-color: #2E3440; 
     padding: 8px 12px; 
-    border-radius: 6px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
     letter-spacing: 0.1em; 
-    text-transform: uppercase; 
   }
   
  

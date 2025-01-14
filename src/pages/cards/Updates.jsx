@@ -57,7 +57,8 @@ const Updates = () => {
         <br />
        
       </h1>
-      <span className="font-arcade sm:text-xl text-white">The updates will appear here when someone uses a power card</span>
+      <span className="font-arcade sm:text-xl text-white text-center">The updates will appear here when someone uses a power card</span>
+      <br />
       {leaderboard.length !== 0 ? (
         leaderboard.map((elem, index) => (
           <UpdatePoint
@@ -71,14 +72,19 @@ const Updates = () => {
       ) : (
         <div className="loader">
           <ColorRing
-            visible={true}
-            height="135"
-            width="135"
-            ariaLabel="blocks-loading"
-            wrapperStyle={{}}
-            wrapperClass="blocks-wrapper"
-            colors={["#f2e0d6", "#f2e0d6", "#f2e0d6", "#f2e0d6", "#f2e0d6"]}
-          />
+                      visible={true}
+                      height="135"
+                      width="135"
+                      ariaLabel="loading"
+                      wrapperClass="spinner"
+                      colors={[
+                        "#ff00e4", 
+                        "#00ffcc", 
+                        "#fffb00", 
+                        "#ff6f00",
+                        "#0000ff", 
+                      ]}
+                    />
         </div>
       )}
     </div>

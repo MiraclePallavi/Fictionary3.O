@@ -71,13 +71,13 @@ body{
   line-height: 1.4;
 
   font-family: 'VT323';
-  font-size: 22px; /* Bigger font for questions */
+  font-size: 22px; 
 }
 
 @media screen and (max-width: 700px) {
   .question-text {
-    font-size: 1.2rem; /* Adjust font size for smaller screens */
-    margin-bottom: 15px; /* Adjust spacing */
+    font-size: 1.2rem; 
+    margin-bottom: 15px; 
   }
 }
 
@@ -208,17 +208,19 @@ button.disabled {
   color: white;
   padding: 20px;
   margin: 0 auto;
-  background: rgba(0, 0, 0, 0.8); /* Darker semi-transparent background */
+  background: rgba(0, 0, 0, 0.8); 
   border-radius: 15px;
   box-shadow: 0px 0px 15px rgba(255, 255, 0, 0.7), 
-              0px 0px 30px rgba(255, 0, 255, 0.5); /* Retro glowing effect */
-  animation: pulse-glow 2s infinite; /* Subtle pulsing effect */
+              0px 0px 30px rgba(255, 0, 255, 0.5); 
+  animation: pulse-glow 2s infinite; 
+  font-family: 'VT323';
 }
 
 /* Gradient text effect */
 .thank-you-message h2 {
   font-size: 1.5rem; /* Default font size for headings */
   margin-bottom: 15px;
+  font-family: 'VT323';
   font-weight: bold;
   background: linear-gradient(90deg, #ff00e4, #00ffcc, #fffb00);
   -webkit-background-clip: text;
@@ -226,6 +228,7 @@ button.disabled {
 }
 
 .thank-you-message p {
+  font-family: 'VT323';
   font-size: 1.1rem; /* Default font size for paragraph */
   margin-top: 10px;
   line-height: 1.5;
@@ -240,26 +243,25 @@ button.disabled {
   }
 
   .thank-you-message p {
-    font-size: 1rem; /* Larger paragraph text for medium screens */
+    font-size: 1rem; 
   }
 }
 
 @media (min-width: 1024px) {
   .thank-you-message {
-    width: 50%; /* Center-align message in a smaller container */
+    width: 50%; 
     padding: 40px;
   }
 
   .thank-you-message h2 {
-    font-size: 2rem; /* Larger font for larger screens */
+    font-size: 2rem;
   }
 
   .thank-you-message p {
-    font-size: 1.2rem; /* Slightly larger paragraph text */
+    font-size: 1.2rem; 
   }
 }
 
-/* Animation for pulsing glow */
 @keyframes pulse-glow {
   0% {
     box-shadow: 0px 0px 15px rgba(255, 255, 0, 0.7), 

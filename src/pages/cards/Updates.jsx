@@ -58,7 +58,7 @@ const Updates = () => {
        
       </h1>
       <span className="font-arcade sm:text-xl text-white text-center">The updates will appear here when someone uses a power card</span>
-      <br />
+     
       {leaderboard.length !== 0 ? (
         leaderboard.map((elem, index) => (
           <UpdatePoint

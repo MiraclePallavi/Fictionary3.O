@@ -120,7 +120,7 @@ const Home = () => {
   return (
 
     <div
-      className="bg-dark-blue h-screen flex flex-col relative"
+      className="bg-dark-blue h-screen flex flex-col relative overlay"
       style={{
         backgroundImage: `url(${bg})`,
         backgroundSize: "cover",
@@ -128,6 +128,17 @@ const Home = () => {
         backgroundRepeat: "no-repeat",
       }}
     >
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          backgroundColor: "rgba(0, 0, 0, 0.5)", 
+          zIndex: 1,
+        }}
+      ></div>
       <div className="shooting-stars">
         <span></span>
         <span></span>

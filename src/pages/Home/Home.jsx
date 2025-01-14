@@ -170,6 +170,7 @@ const Home = () => {
     <span className="flicker">N</span>ARY
   </div>
 </div>
+<br />
         {context.token || localStorage.getItem("fictionary_frontend") ? (
   gameLive.game_live ? (
     <div className="play_now mt-7">
@@ -179,6 +180,7 @@ const Home = () => {
     </div>
   ) : (
     <div className="time">
+      <br />
       {true ? (
         <>
           <Timer timer={timeoutDate} refresh={refresh} />

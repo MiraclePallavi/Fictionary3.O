@@ -202,15 +202,15 @@ const Question = () => {
       }}
     >
       {gameLive && showIntro && (
-      <div className="cinematic-intro justify-center items-center font-alagard text-center">
-        <h1 className="text-white xl:text-4xl md:text-4xl sm:text-2xl glow-effect">
-          Welcome to Fictionary!
-        </h1>
-        <p className="text-white xl:text-2xl md:text-2xl sm:text-1xl mt-4">
-          Get ready to challenge your mind...
-        </p>
-      </div>
-    )}
+        <div className="cinematic-intro justify-center items-center font-alagard text-center">
+          <h1 className="text-white xl:text-4xl md:text-4xl sm:text-2xl glow-effect">
+            Welcome to Fictionary!
+          </h1>
+          <p className="text-white xl:text-2xl md:text-2xl sm:text-1xl mt-4">
+            Get ready to challenge your mind...
+          </p>
+        </div>
+      )}
       <HintModal
         open={hintModalOpen}
         onClose={() => {
@@ -224,24 +224,25 @@ const Question = () => {
       />
       {!showIntro && (
         <div className="arcade-screen">
-          {state.loaded ? (
+          {state.question.round > 1 ? (
+            <div className="thank-you-message text-center text-white">
+              <h2 className="text-3xl font-bold">
+                Thank you for playing!
+              </h2>
+              <p className="text-xl mt-4">
+                The next round begins at 6 PM sharp—see you then!
+              </p>
+            </div>
+          ) : state.loaded ? (
             <>
               <div className="question-box">
                 <div className="round-display">
                   Round: {state.question.round}
                 </div>
-                <QuestionTextRenderer text={state.question.text} className="question" />
-               {/*{state.question.media && state.question.media.trim() !== "" ? (
-  <div className="media-display">
-    <img
-      src={state.question.media}
-      alt="Question media"
-      className="media-image"
-    />
-  </div>
-) : (
-  <></>
-)}*/} 
+                <QuestionTextRenderer
+                  text={state.question.text}
+                  className="question"
+                />
                 <input
                   className="answer-input"
                   id="answerInput"
@@ -272,7 +273,7 @@ const Question = () => {
                   SUBMIT
                 </button>
               </div>
-              <div className="text-xl font-bold" >
+              <div className="text-xl font-bold">
                 {state.question.show_country && (
                   <>
                     Country: {state.question.country}
@@ -297,25 +298,26 @@ const Question = () => {
           ) : (
             <div className="loading">
               <ColorRing
-  visible={true}
-  height="135"
-  width="135"
-  ariaLabel="loading"
-  wrapperClass="spinner"
-  colors={[
-    "#ff00e4", // Vibrant pink
-    "#00ffcc", // Neon green
-    "#fffb00", // Electric yellow
-    "#ff6f00", // Bright orange
-    "#0000ff", // Bold blue
-  ]}
-/>
+                visible={true}
+                height="135"
+                width="135"
+                ariaLabel="loading"
+                wrapperClass="spinner"
+                colors={[
+                  "#ff00e4", 
+                  "#00ffcc", 
+                  "#fffb00", 
+                  "#ff6f00", 
+                  "#0000ff", 
+                ]}
+              />
             </div>
           )}
         </div>
       )}
     </div>
   );
+  
 };
 
 export default Question;

@@ -38,14 +38,15 @@ const Home = () => {
 
   useEffect(() => {
     const token = context.token || localStorage.getItem("fictionary_frontend");
-    if (gameLive.time_up) {
-      navigate("/game-finished");
-    } else if (token && gameLive.game_live) {
+    if (token && gameLive.game_live) {
       navigate("/play");
-    } else {
+    }
+    else if(gameLive.time_up) {
+      navigate("/game-finished");
+    }  else {
       refresh();
     }
-  }, [context.token,gameLive.time_up, gameLive.game_live, navigate, refresh]);
+  }, [context.token, gameLive.game_live,gameLive.time_up, navigate, refresh]);
 
   const handleGoogleLogin = useGoogleLogin({
     onSuccess: (tokenResponse) => {

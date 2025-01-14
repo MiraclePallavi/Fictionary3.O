@@ -229,9 +229,10 @@ button.disabled {
 
 .thank-you-message p {
   font-family: 'VT323';
-  font-size: 1.1rem; /* Default font size for paragraph */
+  font-size: 1.5rem; /* Default font size for paragraph */
   margin-top: 10px;
   line-height: 1.5;
+  font-weight: 500;
   color: #ffe600; /* Bright yellow text */
   text-shadow: 0px 0px 10px rgba(255, 230, 0, 0.8); /* Neon text shadow */
 }
@@ -239,11 +240,11 @@ button.disabled {
 /* Responsive adjustments */
 @media (min-width: 768px) {
   .thank-you-message h2 {
-    font-size: 1.5rem; /* Larger font for medium screens and above */
+    font-size: 1.5rem; 
   }
 
   .thank-you-message p {
-    font-size: 1rem; 
+    font-size: 1.4rem; 
   }
 }
 
@@ -258,7 +259,7 @@ button.disabled {
   }
 
   .thank-you-message p {
-    font-size: 1.2rem; 
+    font-size: 1.7rem; 
   }
 }
 

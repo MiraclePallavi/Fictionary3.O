@@ -201,6 +201,17 @@ const Question = () => {
         backgroundRepeat: "no-repeat",
       }}
     >
+       <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          backgroundColor: "rgba(0, 0, 0, 0.2)", 
+          zIndex: 1,
+        }}
+      ></div>
       {gameLive && showIntro && (
         <div className="cinematic-intro justify-center items-center font-alagard text-center">
           <h1 className="text-white xl:text-4xl md:text-4xl sm:text-2xl glow-effect">

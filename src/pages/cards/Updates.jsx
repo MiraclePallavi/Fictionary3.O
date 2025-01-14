@@ -54,7 +54,10 @@ const Updates = () => {
         data-text="Gaming Updates"
       >
         <span>Updates Feed</span>
+        <br />
+       
       </h1>
+      <span className="font-arcade text-xl text-white">The updates will appear here when someone uses a power card</span>
       {leaderboard.length !== 0 ? (
         leaderboard.map((elem, index) => (
           <UpdatePoint

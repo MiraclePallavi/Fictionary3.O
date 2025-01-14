@@ -57,7 +57,7 @@ const Updates = () => {
         <br />
        
       </h1>
-      <span className="text-xl text-white text-center">The updates will appear here when someone uses a power card</span>
+      <span className="font-arcade sm:text-xl text-white text-center">The updates will appear here when someone uses a power card</span>
      
       {leaderboard.length !== 0 ? (
         leaderboard.map((elem, index) => (

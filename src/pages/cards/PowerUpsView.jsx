@@ -34,7 +34,7 @@ const PowerUpsViews = ({ card, refreshUpdateState, onCardRedeemed }) => {
         console.log(card.coins);
         refreshUpdateState(); 
         if (onCardRedeemed) {
-          onCardRedeemed(card.desc); // Call parent function to show alert
+          onCardRedeemed(card.desc);
         }
       });
 

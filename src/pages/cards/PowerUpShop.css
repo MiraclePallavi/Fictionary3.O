@@ -23,7 +23,7 @@ body{
   
   .text-neon-yellow {
     color: #fffb00;
-    text-shadow: 0 0 8px #eeedc3, 0 0 16px #edeb7b, 0 0 24px #fffb00;
+    text-shadow: 0 0 8px #fffb00, 0 0 16px #fffb00, 0 0 24px #fffb00;
   }
   
   .flicker {

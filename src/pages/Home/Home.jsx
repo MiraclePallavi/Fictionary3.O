@@ -38,10 +38,10 @@ const Home = () => {
 
   useEffect(() => {
     const token = context.token || localStorage.getItem("fictionary_frontend");
-    if (token) {
-      if (gameLive.game_live) {
-        navigate("/play");
-      }
+    if (gameLive.gameOver) {
+      navigate("/game-finished");
+    } else if (token && gameLive.game_live) {
+      navigate("/play");
     } else {
       refresh();
     }
@@ -193,22 +193,7 @@ const Home = () => {
         </>
       ): (
         <div className="time-up">
-          <p className="arcade-text">
-            <div>
-              Fictionary has ended now!
-              <br />
-              But wait, that's not the end!
-              <br />
-              <br />
-              <br />
-              The decision is your own voice, an opinion is the echo of
-              someone else's voice: Choose the right one.
-              <br />
-              <br />
-              <br />
-              Reverberate. Coming Soon...
-            </div>
-          </p>
+
         </div>
       )}
     </div>

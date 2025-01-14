@@ -45,7 +45,7 @@ const Home = () => {
     } else {
       refresh();
     }
-  }, [context.token, gameLive.game_live, navigate, refresh]);
+  }, [context.token,gameLive.time_up, gameLive.game_live, navigate, refresh]);
 
   const handleGoogleLogin = useGoogleLogin({
     onSuccess: (tokenResponse) => {

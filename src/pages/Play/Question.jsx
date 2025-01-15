@@ -231,7 +231,7 @@ const Question = () => {
                 Thank you for playing!
               </h2>
               <p className="text-xl mt-4">
-                The next round begins at <span className="text-red-500 font-bold">6 PM</span> sharp—see you then!
+                The next round begins in <span className="text-red-500 font-bold">few hours</span> Stay Tuned—see you then!
               </p>
             </div>
           ) : state.loaded ? (

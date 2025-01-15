@@ -225,7 +225,7 @@ const Question = () => {
       />
       {!showIntro && (
         <div className="arcade-screen">
-          {state.question.round > 15 ? (
+          {state.question.round > 32 ? (
             <div className="thank-you-message text-center text-white">
               <h2 className="text-3xl font-bold">
                 Thank you for playing!

@@ -278,5 +278,6 @@ button.disabled {
   }
 }
 .fontVT323{
-   font-family: 'VT323'
+   font-family: 'VT323';
+   font-size: 20px;
 }

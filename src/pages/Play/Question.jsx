@@ -284,7 +284,7 @@ const Question = () => {
                   SUBMIT
                 </button>
               </div>
-              <div className="text-xl font-bold">
+              <div className="text-xl font-bold fontVT323">
                 {state.question.show_country && (
                   <>
                     Country: {state.question.country}

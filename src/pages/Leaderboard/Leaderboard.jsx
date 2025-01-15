@@ -56,15 +56,7 @@ const Leaderboard = () => {
         }}
       >
          <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          backgroundColor: "rgba(0, 0, 0, 0.2)", 
-          zIndex: 1,
-        }}
+      className="overlay-background"
       ></div>
         <div className="leaderboard-container">
 <div className="shooting-stars">

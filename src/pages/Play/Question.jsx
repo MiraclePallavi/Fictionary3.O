@@ -202,15 +202,7 @@ const Question = () => {
       }}
     >
        <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          backgroundColor: "rgba(0, 0, 0, 0.2)", 
-          zIndex: 1,
-        }}
+       className="overlay-background"
       ></div>
       {gameLive && showIntro && (
         <div className="cinematic-intro justify-center items-center font-alagard text-center">

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./EventAd.module.css";
 import bgImage from "/assets/bg.jpg";
 import "../../index.css";
-import Footer from "../../components/Footer/Footer"
+
 const GameFinished = () => {
   const [gameOver, setGameOver] = useState(true);
 
@@ -31,7 +31,7 @@ const GameFinished = () => {
         <span></span>
         <span></span>
       </div>
-      <div>
+
       {/* Game Over Header */}
       <h1 className="xl:text-6xl  lg:text-5xl sm:text-3xl md:text-4xl font-bold text-neon-red flicker mb-4 font-pixel">
         GAME OVER
@@ -69,9 +69,6 @@ const GameFinished = () => {
         <span></span>
         <span></span>
       </div>
-      <Footer className="footer mt-7" />
-      </div>
-
     </div>
   );
 };

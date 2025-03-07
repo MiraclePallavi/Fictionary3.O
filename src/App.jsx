@@ -15,7 +15,7 @@ import Updates from "./pages/cards/Updates";
 const App = () => {
   return (
     <Router>
-      <Navbar />  {/*<Routes>
+      <Navbar />  <Routes>
     
   <Route path="/" element={<Home />} />
   <Route path="/play" element={<Question />} />
@@ -28,7 +28,7 @@ const App = () => {
   <Route path="/updates" element={<Updates />} />
   <Route path="*" element={<div>404 - Page Not Found</div>} />
 
-</Routes>*/}
+</Routes>
 
     </Router>
   );

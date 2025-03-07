@@ -107,3 +107,9 @@ body{
     0 0 60px #00ffff;
   font-weight: bold; 
 }
+.overlay-background,
+.shooting-stars,
+.stars,
+.floatingStars {
+  pointer-events: none;
+}

@@ -3,6 +3,7 @@ import "./EventAd.module.css";
 import bgImage from "/assets/bg.jpg";
 import "../../index.css";
 import Navbar from "../../components/Navbar/Navbar";
+import { Link } from "react-router-dom";
 
 const GameFinished = () => {
   return (

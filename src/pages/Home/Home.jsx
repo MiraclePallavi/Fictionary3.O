@@ -7,6 +7,7 @@ import cityscape from "/assets/cityscape.png";
 import characterSprite from "/assets/character.png";
 import endpoints from "../../utils/APIendpoints";
 import "./Home.css";
+import Navbar from "../../components/Navbar/Navbar";
 import bg from "/assets/bg.jpg";
 import { Link } from "react-router-dom";
 import Timer from "../../components/Timer/Timer";

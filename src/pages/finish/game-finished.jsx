@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import "./EventAd.module.css";
 import bgImage from "/assets/bg.jpg";
 import "../../index.css";
-
+import Navbar from "../../components/Navbar/Navbar";
 const GameFinished = () => {
   const [gameOver, setGameOver] = useState(true);
 
   return (
+    <>
+    <Navbar />
     <div
       className={`relative h-screen w-full flex flex-col items-center justify-center arcadeBackground`}
       style={{
@@ -32,22 +34,17 @@ const GameFinished = () => {
         <span></span>
       </div>
 
-      {/* Game Over Header */}
       <h1 className="xl:text-6xl  lg:text-5xl sm:text-3xl md:text-4xl font-bold text-neon-red flicker mb-4 font-pixel">
         GAME OVER
       </h1>
-
-      {/* Neon Header */}
       <h1 className="xl:text-5xl  lg:text-4xl sm:text-2xl md:text-2xl font-bold text-neon-yellow flicker mb-6 font-pixel">
         <span className="glowText">Upcoming Event</span>
       </h1>
 
-      {/* Event Details */}
       <h2 className="xl:text-5xl  lg:text-4xl sm:text-1xl  md:text-4xl text-neon-blue font-pixel mb-4">
         Reverbrate!
       </h2>
 
-      {/* Call to Action with Link */}
       <a
         href="https://debsocnitdgp.com/"
         target="_blank"
@@ -61,7 +58,6 @@ const GameFinished = () => {
         </button>
       </a>
 
-      {/* Floating Neon Stars */}
       <div className="floatingStars">
         <span></span>
         <span></span>
@@ -70,6 +66,7 @@ const GameFinished = () => {
         <span></span>
       </div>
     </div>
+    </>
   );
 };
 

@@ -39,8 +39,8 @@ const GameFinished = () => {
         </a>
 
         <div className="mt-10 w-80 md:w-96 bg-black bg-opacity-40 backdrop-blur-lg rounded-lg p-6 shadow-lg border-4 border-neon-red neon-border text-white text-center">
-          <h2 className="text-2xl font-bold text-neon-yellow flicker">Leaderboard</h2>
-          <p className="mt-2 text-neon-blue">Check out the top players!</p>
+          
+    
           <Link to="/Leaderboard" className="inline-block mt-4 px-6 py-2 bg-gradient-to-r from-neon-pink to-neon-purple hover:from-neon-purple hover:to-neon-pink rounded-lg text-black font-pixel shadow-md glowButton">
             View Leaderboard
           </Link>

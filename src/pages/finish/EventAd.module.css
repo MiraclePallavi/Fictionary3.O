@@ -1,109 +1,70 @@
 body{
   overflow-y: hidden;
 }
+
 .arcadeBackground {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  position: relative;
+  background-color: black;
+  overflow: hidden;
 }
 
-.glowText {
-  text-shadow: 0 0 10px #ff00e4, 0 0 20px #ff00e4, 0 0 30px #ff00e4;
-}
-
-.glowBox {
-  box-shadow: 0 0 15px #fffb00, 0 0 30px #fffb00, 0 0 45px #fffb00;
-}
-
-.glowButton {
-  box-shadow: 0 0 15px #ff00e4, 0 0 25px #00ffcc, 0 0 35px #fffb00;
-}
-
-.glowButton:hover {
-  transform: scale(1.1);
+.overlay-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
 }
 
 .flicker {
-  animation: flicker 1.5s infinite;
+  animation: flicker 1.5s infinite alternate;
 }
 
 @keyframes flicker {
-  0%, 100% {
-    opacity: 1;
+  0% { opacity: 1; }
+  50% { opacity: 0.8; }
+  100% { opacity: 1; }
+}
+
+.glowText {
+  text-shadow: 0 0 10px #00eaff, 0 0 20px #00eaff, 0 0 40px #00eaff;
+}
+
+.glowButton {
+  transition: 0.3s ease-in-out;
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.8);
+}
+
+.glowButton:hover {
+  box-shadow: 0 0 25px rgba(255, 0, 255, 1);
+}
+.neon-border {
+  border-radius: 10px;
+  border: 4px solid transparent;
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.8), inset 0 0 15px rgba(255, 0, 0, 0.5);
+  animation: neonGlow 1.5s infinite alternate;
+}
+
+@keyframes neonGlow {
+  0% {
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.7), inset 0 0 10px rgba(255, 0, 0, 0.4);
   }
-  50% {
-    opacity: 0.8;
+  100% {
+    box-shadow: 0 0 20px rgba(255, 0, 0, 1), inset 0 0 20px rgba(255, 0, 0, 0.6);
   }
 }
 
-.floatingStars span {
+.shooting-stars span, .stars span {
   position: absolute;
-  width: 10px;
-  height: 10px;
-  background: radial-gradient(circle, #ffffff, transparent);
-  border-radius: 50%;
-  animation: float 4s infinite ease-in-out;
+  width: 2px;
+  height: 2px;
+  background: white;
+  box-shadow: 0 0 8px white;
+  animation: twinkle 3s infinite;
 }
 
-.floatingStars span:nth-child(1) {
-  top: 20%;
-  left: 10%;
-  animation-delay: 0s;
-}
-
-.floatingStars span:nth-child(2) {
-  top: 40%;
-  left: 60%;
-  animation-delay: 1s;
-}
-
-.floatingStars span:nth-child(3) {
-  top: 70%;
-  left: 30%;
-  animation-delay: 2s;
-}
-
-.floatingStars span:nth-child(4) {
-  top: 80%;
-  left: 80%;
-  animation-delay: 3s;
-}
-
-.floatingStars span:nth-child(5) {
-  top: 50%;
-  left: 50%;
-  animation-delay: 4s;
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-}
-.text-upcoming-event{
-  color: #ff00ff; /* Bright pink color */
-  text-shadow: 
-    0 0 5px #c5ec45, 
-    0 0 10px #e5cce5, 
-    0 0 20px #eaea07, 
-    0 0 30px #f3f9be, 
-    0 0 40px #d2f645, 
-    0 0 50px #e3f639, 
-    0 0 60px #f3df7c;
-  font-weight: bold; /* Optional: makes the text stand out */
-}
-.text-neon-blue{
-  color: #00ffff; /* Bright neon blue color */
-  text-shadow: 
-    0 0 5px #00ffff, 
-    0 0 10px #00ffff, 
-    0 0 20px #00ffff, 
-    0 0 30px #00ffff, 
-    0 0 40px #00ffff, 
-    0 0 50px #00ffff, 
-    0 0 60px #00ffff;
-  font-weight: bold; /* Optional: emphasizes the text */
+@keyframes twinkle {
+  0% { opacity: 0.3; }
+  50% { opacity: 1; }
+  100% { opacity: 0.3; }
 }

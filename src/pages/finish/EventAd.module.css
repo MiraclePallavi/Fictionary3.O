@@ -107,3 +107,19 @@ body{
     0 0 60px #00ffff;
   font-weight: bold; 
 }
+
+.overlay-background,
+.shooting-stars,
+.stars,
+.floatingStars {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; 
+  z-index: 1; 
+}
+
+h1, h2, a, button {
+  position: relative;
+  z-index: 10; 
+}

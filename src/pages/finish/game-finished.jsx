@@ -47,7 +47,7 @@ const GameFinished = () => {
         target="_blank"
         rel="noopener noreferrer"
         style={{ zIndex: 10, position: "relative" }}
-      >
+      >+
         <button
           className={`mt-8 px-6 py-3 text-1xl text-black bg-gradient-to-r from-neon-pink to-neon-purple hover:from-neon-purple hover:to-neon-pink rounded-lg transition-all font-pixel glowButton`}
         >

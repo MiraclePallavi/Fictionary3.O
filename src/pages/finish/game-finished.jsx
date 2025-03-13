@@ -54,13 +54,7 @@ const GameFinished = () => {
           Register Now
         </button>
       </a>
-       <br />
-       <Link
-            to="/leaderboard"
-            className="mt-4 px-6 py-2 bg-gradient-to-r from-fuchsia-500 to-purple-600 hover:from-purple-600 hover:to-fuchsia-500 rounded-lg text-black font-pixel shadow-md glowButton"
-          >
-            View Leaderboard
-          </Link>
+      
       <div className="floatingStars">
         <span></span>
         <span></span>

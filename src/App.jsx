@@ -14,23 +14,24 @@ import GameFinished from "./pages/finish/game-finished";
 import Updates from "./pages/cards/Updates";
 const App = () => {
   return (
-    <Router>
-      <Navbar />  <Routes>
-    
-  <Route path="/" element={<Home />} />
-  <Route path="/play" element={<Question />} />
-  <Route path="/sign-in" element={<Login />} />
-  <Route path="/leaderboard" element={<Leaderboard />} />
-  <Route path="/powerups" element={<PowerUps />} />
+  <Router>
+    <Navbar />  
+    <Routes>
+      
+      <Route path="/" element={<Home />} />
+      <Route path="/play" element={<Question />} />
+      <Route path="/sign-in" element={<Login />} />
+      <Route path="/leaderboard" element={<Leaderboard />} />
+      <Route path="/powerups" element={<PowerUps />} />
 
-  <Route path="/powerupshop" element={<PowerUpShop />} />
-  <Route path="/game-finished" element={<GameFinished />} />
-  <Route path="/updates" element={<Updates />} />
-  <Route path="*" element={<div>404 - Page Not Found</div>} />
+      <Route path="/powerupshop" element={<PowerUpShop />} />
+      <Route path="/game-finished" element={<GameFinished />} />
+      <Route path="/updates" element={<Updates />} />
+      <Route path="*" element={<div>404 - Page Not Found</div>} />
 
-</Routes>
+    </Routes>
 
-    </Router>
+  </Router>
   );
 };
 
